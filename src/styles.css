@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Top Game Academy — brand tokens
+   Palette lifted from the club crest: navy shield, electric-blue bolts,
+   gold panels, red outline, silver ball.
+   ========================================================================== */
+@theme {
+  --color-navy-950: #07101d;
+  --color-navy-900: #0c1a2c;
+  --color-navy-850: #0f2035;
+  --color-navy-800: #12263f;
+  --color-navy-700: #1b3555;
+  --color-navy-600: #26476f;
+  --color-navy-500: #35608f;
+
+  --color-electric-300: #8bd8fa;
+  --color-electric-400: #5cc7f2;
+  --color-electric-500: #31a9e0;
+  --color-electric-600: #1b8ec4;
+  --color-electric-700: #14719e;
+
+  --color-gold-300: #ffe08a;
+  --color-gold-400: #ffd45c;
+  --color-gold-500: #fdc82f;
+  --color-gold-600: #e0a911;
+
+  --color-flare-400: #f0645d;
+  --color-flare-500: #e0342c;
+  --color-flare-600: #c2251e;
+
+  --color-silver-100: #eef3f8;
+  --color-silver-200: #dbe4ed;
+  --color-silver-300: #c3d0dd;
+  --color-silver-400: #9aabbd;
+  --color-silver-500: #728398;
+
+  --font-display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-sans: "Barlow", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-navy-950 font-sans text-silver-200 antialiased;
+  }
+
+  ::selection {
+    @apply bg-gold-500 text-navy-950;
+  }
+
+  /* Keyboard focus that stays visible on every brand surface. */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-gold-500;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display font-extrabold tracking-tight text-white uppercase italic;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* The crest's slanted lettering, reused as a layout motif. */
+  .skew-panel {
+    transform: skewX(-8deg);
+  }
+  .skew-panel > * {
+    transform: skewX(8deg);
+  }
+
+  /* Faint pitch-stripe texture for dark sections. */
+  .pitch-lines {
+    background-image: repeating-linear-gradient(
+      100deg,
+      transparent 0px,
+      transparent 58px,
+      rgb(255 255 255 / 0.022) 58px,
+      rgb(255 255 255 / 0.022) 118px
+    );
+  }
+
+  .bolt-divider {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2.5rem), 0 100%);
+  }
+}
+
+@layer utilities {
+  /* Scroll reveal. Only hides content when JS is actually running, so the
+     prerendered HTML stays readable for crawlers and no-JS visitors. */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.7s var(--ease-out-expo),
+      transform 0.7s var(--ease-out-expo);
+  }
+
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  .text-outline {
+    -webkit-text-stroke: 1.5px var(--color-electric-500);
+    color: transparent;
+    paint-order: stroke fill;
+  }
+}
