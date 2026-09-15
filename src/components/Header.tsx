@@ -11,8 +11,10 @@ import { club } from "@/data/site";
 const NAV = [
   { href: "/about", label: "Academy" },
   { href: "/teams", label: "Teams" },
-  { href: "/schedule", label: "Schedule" },
+  { href: "/pathway", label: "Pathway" },
   { href: "/coaches", label: "Coaches" },
+  { href: "/schedule", label: "Schedule" },
+  { href: "/news", label: "Reports" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -78,14 +80,14 @@ export default function Header() {
 
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-1 lg:flex"
+            className="hidden items-center gap-0.5 xl:flex"
           >
             {NAV.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "relative px-4 py-2 font-display text-[0.95rem] font-bold uppercase tracking-[0.12em] transition-colors",
+                  "relative px-3 py-2 font-display text-[0.9rem] font-bold uppercase tracking-[0.1em] transition-colors",
                   isActive(item.href)
                     ? "text-gold-400"
                     : "text-silver-300 hover:text-white",
@@ -102,10 +104,10 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-3 xl:flex">
             <a
               href={`tel:${club.phoneHref}`}
-              className="flex items-center gap-2 text-sm font-semibold text-silver-300 transition-colors hover:text-electric-300"
+              className="hidden items-center gap-2 text-sm font-semibold text-silver-300 transition-colors hover:text-electric-300 2xl:flex"
             >
               <Phone className="h-4 w-4" aria-hidden />
               {club.phone}
@@ -119,7 +121,7 @@ export default function Header() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="rounded-md p-2 text-white transition-colors hover:bg-white/10 lg:hidden"
+            className="rounded-md p-2 text-white transition-colors hover:bg-white/10 xl:hidden"
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -133,7 +135,7 @@ export default function Header() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-x-0 top-full z-40 max-h-[calc(100dvh-72px)] overflow-y-auto border-b border-white/10 bg-navy-950 shadow-2xl shadow-navy-950/80 lg:hidden"
+              className="absolute inset-x-0 top-full z-40 max-h-[calc(100dvh-72px)] overflow-y-auto border-b border-white/10 bg-navy-950 shadow-2xl shadow-navy-950/80 xl:hidden"
             >
               <nav aria-label="Mobile" className="flex flex-col px-5 py-4">
                 {NAV.map((item) => (

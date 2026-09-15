@@ -9,6 +9,10 @@ import { club } from "@/data/site";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Teams from "@/pages/Teams";
+import Pathway from "@/pages/Pathway";
+import News from "@/pages/News";
+import Article from "@/pages/Article";
+import Sponsors from "@/pages/Sponsors";
 import TeamDetail from "@/pages/TeamDetail";
 import Schedule from "@/pages/Schedule";
 import Coaches from "@/pages/Coaches";
@@ -24,7 +28,9 @@ function useRouteMeta() {
     const meta = routeByPath.get(location);
     document.title = meta?.title ?? `Page not found | ${club.name}`;
 
-    const tag = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    const tag = document.querySelector<HTMLMetaElement>(
+      'meta[name="description"]',
+    );
     if (tag && meta) tag.content = meta.description;
 
     // Fresh page, fresh scroll — unless the user is jumping to an anchor.
@@ -52,6 +58,10 @@ export default function App() {
           <Route path="/about" component={About} />
           <Route path="/teams" component={Teams} />
           <Route path="/teams/:slug" component={TeamDetail} />
+          <Route path="/pathway" component={Pathway} />
+          <Route path="/news" component={News} />
+          <Route path="/news/:slug" component={Article} />
+          <Route path="/sponsors" component={Sponsors} />
           <Route path="/schedule" component={Schedule} />
           <Route path="/coaches" component={Coaches} />
           <Route path="/tryouts" component={Tryouts} />

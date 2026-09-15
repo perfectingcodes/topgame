@@ -41,7 +41,9 @@ export default function Teams() {
                   <div className="grid gap-8 p-8 lg:grid-cols-[1.3fr_1fr] lg:gap-14 lg:p-12">
                     <div className="flex flex-col gap-6">
                       <div className="flex flex-wrap items-center gap-3">
-                        <Badge tone={isElectric ? "electric" : "gold"}>{team.birthYears}</Badge>
+                        <Badge tone={isElectric ? "electric" : "gold"}>
+                          {team.birthYears}
+                        </Badge>
                         <Badge tone="muted">
                           <Users className="h-3 w-3" aria-hidden />
                           {team.roster.size} players
@@ -49,7 +51,9 @@ export default function Teams() {
                       </div>
 
                       <div>
-                        <h2 className="text-5xl leading-none lg:text-6xl">{team.name}</h2>
+                        <h2 className="text-5xl leading-none lg:text-6xl">
+                          {team.name}
+                        </h2>
                         <p className="mt-3 font-display text-sm font-semibold uppercase tracking-[0.18em] text-silver-500">
                           {team.league}
                         </p>
@@ -65,12 +69,17 @@ export default function Teams() {
                         </h3>
                         <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                           {team.focus.map((f) => (
-                            <li key={f} className="flex items-start gap-2.5 text-sm text-silver-300">
+                            <li
+                              key={f}
+                              className="flex items-start gap-2.5 text-sm text-silver-300"
+                            >
                               <span
                                 aria-hidden
                                 className={cn(
                                   "mt-1.5 h-1.5 w-1.5 shrink-0 rotate-45",
-                                  isElectric ? "bg-electric-500" : "bg-gold-500",
+                                  isElectric
+                                    ? "bg-electric-500"
+                                    : "bg-gold-500",
                                 )}
                               />
                               {f}
@@ -103,16 +112,25 @@ export default function Teams() {
                       </h3>
                       <ul className="flex flex-col divide-y divide-white/10">
                         {team.trainingDays.map((session) => (
-                          <li key={session.day} className="flex flex-col gap-1 py-3 first:pt-0">
+                          <li
+                            key={session.day}
+                            className="flex flex-col gap-1 py-3 first:pt-0"
+                          >
                             <p className="font-display text-lg font-bold uppercase italic text-white">
                               {session.day}
                             </p>
                             <p className="flex items-center gap-2 text-sm text-silver-300">
-                              <Clock className="h-3.5 w-3.5 text-electric-500" aria-hidden />
+                              <Clock
+                                className="h-3.5 w-3.5 text-electric-500"
+                                aria-hidden
+                              />
                               {session.time}
                             </p>
                             <p className="flex items-center gap-2 text-xs text-silver-500">
-                              <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                              <MapPin
+                                className="h-3.5 w-3.5 shrink-0"
+                                aria-hidden
+                              />
                               {session.location}
                             </p>
                           </li>
@@ -132,8 +150,12 @@ export default function Teams() {
                             {coach.initials}
                           </span>
                           <div className="min-w-0">
-                            <p className="truncate font-semibold text-white">{coach.name}</p>
-                            <p className="truncate text-xs text-silver-500">{coach.role}</p>
+                            <p className="truncate font-semibold text-white">
+                              {coach.name}
+                            </p>
+                            <p className="truncate text-xs text-silver-500">
+                              {coach.role}
+                            </p>
                           </div>
                         </div>
                       ) : null}
@@ -152,7 +174,8 @@ export default function Teams() {
             Think your son belongs on one of these teams?
           </h2>
           <p className="max-w-xl text-lg text-silver-400">
-            Tryouts are open to every U12 and U14 boy in Southwest Florida, regardless of current club.
+            Tryouts are open to every U12 and U14 boy in Southwest Florida,
+            regardless of current club.
           </p>
           <Button href="/tryouts" size="lg">
             See Tryout Dates

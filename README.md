@@ -59,9 +59,21 @@ scaffolding so the site renders complete; search the file for `TODO`.
 - [ ] Training days, times, and field assignments (`teams[].trainingDays`)
 - [ ] The actual fixture list (`fixtures`)
 - [ ] Tryout dates, tryout fee, and season fee (`tryouts`)
+- [ ] College Pathway details — confirm the four components match what the club
+      actually delivers (`pathway`)
+- [ ] Real sponsors and package pricing (`sponsors`, `sponsorTiers`); add logo
+      files to `public/brand/sponsors/` if you want marks instead of wordmarks
+- [ ] Real tournament reports (`articles`)
 - [ ] Confirm the FAQ answers are accurate — especially travel expectations and
       whether financial assistance is genuinely offered (`faqs`)
 - [ ] Add an Open Graph share image at `public/brand/og.png` (1200×630)
+
+### Naming players
+
+The placeholder tournament reports deliberately never name individual players.
+Publishing the full names of minors is a real decision for a youth club — settle
+on a policy (first names only, or written parental consent) before writing real
+match reports.
 
 ### Forms
 

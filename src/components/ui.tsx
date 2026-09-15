@@ -68,7 +68,13 @@ export function Button({
 /*  Eyebrow / headings                                                         */
 /* -------------------------------------------------------------------------- */
 
-export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
+export function Eyebrow({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
     <p
       className={cn(
@@ -104,9 +110,16 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-      <h2 className="text-4xl leading-[0.95] sm:text-5xl lg:text-6xl">{title}</h2>
+      <h2 className="text-4xl leading-[0.95] sm:text-5xl lg:text-6xl">
+        {title}
+      </h2>
       {lede ? (
-        <p className={cn("max-w-2xl text-lg leading-relaxed text-silver-400", align === "center" && "mx-auto")}>
+        <p
+          className={cn(
+            "max-w-2xl text-lg leading-relaxed text-silver-400",
+            align === "center" && "mx-auto",
+          )}
+        >
           {lede}
         </p>
       ) : null}
@@ -214,7 +227,14 @@ export function Section({
   } as const;
 
   return (
-    <section id={id} className={cn("relative px-5 py-20 sm:px-8 lg:py-28", tones[tone], className)}>
+    <section
+      id={id}
+      className={cn(
+        "relative px-5 py-20 sm:px-8 lg:py-28",
+        tones[tone],
+        className,
+      )}
+    >
       <div className="mx-auto w-full max-w-7xl">{children}</div>
     </section>
   );

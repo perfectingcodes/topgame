@@ -1,8 +1,21 @@
 import { Link, useRoute } from "wouter";
-import { Clock, MapPin, Trophy, Users, CalendarDays, ArrowLeft } from "lucide-react";
+import {
+  Clock,
+  MapPin,
+  Trophy,
+  Users,
+  CalendarDays,
+  ArrowLeft,
+} from "lucide-react";
 
 import PageHero from "@/components/PageHero";
-import { Badge, Button, Reveal, Section, SectionHeading } from "@/components/ui";
+import {
+  Badge,
+  Button,
+  Reveal,
+  Section,
+  SectionHeading,
+} from "@/components/ui";
 import NotFound from "./NotFound";
 import { coaches, fixtures, teams } from "@/data/site";
 import { cn, formatDate } from "@/lib/cn";
@@ -49,7 +62,10 @@ export default function TeamDetail() {
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
             <Reveal>
-              <SectionHeading eyebrow="Weekly Rhythm" title="Training schedule" />
+              <SectionHeading
+                eyebrow="Weekly Rhythm"
+                title="Training schedule"
+              />
             </Reveal>
 
             <ul className="mt-10 flex flex-col gap-4">
@@ -69,7 +85,10 @@ export default function TeamDetail() {
                       {session.time}
                     </p>
                     <p className="flex items-center gap-2 text-sm text-silver-400">
-                      <MapPin className="h-4 w-4 shrink-0 text-silver-500" aria-hidden />
+                      <MapPin
+                        className="h-4 w-4 shrink-0 text-silver-500"
+                        aria-hidden
+                      />
                       {session.location}
                     </p>
                   </li>
@@ -104,29 +123,38 @@ export default function TeamDetail() {
               </h3>
 
               <ul className="mt-6 flex flex-col divide-y divide-white/10">
-                {[coach, keeperCoach, director].filter(Boolean).map((person) => (
-                  <li key={person!.id} className="flex gap-4 py-5 first:pt-0 last:pb-0">
-                    <span
-                      className={cn(
-                        "flex h-12 w-12 shrink-0 items-center justify-center font-display text-base font-extrabold italic",
-                        person!.id === team.coachId
-                          ? isElectric
-                            ? "bg-electric-500 text-navy-950"
-                            : "bg-gold-500 text-navy-950"
-                          : "bg-white/10 text-white",
-                      )}
+                {[coach, keeperCoach, director]
+                  .filter(Boolean)
+                  .map((person) => (
+                    <li
+                      key={person!.id}
+                      className="flex gap-4 py-5 first:pt-0 last:pb-0"
                     >
-                      {person!.initials}
-                    </span>
-                    <div className="min-w-0">
-                      <p className="font-semibold text-white">{person!.name}</p>
-                      <p className="text-xs uppercase tracking-wider text-silver-500">
-                        {person!.role}
-                      </p>
-                      <p className="mt-2 text-sm leading-relaxed text-silver-400">{person!.bio}</p>
-                    </div>
-                  </li>
-                ))}
+                      <span
+                        className={cn(
+                          "flex h-12 w-12 shrink-0 items-center justify-center font-display text-base font-extrabold italic",
+                          person!.id === team.coachId
+                            ? isElectric
+                              ? "bg-electric-500 text-navy-950"
+                              : "bg-gold-500 text-navy-950"
+                            : "bg-white/10 text-white",
+                        )}
+                      >
+                        {person!.initials}
+                      </span>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-white">
+                          {person!.name}
+                        </p>
+                        <p className="text-xs uppercase tracking-wider text-silver-500">
+                          {person!.role}
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-silver-400">
+                          {person!.bio}
+                        </p>
+                      </div>
+                    </li>
+                  ))}
               </ul>
 
               <Button href="/coaches" variant="ghost" className="mt-7 w-full">
@@ -159,14 +187,18 @@ export default function TeamDetail() {
                       </p>
                       <p className="text-xs text-silver-500">{fx.time}</p>
                     </div>
-                    <Badge tone={fx.home ? "electric" : "muted"}>{fx.home ? "Home" : "Away"}</Badge>
+                    <Badge tone={fx.home ? "electric" : "muted"}>
+                      {fx.home ? "Home" : "Away"}
+                    </Badge>
                   </div>
 
                   <div className="min-w-0">
                     <p className="font-display text-xl font-bold uppercase italic text-white">
                       vs {fx.opponent}
                     </p>
-                    <p className="mt-0.5 truncate text-sm text-silver-500">{fx.venue}</p>
+                    <p className="mt-0.5 truncate text-sm text-silver-500">
+                      {fx.venue}
+                    </p>
                   </div>
 
                   <p className="flex items-center gap-2 font-display text-sm font-bold uppercase tracking-[0.16em] text-gold-400 sm:justify-end">
@@ -179,7 +211,8 @@ export default function TeamDetail() {
           </ul>
         ) : (
           <p className="mt-10 text-silver-400">
-            The fixture list for this squad hasn't been published yet — check back soon.
+            The fixture list for this squad hasn't been published yet — check
+            back soon.
           </p>
         )}
       </Section>
@@ -187,10 +220,12 @@ export default function TeamDetail() {
       <Section tone="panel">
         <Reveal className="flex flex-col items-center gap-6 text-center">
           <h2 className="text-4xl leading-tight sm:text-5xl">
-            Interested in the <span className={accentText}>{team.ageGroup}</span> squad?
+            Interested in the{" "}
+            <span className={accentText}>{team.ageGroup}</span> squad?
           </h2>
           <p className="max-w-xl text-lg text-silver-400">
-            Tryouts run twice each summer, and we hold individual looks during the preseason block.
+            Tryouts run twice each summer, and we hold individual looks during
+            the preseason block.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button href="/tryouts" size="lg">

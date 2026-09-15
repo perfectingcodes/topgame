@@ -21,11 +21,22 @@ export function Crest({ className }: { className?: string }) {
   }, []);
 
   if (artwork) {
-    return <img src={artwork} alt={`${club.name} crest`} className={cn("object-contain", className)} />;
+    return (
+      <img
+        src={artwork}
+        alt={`${club.name} crest`}
+        className={cn("object-contain", className)}
+      />
+    );
   }
 
   return (
-    <svg viewBox="0 0 80 72" role="img" aria-label={`${club.name} crest`} className={cn(className)}>
+    <svg
+      viewBox="0 0 80 72"
+      role="img"
+      aria-label={`${club.name} crest`}
+      className={cn(className)}
+    >
       {/* Lightning bolts flanking the shield */}
       <g fill="var(--color-electric-500)">
         <path d="M22 13 L1 31 H11 L5 49 L27 28 H17 Z" />
@@ -66,8 +77,14 @@ export function Crest({ className }: { className?: string }) {
       </g>
 
       {/* Wordmark banner */}
-      <path d="M21 44.5 L59 44.5 L55.5 56 L24.5 56 Z" fill="var(--color-silver-100)" />
-      <path d="M24 47 L56 47 L54 53.5 L26 53.5 Z" fill="var(--color-navy-800)" />
+      <path
+        d="M21 44.5 L59 44.5 L55.5 56 L24.5 56 Z"
+        fill="var(--color-silver-100)"
+      />
+      <path
+        d="M24 47 L56 47 L54 53.5 L26 53.5 Z"
+        fill="var(--color-navy-800)"
+      />
     </svg>
   );
 }

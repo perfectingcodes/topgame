@@ -35,9 +35,13 @@ export default function PageHero({
 
       <div className="relative mx-auto w-full max-w-7xl">
         <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="mt-5 max-w-4xl text-5xl leading-[0.9] sm:text-6xl lg:text-7xl">{title}</h1>
+        <h1 className="mt-5 max-w-4xl text-5xl leading-[0.9] sm:text-6xl lg:text-7xl">
+          {title}
+        </h1>
         {lede ? (
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-silver-400 lg:text-xl">{lede}</p>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-silver-400 lg:text-xl">
+            {lede}
+          </p>
         ) : null}
         {children ? <div className="mt-8">{children}</div> : null}
       </div>

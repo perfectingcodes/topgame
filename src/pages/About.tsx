@@ -32,10 +32,26 @@ const CURRICULUM = [
 ];
 
 const COMMITMENTS = [
-  { icon: Target, title: "Honest evaluations", body: "Written player feedback twice a season — strengths, gaps, and a concrete plan." },
-  { icon: TrendingUp, title: "Real minutes", body: "Rotation that develops players rather than protecting a scoreline." },
-  { icon: ShieldCheck, title: "Safe environment", body: "Background-checked, SafeSport-trained staff at every session." },
-  { icon: HeartHandshake, title: "No politics", body: "Selection is on merit and effort. Nothing else moves the needle." },
+  {
+    icon: Target,
+    title: "Honest evaluations",
+    body: "Written player feedback twice a season — strengths, gaps, and a concrete plan.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Real minutes",
+    body: "Rotation that develops players rather than protecting a scoreline.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Safe environment",
+    body: "Background-checked, SafeSport-trained staff at every session.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "No politics",
+    body: "Selection is on merit and effort. Nothing else moves the needle.",
+  },
 ];
 
 export default function About() {
@@ -57,24 +73,30 @@ export default function About() {
       <Section tone="darker">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal>
-            <SectionHeading eyebrow="Our Story" title="It started with a car ride" />
+            <SectionHeading
+              eyebrow="Our Story"
+              title="It started with a car ride"
+            />
           </Reveal>
           <Reveal delay={100}>
             <div className="flex flex-col gap-5 text-lg leading-relaxed text-silver-300">
               <p>
-                Ask any soccer family in {club.city} and you'll hear the same story — three evenings
-                a week spent on Pine Island Road, driving north so their son could train at the level
-                he was capable of. Homework in the back seat. Dinner at nine.
+                Ask any soccer family in {club.city} and you'll hear the same
+                story — three evenings a week spent on Pine Island Road, driving
+                north so their son could train at the level he was capable of.
+                Homework in the back seat. Dinner at nine.
               </p>
               <p>
-                We started {club.name} to end that drive. Not a watered-down local alternative, but a
-                genuine development academy with licensed staff, a written curriculum, and standards
-                that hold up against anything in Lee County.
+                We started {club.name} to end that drive. Not a watered-down
+                local alternative, but a genuine development academy with
+                licensed staff, a written curriculum, and standards that hold up
+                against anything in Lee County.
               </p>
               <p>
-                We deliberately stayed small. Two age groups, {stats[2].value} coach-to-player ratio,
-                and a roster where every player gets coached by name — because a hundred kids spread
-                across eight teams is a business model, not a development plan.
+                We deliberately stayed small. Two age groups, {stats[2].value}{" "}
+                coach-to-player ratio, and a roster where every player gets
+                coached by name — because a hundred kids spread across eight
+                teams is a business model, not a development plan.
               </p>
             </div>
           </Reveal>
@@ -95,7 +117,9 @@ export default function About() {
             <Reveal key={value.title} delay={i * 80}>
               <article className="h-full border-l-2 border-electric-500 bg-navy-850 p-8">
                 <h3 className="text-2xl">{value.title}</h3>
-                <p className="mt-3 leading-relaxed text-silver-400">{value.body}</p>
+                <p className="mt-3 leading-relaxed text-silver-400">
+                  {value.body}
+                </p>
               </article>
             </Reveal>
           ))}
@@ -126,7 +150,9 @@ export default function About() {
                   {block.phase} · {block.window}
                 </p>
                 <h3 className="text-2xl">{block.title}</h3>
-                <p className="text-sm leading-relaxed text-silver-400">{block.body}</p>
+                <p className="text-sm leading-relaxed text-silver-400">
+                  {block.body}
+                </p>
               </li>
             </Reveal>
           ))}
@@ -156,7 +182,9 @@ export default function About() {
                 <article className="flex h-full flex-col gap-3 border border-white/10 bg-navy-900 p-6">
                   <item.icon className="h-8 w-8 text-gold-500" aria-hidden />
                   <h3 className="text-xl">{item.title}</h3>
-                  <p className="text-sm leading-relaxed text-silver-400">{item.body}</p>
+                  <p className="text-sm leading-relaxed text-silver-400">
+                    {item.body}
+                  </p>
                 </article>
               </Reveal>
             ))}

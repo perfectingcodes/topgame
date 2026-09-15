@@ -9,7 +9,11 @@ import { routeByPath, routes } from "./data/routes";
 export { routes, club };
 
 const esc = (s: string) =>
-  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 
 /** Renders one route to static HTML plus the <head> tags for that URL. */
 export function render(url: string) {

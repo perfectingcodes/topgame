@@ -1,4 +1,4 @@
-import { club, teams } from "./site";
+import { articles, club, teams } from "./site";
 
 export type RouteMeta = {
   path: string;
@@ -30,6 +30,26 @@ export const routes: RouteMeta[] = [
     title: `${team.name} | ${suffix}`,
     description: `${team.name} at ${club.name}: ${team.blurb}`,
   })),
+  {
+    path: "/pathway",
+    title: `College Pathway | ${suffix}`,
+    description: `${club.name}'s College Pathway program — player profiles, academic guidance, and showcase planning for boys aiming at college soccer.`,
+  },
+  {
+    path: "/news",
+    title: `Tournament Reports | ${suffix}`,
+    description: `Match and tournament write-ups from ${club.name}'s U12 and U14 boys squads.`,
+  },
+  ...articles.map((article) => ({
+    path: `/news/${article.slug}`,
+    title: `${article.title} | ${club.name}`,
+    description: article.excerpt,
+  })),
+  {
+    path: "/sponsors",
+    title: `Sponsors & Partners | ${suffix}`,
+    description: `The local businesses backing ${club.name}, and how your business can support youth soccer in ${club.city}.`,
+  },
   {
     path: "/schedule",
     title: `Schedule & Fixtures | ${suffix}`,

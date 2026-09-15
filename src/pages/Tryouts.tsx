@@ -2,7 +2,13 @@ import { useState } from "react";
 import { Clock, MapPin, CheckCircle2, ChevronDown } from "lucide-react";
 
 import PageHero from "@/components/PageHero";
-import { Badge, Button, Reveal, Section, SectionHeading } from "@/components/ui";
+import {
+  Badge,
+  Button,
+  Reveal,
+  Section,
+  SectionHeading,
+} from "@/components/ui";
 import { club, faqs, tryouts, teams } from "@/data/site";
 import { cn, formatDate } from "@/lib/cn";
 
@@ -47,7 +53,9 @@ export default function Tryouts() {
                     isU14 ? "border-gold-500" : "border-electric-500",
                   )}
                 >
-                  <Badge tone={isU14 ? "gold" : "electric"}>{session.group}</Badge>
+                  <Badge tone={isU14 ? "gold" : "electric"}>
+                    {session.group}
+                  </Badge>
 
                   <p className="font-display text-3xl font-extrabold uppercase italic leading-none text-white">
                     {formatDate(session.date)}
@@ -55,11 +63,17 @@ export default function Tryouts() {
 
                   <div className="flex flex-col gap-2 text-sm text-silver-300">
                     <p className="flex items-center gap-2.5">
-                      <Clock className="h-4 w-4 shrink-0 text-silver-500" aria-hidden />
+                      <Clock
+                        className="h-4 w-4 shrink-0 text-silver-500"
+                        aria-hidden
+                      />
                       {session.time}
                     </p>
                     <p className="flex items-start gap-2.5">
-                      <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-silver-500" aria-hidden />
+                      <MapPin
+                        className="mt-0.5 h-4 w-4 shrink-0 text-silver-500"
+                        aria-hidden
+                      />
                       {session.location}
                     </p>
                   </div>
@@ -78,8 +92,14 @@ export default function Tryouts() {
               <SectionHeading eyebrow="Checklist" title="What to bring" />
               <ul className="mt-8 flex flex-col gap-4">
                 {tryouts.bring.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-silver-300">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-electric-500" aria-hidden />
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-silver-300"
+                  >
+                    <CheckCircle2
+                      className="mt-0.5 h-5 w-5 shrink-0 text-electric-500"
+                      aria-hidden
+                    />
                     {item}
                   </li>
                 ))}
@@ -92,9 +112,14 @@ export default function Tryouts() {
               <SectionHeading eyebrow="Evaluation" title="How we assess" />
               <ul className="mt-8 grid gap-4 sm:grid-cols-2">
                 {tryouts.evaluated.map((item) => (
-                  <li key={item.title} className="border border-white/10 bg-navy-850 p-5">
+                  <li
+                    key={item.title}
+                    className="border border-white/10 bg-navy-850 p-5"
+                  >
                     <h3 className="text-xl text-gold-400">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-silver-400">{item.body}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-silver-400">
+                      {item.body}
+                    </p>
                   </li>
                 ))}
               </ul>
@@ -128,7 +153,10 @@ export default function Tryouts() {
                 </p>
                 <p>
                   Prefer to talk it through? Call{" "}
-                  <a href={`tel:${club.phoneHref}`} className="text-electric-400 hover:underline">
+                  <a
+                    href={`tel:${club.phoneHref}`}
+                    className="text-electric-400 hover:underline"
+                  >
                     {club.phone}
                   </a>
                   .
@@ -146,7 +174,11 @@ export default function Tryouts() {
       {/* FAQ */}
       <Section tone="panel">
         <Reveal>
-          <SectionHeading eyebrow="Questions" title="Before you ask" align="center" />
+          <SectionHeading
+            eyebrow="Questions"
+            title="Before you ask"
+            align="center"
+          />
         </Reveal>
 
         <div className="mx-auto mt-12 flex max-w-3xl flex-col gap-3">
@@ -160,7 +192,9 @@ export default function Tryouts() {
                     aria-hidden
                   />
                 </summary>
-                <p className="px-6 pb-6 leading-relaxed text-silver-400">{faq.a}</p>
+                <p className="px-6 pb-6 leading-relaxed text-silver-400">
+                  {faq.a}
+                </p>
               </details>
             </Reveal>
           ))}
@@ -174,7 +208,8 @@ export default function Tryouts() {
 
 const FIELD =
   "w-full border border-white/15 bg-navy-950 px-4 py-3 text-white placeholder:text-silver-500 transition-colors focus:border-electric-500 focus:outline-none";
-const LABEL = "font-display text-xs font-bold uppercase tracking-[0.2em] text-silver-400";
+const LABEL =
+  "font-display text-xs font-bold uppercase tracking-[0.2em] text-silver-400";
 
 /**
  * Registration form.
@@ -212,16 +247,30 @@ function TryoutForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5 border border-white/10 bg-navy-900 p-7 lg:p-9">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-5 border border-white/10 bg-navy-900 p-7 lg:p-9"
+    >
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="flex flex-col gap-2">
           <span className={LABEL}>Player name *</span>
-          <input required name="player" autoComplete="off" className={FIELD} placeholder="First and last" />
+          <input
+            required
+            name="player"
+            autoComplete="off"
+            className={FIELD}
+            placeholder="First and last"
+          />
         </label>
 
         <label className="flex flex-col gap-2">
           <span className={LABEL}>Date of birth *</span>
-          <input required type="date" name="dob" className={cn(FIELD, "[color-scheme:dark]")} />
+          <input
+            required
+            type="date"
+            name="dob"
+            className={cn(FIELD, "[color-scheme:dark]")}
+          />
         </label>
 
         <label className="flex flex-col gap-2">
@@ -241,12 +290,20 @@ function TryoutForm() {
 
         <label className="flex flex-col gap-2">
           <span className={LABEL}>Preferred position</span>
-          <input name="position" className={FIELD} placeholder="e.g. Centre-mid" />
+          <input
+            name="position"
+            className={FIELD}
+            placeholder="e.g. Centre-mid"
+          />
         </label>
 
         <label className="flex flex-col gap-2 sm:col-span-2">
           <span className={LABEL}>Current club (if any)</span>
-          <input name="currentClub" className={FIELD} placeholder="Leave blank if unattached" />
+          <input
+            name="currentClub"
+            className={FIELD}
+            placeholder="Leave blank if unattached"
+          />
         </label>
       </div>
 
@@ -255,22 +312,47 @@ function TryoutForm() {
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="flex flex-col gap-2">
           <span className={LABEL}>Parent / guardian *</span>
-          <input required name="parent" autoComplete="name" className={FIELD} placeholder="Your name" />
+          <input
+            required
+            name="parent"
+            autoComplete="name"
+            className={FIELD}
+            placeholder="Your name"
+          />
         </label>
 
         <label className="flex flex-col gap-2">
           <span className={LABEL}>Email *</span>
-          <input required type="email" name="email" autoComplete="email" className={FIELD} placeholder="you@email.com" />
+          <input
+            required
+            type="email"
+            name="email"
+            autoComplete="email"
+            className={FIELD}
+            placeholder="you@email.com"
+          />
         </label>
 
         <label className="flex flex-col gap-2 sm:col-span-2">
           <span className={LABEL}>Phone *</span>
-          <input required type="tel" name="phone" autoComplete="tel" className={FIELD} placeholder="(239) 555-0100" />
+          <input
+            required
+            type="tel"
+            name="phone"
+            autoComplete="tel"
+            className={FIELD}
+            placeholder="(239) 555-0100"
+          />
         </label>
 
         <label className="flex flex-col gap-2 sm:col-span-2">
           <span className={LABEL}>Anything we should know?</span>
-          <textarea name="notes" rows={4} className={cn(FIELD, "resize-y")} placeholder="Injuries, scheduling conflicts, questions…" />
+          <textarea
+            name="notes"
+            rows={4}
+            className={cn(FIELD, "resize-y")}
+            placeholder="Injuries, scheduling conflicts, questions…"
+          />
         </label>
       </div>
 

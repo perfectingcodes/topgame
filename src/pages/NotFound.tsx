@@ -17,10 +17,13 @@ export default function NotFound() {
           404
         </p>
 
-        <h1 className="text-4xl leading-tight sm:text-5xl">That one sailed over the bar</h1>
+        <h1 className="text-4xl leading-tight sm:text-5xl">
+          That one sailed over the bar
+        </h1>
 
         <p className="max-w-lg text-lg text-silver-400">
-          The page you're after doesn't exist — or it moved. Let's get you back on the pitch.
+          The page you're after doesn't exist — or it moved. Let's get you back
+          on the pitch.
         </p>
 
         <div className="flex flex-wrap justify-center gap-4">

@@ -8,7 +8,8 @@ import { cn } from "@/lib/cn";
 
 const FIELD =
   "w-full border border-white/15 bg-navy-950 px-4 py-3 text-white placeholder:text-silver-500 transition-colors focus:border-electric-500 focus:outline-none";
-const LABEL = "font-display text-xs font-bold uppercase tracking-[0.2em] text-silver-400";
+const LABEL =
+  "font-display text-xs font-bold uppercase tracking-[0.2em] text-silver-400";
 
 const TOPICS = [
   "Tryouts & registration",
@@ -47,7 +48,10 @@ export default function Contact() {
                       href={`tel:${club.phoneHref}`}
                       className="group flex items-start gap-4 text-silver-300 transition-colors hover:text-white"
                     >
-                      <Phone className="mt-0.5 h-5 w-5 shrink-0 text-electric-500" aria-hidden />
+                      <Phone
+                        className="mt-0.5 h-5 w-5 shrink-0 text-electric-500"
+                        aria-hidden
+                      />
                       <span>
                         <span className={cn(LABEL, "block")}>Phone</span>
                         <span className="text-lg font-semibold text-white group-hover:text-electric-300">
@@ -61,7 +65,10 @@ export default function Contact() {
                       href={`mailto:${club.email}`}
                       className="group flex items-start gap-4 text-silver-300 transition-colors hover:text-white"
                     >
-                      <Mail className="mt-0.5 h-5 w-5 shrink-0 text-electric-500" aria-hidden />
+                      <Mail
+                        className="mt-0.5 h-5 w-5 shrink-0 text-electric-500"
+                        aria-hidden
+                      />
                       <span>
                         <span className={cn(LABEL, "block")}>Email</span>
                         <span className="text-lg font-semibold text-white group-hover:text-electric-300">
@@ -71,7 +78,10 @@ export default function Contact() {
                     </a>
                   </li>
                   <li className="flex items-start gap-4">
-                    <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-electric-500" aria-hidden />
+                    <MapPin
+                      className="mt-0.5 h-5 w-5 shrink-0 text-electric-500"
+                      aria-hidden
+                    />
                     <span>
                       <span className={cn(LABEL, "block")}>Home ground</span>
                       <address className="text-lg font-semibold not-italic leading-snug text-white">
@@ -79,7 +89,8 @@ export default function Contact() {
                         <br />
                         {club.address.line2}
                         <br />
-                        {club.address.city}, {club.address.state} {club.address.zip}
+                        {club.address.city}, {club.address.state}{" "}
+                        {club.address.zip}
                       </address>
                     </span>
                   </li>
@@ -92,11 +103,22 @@ export default function Contact() {
                 </h3>
                 <ul className="mt-5 flex flex-col gap-3">
                   {teams.map((team) => (
-                    <li key={team.slug} className="flex items-start gap-3 text-sm text-silver-300">
-                      <Clock className="mt-0.5 h-4 w-4 shrink-0 text-silver-500" aria-hidden />
+                    <li
+                      key={team.slug}
+                      className="flex items-start gap-3 text-sm text-silver-300"
+                    >
+                      <Clock
+                        className="mt-0.5 h-4 w-4 shrink-0 text-silver-500"
+                        aria-hidden
+                      />
                       <span>
-                        <span className="font-semibold text-white">{team.name}</span> —{" "}
-                        {team.trainingDays.map((d) => d.day.slice(0, 3)).join(", ")}
+                        <span className="font-semibold text-white">
+                          {team.name}
+                        </span>{" "}
+                        —{" "}
+                        {team.trainingDays
+                          .map((d) => d.day.slice(0, 3))
+                          .join(", ")}
                       </span>
                     </li>
                   ))}
@@ -190,28 +212,55 @@ function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5 border border-white/10 bg-navy-900 p-7 lg:p-9">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-5 border border-white/10 bg-navy-900 p-7 lg:p-9"
+    >
       <h2 className="text-3xl">Send a message</h2>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="flex flex-col gap-2">
           <span className={LABEL}>Your name *</span>
-          <input required name="name" autoComplete="name" className={FIELD} placeholder="First and last" />
+          <input
+            required
+            name="name"
+            autoComplete="name"
+            className={FIELD}
+            placeholder="First and last"
+          />
         </label>
 
         <label className="flex flex-col gap-2">
           <span className={LABEL}>Email *</span>
-          <input required type="email" name="email" autoComplete="email" className={FIELD} placeholder="you@email.com" />
+          <input
+            required
+            type="email"
+            name="email"
+            autoComplete="email"
+            className={FIELD}
+            placeholder="you@email.com"
+          />
         </label>
 
         <label className="flex flex-col gap-2">
           <span className={LABEL}>Phone</span>
-          <input type="tel" name="phone" autoComplete="tel" className={FIELD} placeholder="Optional" />
+          <input
+            type="tel"
+            name="phone"
+            autoComplete="tel"
+            className={FIELD}
+            placeholder="Optional"
+          />
         </label>
 
         <label className="flex flex-col gap-2">
           <span className={LABEL}>Topic *</span>
-          <select required name="topic" defaultValue={TOPICS[0]} className={FIELD}>
+          <select
+            required
+            name="topic"
+            defaultValue={TOPICS[0]}
+            className={FIELD}
+          >
             {TOPICS.map((topic) => (
               <option key={topic} value={topic}>
                 {topic}

@@ -41,7 +41,9 @@ export default function Coaches() {
                   <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-gold-400">
                     {coach.role}
                   </p>
-                  <p className="mt-1 text-sm leading-relaxed text-silver-400">{coach.bio}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-silver-400">
+                    {coach.bio}
+                  </p>
 
                   <ul className="mt-3 flex flex-wrap gap-2">
                     {coach.licenses.map((license) => (
@@ -49,7 +51,10 @@ export default function Coaches() {
                         key={license}
                         className="inline-flex items-center gap-1.5 rounded-full bg-white/5 px-3 py-1 text-xs text-silver-300 ring-1 ring-inset ring-white/10"
                       >
-                        <BadgeCheck className="h-3.5 w-3.5 text-electric-400" aria-hidden />
+                        <BadgeCheck
+                          className="h-3.5 w-3.5 text-electric-400"
+                          aria-hidden
+                        />
                         {license}
                       </li>
                     ))}
@@ -72,17 +77,18 @@ export default function Coaches() {
           <Reveal delay={100}>
             <div className="flex flex-col gap-5 text-lg leading-relaxed text-silver-300">
               <p>
-                Every coach on staff holds a current U.S. Soccer Federation licence for the format
-                they coach, plus SafeSport certification and a completed background screening.
+                Every coach on staff holds a current U.S. Soccer Federation
+                licence for the format they coach, plus SafeSport certification
+                and a completed background screening.
               </p>
               <p>
-                Beyond the paperwork, staff meet weekly to review session plans against the academy
-                curriculum. Nobody improvises a training night, and nobody repeats last week because
-                it was easier.
+                Beyond the paperwork, staff meet weekly to review session plans
+                against the academy curriculum. Nobody improvises a training
+                night, and nobody repeats last week because it was easier.
               </p>
               <p>
-                If you ever want to know why your son is working on something specific, ask his
-                coach. You'll get a real answer.
+                If you ever want to know why your son is working on something
+                specific, ask his coach. You'll get a real answer.
               </p>
             </div>
           </Reveal>
@@ -93,10 +99,15 @@ export default function Coaches() {
         <Reveal className="flex flex-col items-center gap-6 text-center">
           <h2 className="text-4xl leading-tight sm:text-5xl">Coach with us</h2>
           <p className="max-w-xl text-lg text-silver-400">
-            We're always open to licensed coaches who want to work in a development-first environment.
-            Send us your background and let's talk.
+            We're always open to licensed coaches who want to work in a
+            development-first environment. Send us your background and let's
+            talk.
           </p>
-          <Button href={`mailto:${club.email}?subject=Coaching%20enquiry`} size="lg" variant="secondary">
+          <Button
+            href={`mailto:${club.email}?subject=Coaching%20enquiry`}
+            size="lg"
+            variant="secondary"
+          >
             Email the Academy
           </Button>
         </Reveal>

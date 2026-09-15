@@ -10,6 +10,7 @@ const COLUMNS = [
     links: [
       { href: "/about", label: "About Us" },
       { href: "/coaches", label: "Coaching Staff" },
+      { href: "/pathway", label: "College Pathway" },
       { href: "/schedule", label: "Schedule & Fixtures" },
       { href: "/tryouts", label: "Tryouts" },
     ],
@@ -19,6 +20,8 @@ const COLUMNS = [
     links: [
       { href: "/teams", label: "All Teams" },
       ...teams.map((t) => ({ href: `/teams/${t.slug}`, label: t.name })),
+      { href: "/news", label: "Tournament Reports" },
+      { href: "/sponsors", label: "Sponsors" },
     ],
   },
 ];
@@ -37,8 +40,9 @@ export default function Footer() {
             <Logo />
           </Link>
           <p className="max-w-xs text-sm leading-relaxed text-silver-400">
-            {club.tagline}. Developing U12 and U14 boys in {club.city}, {club.state} — technically
-            sharp, tactically sound, and ready for whatever comes next.
+            {club.tagline}. Developing U12 and U14 boys in {club.city},{" "}
+            {club.state} — technically sharp, tactically sound, and ready for
+            whatever comes next.
           </p>
           <div className="flex gap-3">
             <a
@@ -59,7 +63,11 @@ export default function Footer() {
         </div>
 
         {COLUMNS.map((col) => (
-          <nav key={col.title} aria-label={col.title} className="flex flex-col gap-4">
+          <nav
+            key={col.title}
+            aria-label={col.title}
+            className="flex flex-col gap-4"
+          >
             <h3 className="font-display text-sm font-bold uppercase tracking-[0.24em] text-gold-400">
               {col.title}
             </h3>
@@ -84,19 +92,34 @@ export default function Footer() {
           </h3>
           <ul className="flex flex-col gap-3 text-sm text-silver-300">
             <li>
-              <a href={`tel:${club.phoneHref}`} className="flex items-center gap-2.5 hover:text-electric-300">
-                <Phone className="h-4 w-4 shrink-0 text-electric-500" aria-hidden />
+              <a
+                href={`tel:${club.phoneHref}`}
+                className="flex items-center gap-2.5 hover:text-electric-300"
+              >
+                <Phone
+                  className="h-4 w-4 shrink-0 text-electric-500"
+                  aria-hidden
+                />
                 {club.phone}
               </a>
             </li>
             <li>
-              <a href={`mailto:${club.email}`} className="flex items-center gap-2.5 hover:text-electric-300">
-                <Mail className="h-4 w-4 shrink-0 text-electric-500" aria-hidden />
+              <a
+                href={`mailto:${club.email}`}
+                className="flex items-center gap-2.5 hover:text-electric-300"
+              >
+                <Mail
+                  className="h-4 w-4 shrink-0 text-electric-500"
+                  aria-hidden
+                />
                 {club.email}
               </a>
             </li>
             <li className="flex items-start gap-2.5">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-electric-500" aria-hidden />
+              <MapPin
+                className="mt-0.5 h-4 w-4 shrink-0 text-electric-500"
+                aria-hidden
+              />
               <address className="not-italic leading-relaxed">
                 {club.address.line1}
                 <br />

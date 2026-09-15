@@ -56,6 +56,7 @@ export const pillars = [
   },
   {
     icon: "graduation-cap",
+    href: "/pathway",
     title: "Play Beyond",
     body: "Development that travels — to middle school, high school, and club soccer at the next tier. We build players other programs want.",
   },
@@ -95,11 +96,26 @@ export const teams: Team[] = [
       "Playing out from the back in a 1-3-3-1",
     ],
     trainingDays: [
-      { day: "Tuesday", time: "5:30 – 7:00 PM", location: "Field 3 — Sports Complex" },
-      { day: "Thursday", time: "5:30 – 7:00 PM", location: "Field 3 — Sports Complex" },
-      { day: "Saturday", time: "9:00 – 10:30 AM", location: "Field 1 — Sports Complex" },
+      {
+        day: "Tuesday",
+        time: "5:30 – 7:00 PM",
+        location: "Field 3 — Sports Complex",
+      },
+      {
+        day: "Thursday",
+        time: "5:30 – 7:00 PM",
+        location: "Field 3 — Sports Complex",
+      },
+      {
+        day: "Saturday",
+        time: "9:00 – 10:30 AM",
+        location: "Field 1 — Sports Complex",
+      },
     ],
-    roster: { size: 14, note: "9v9 format — carrying 14 players for the season" },
+    roster: {
+      size: 14,
+      note: "9v9 format — carrying 14 players for the season",
+    },
   },
   {
     slug: "u14-boys",
@@ -119,11 +135,26 @@ export const teams: Team[] = [
       "Physical preparation and load management",
     ],
     trainingDays: [
-      { day: "Monday", time: "6:00 – 7:45 PM", location: "Field 2 — Sports Complex" },
-      { day: "Wednesday", time: "6:00 – 7:45 PM", location: "Field 2 — Sports Complex" },
-      { day: "Saturday", time: "10:45 AM – 12:15 PM", location: "Field 1 — Sports Complex" },
+      {
+        day: "Monday",
+        time: "6:00 – 7:45 PM",
+        location: "Field 2 — Sports Complex",
+      },
+      {
+        day: "Wednesday",
+        time: "6:00 – 7:45 PM",
+        location: "Field 2 — Sports Complex",
+      },
+      {
+        day: "Saturday",
+        time: "10:45 AM – 12:15 PM",
+        location: "Field 1 — Sports Complex",
+      },
     ],
-    roster: { size: 18, note: "11v11 format — carrying 18 players for the season" },
+    roster: {
+      size: 18,
+      note: "11v11 format — carrying 18 players for the season",
+    },
   },
 ];
 
@@ -184,24 +215,108 @@ export type Fixture = {
 
 // TODO: replace with the real fixture list, or wire this to the league feed.
 export const fixtures: Fixture[] = [
-  { date: "2026-09-19", time: "9:00 AM", team: "u12-boys", opponent: "Fort Myers United", venue: "Cape Coral Sports Complex", home: true, competition: "League" },
-  { date: "2026-09-19", time: "11:00 AM", team: "u14-boys", opponent: "Fort Myers United", venue: "Cape Coral Sports Complex", home: true, competition: "League" },
-  { date: "2026-09-26", time: "10:00 AM", team: "u14-boys", opponent: "Naples SC", venue: "North Collier Regional Park", home: false, competition: "League" },
-  { date: "2026-10-03", time: "9:00 AM", team: "u12-boys", opponent: "Estero Strikers", venue: "Estero Community Park", home: false, competition: "League" },
-  { date: "2026-10-10", time: "10:30 AM", team: "u12-boys", opponent: "Bonita Springs FC", venue: "Cape Coral Sports Complex", home: true, competition: "League" },
-  { date: "2026-10-10", time: "12:30 PM", team: "u14-boys", opponent: "Bonita Springs FC", venue: "Cape Coral Sports Complex", home: true, competition: "League" },
-  { date: "2026-10-17", time: "8:30 AM", team: "u14-boys", opponent: "Punta Gorda Rovers", venue: "Cape Coral Sports Complex", home: true, competition: "Cup" },
-  { date: "2026-10-24", time: "9:00 AM", team: "u12-boys", opponent: "Lehigh Acres YSC", venue: "Veterans Park", home: false, competition: "League" },
+  {
+    date: "2026-09-19",
+    time: "9:00 AM",
+    team: "u12-boys",
+    opponent: "Fort Myers United",
+    venue: "Cape Coral Sports Complex",
+    home: true,
+    competition: "League",
+  },
+  {
+    date: "2026-09-19",
+    time: "11:00 AM",
+    team: "u14-boys",
+    opponent: "Fort Myers United",
+    venue: "Cape Coral Sports Complex",
+    home: true,
+    competition: "League",
+  },
+  {
+    date: "2026-09-26",
+    time: "10:00 AM",
+    team: "u14-boys",
+    opponent: "Naples SC",
+    venue: "North Collier Regional Park",
+    home: false,
+    competition: "League",
+  },
+  {
+    date: "2026-10-03",
+    time: "9:00 AM",
+    team: "u12-boys",
+    opponent: "Estero Strikers",
+    venue: "Estero Community Park",
+    home: false,
+    competition: "League",
+  },
+  {
+    date: "2026-10-10",
+    time: "10:30 AM",
+    team: "u12-boys",
+    opponent: "Bonita Springs FC",
+    venue: "Cape Coral Sports Complex",
+    home: true,
+    competition: "League",
+  },
+  {
+    date: "2026-10-10",
+    time: "12:30 PM",
+    team: "u14-boys",
+    opponent: "Bonita Springs FC",
+    venue: "Cape Coral Sports Complex",
+    home: true,
+    competition: "League",
+  },
+  {
+    date: "2026-10-17",
+    time: "8:30 AM",
+    team: "u14-boys",
+    opponent: "Punta Gorda Rovers",
+    venue: "Cape Coral Sports Complex",
+    home: true,
+    competition: "Cup",
+  },
+  {
+    date: "2026-10-24",
+    time: "9:00 AM",
+    team: "u12-boys",
+    opponent: "Lehigh Acres YSC",
+    venue: "Veterans Park",
+    home: false,
+    competition: "League",
+  },
 ];
 
 export const tryouts = {
   // TODO: confirm dates, pricing, and registration link
   window: "Open tryouts — Summer 2026",
   sessions: [
-    { date: "2026-06-08", time: "6:00 – 7:30 PM", group: "U12 Boys", location: "Field 3 — Cape Coral Sports Complex" },
-    { date: "2026-06-09", time: "6:00 – 7:45 PM", group: "U14 Boys", location: "Field 2 — Cape Coral Sports Complex" },
-    { date: "2026-06-15", time: "6:00 – 7:30 PM", group: "U12 Boys — second look", location: "Field 3 — Cape Coral Sports Complex" },
-    { date: "2026-06-16", time: "6:00 – 7:45 PM", group: "U14 Boys — second look", location: "Field 2 — Cape Coral Sports Complex" },
+    {
+      date: "2026-06-08",
+      time: "6:00 – 7:30 PM",
+      group: "U12 Boys",
+      location: "Field 3 — Cape Coral Sports Complex",
+    },
+    {
+      date: "2026-06-09",
+      time: "6:00 – 7:45 PM",
+      group: "U14 Boys",
+      location: "Field 2 — Cape Coral Sports Complex",
+    },
+    {
+      date: "2026-06-15",
+      time: "6:00 – 7:30 PM",
+      group: "U12 Boys — second look",
+      location: "Field 3 — Cape Coral Sports Complex",
+    },
+    {
+      date: "2026-06-16",
+      time: "6:00 – 7:45 PM",
+      group: "U14 Boys — second look",
+      location: "Field 2 — Cape Coral Sports Complex",
+    },
   ],
   bring: [
     "Cleats, shin guards, and both a light and dark shirt",
@@ -210,10 +325,22 @@ export const tryouts = {
     "A ball, size 4 for U12 and size 5 for U14",
   ],
   evaluated: [
-    { title: "Technical", body: "First touch under pressure, passing range, and ability to beat a defender 1v1." },
-    { title: "Tactical", body: "Scanning, positioning off the ball, and decision speed in small-sided games." },
-    { title: "Physical", body: "Movement quality, repeat sprint ability, and recovery between reps." },
-    { title: "Character", body: "Coachability, response to mistakes, and how a player treats teammates." },
+    {
+      title: "Technical",
+      body: "First touch under pressure, passing range, and ability to beat a defender 1v1.",
+    },
+    {
+      title: "Tactical",
+      body: "Scanning, positioning off the ball, and decision speed in small-sided games.",
+    },
+    {
+      title: "Physical",
+      body: "Movement quality, repeat sprint ability, and recovery between reps.",
+    },
+    {
+      title: "Character",
+      body: "Coachability, response to mistakes, and how a player treats teammates.",
+    },
   ],
   fee: "$0 to try out", // TODO
   seasonFee: "$TBD per season", // TODO: real season fee + what it covers
@@ -260,3 +387,170 @@ export const values = [
     body: "This is a local club for local families. We want the best players in our city to have somewhere to develop without a two-hour round trip.",
   },
 ] as const;
+
+/* -------------------------------------------------------------------------- */
+/*  College Pathway                                                            */
+/* -------------------------------------------------------------------------- */
+
+export const pathway = {
+  blurb:
+    "Most players don't get recruited because nobody ever showed them how it works. The College Pathway is our answer — a structured track that starts at U12 and follows a player through high school.",
+  // TODO: confirm these match what the club actually delivers before publishing.
+  pillars: [
+    {
+      title: "Player Profile",
+      body: "Every U14 player gets a maintained profile — position, measurables, academic standing, and a highlight reel cut from real match footage, not training clips.",
+    },
+    {
+      title: "Academic Guidance",
+      body: "Eligibility is where most families get caught out. We walk through NCAA and NAIA academic requirements early, while grades can still be moved.",
+    },
+    {
+      title: "Exposure",
+      body: "Targeted showcase and ID camp selection. We'd rather send a player to two events that fit than eight that don't.",
+    },
+    {
+      title: "Family Education",
+      body: "Honest sessions on divisions, timelines, scholarships, and what college soccer actually costs — so decisions get made on facts.",
+    },
+  ],
+  stages: [
+    {
+      age: "U12",
+      title: "Foundation",
+      body: "Technique and habits. No recruiting talk — just building a player worth recruiting later.",
+    },
+    {
+      age: "U14",
+      title: "Profile",
+      body: "Video capture begins, profile is built, and families get their first eligibility walkthrough.",
+    },
+    {
+      age: "High school",
+      title: "Exposure",
+      body: "Showcase planning, coach outreach coaching, and continued support even after a player ages out of the academy.",
+    },
+  ],
+} as const;
+
+/* -------------------------------------------------------------------------- */
+/*  Sponsors                                                                   */
+/* -------------------------------------------------------------------------- */
+
+export type Sponsor = {
+  name: string;
+  tier: "headline" | "club" | "community";
+  note: string;
+};
+
+// TODO: replace with the club's real sponsors — and add logo files to
+// public/brand/sponsors/ if you want marks instead of wordmarks.
+export const sponsors: Sponsor[] = [
+  { name: "Coastal Auto Group", tier: "headline", note: "Kit sponsor" },
+  { name: "Cape Physical Therapy", tier: "club", note: "Medical partner" },
+  { name: "Gulf Coast Dental", tier: "club", note: "Travel support" },
+  { name: "Pelican Pizza Co.", tier: "community", note: "Match-day partner" },
+  { name: "Riverside Realty", tier: "community", note: "Equipment fund" },
+  { name: "Bayview Landscaping", tier: "community", note: "Field maintenance" },
+];
+
+export const sponsorTiers = [
+  {
+    name: "Headline",
+    price: "From $2,500 / season", // TODO
+    items: [
+      "Logo on both squads' match kit",
+      "Named on every fixture post",
+      "Banner at home matches",
+      "Logo on this site",
+    ],
+  },
+  {
+    name: "Club",
+    price: "From $1,000 / season", // TODO
+    items: [
+      "Logo on training tops",
+      "Quarterly social feature",
+      "Banner at home matches",
+      "Logo on this site",
+    ],
+  },
+  {
+    name: "Community",
+    price: "From $250 / season", // TODO
+    items: [
+      "Logo on this site",
+      "Match-day shout-out",
+      "Supports the scholarship fund",
+    ],
+  },
+] as const;
+
+/* -------------------------------------------------------------------------- */
+/*  Tournament reports                                                         */
+/* -------------------------------------------------------------------------- */
+
+export type Article = {
+  slug: string;
+  title: string;
+  date: string; // ISO
+  team: string; // team slug, or "club"
+  tournament: string;
+  excerpt: string;
+  body: string[];
+};
+
+/**
+ * TODO: replace with real tournament write-ups.
+ *
+ * Note: these placeholders deliberately don't name individual players. Publishing
+ * the full names of minors is a real consideration for a youth club — decide on a
+ * policy (first names only, or parental consent) before writing real reports.
+ */
+export const articles: Article[] = [
+  {
+    slug: "gulf-coast-cup-u14-semifinal",
+    title: "U14s reach Gulf Coast Cup semi-final in first season",
+    date: "2026-08-30",
+    team: "u14-boys",
+    tournament: "Gulf Coast Cup",
+    excerpt:
+      "Four matches in two days, one penalty shootout, and a squad that looked nothing like the group that started preseason.",
+    body: [
+      "The U14s went into the Gulf Coast Cup as the least experienced side in their bracket and came out of it in the final four — a result that says more about the group's application than the scoreline in any one match.",
+      "Saturday's opening two fixtures were about surviving the heat as much as the opposition. The shape held, the press stayed disciplined into the second half, and both games were seen out without conceding late.",
+      "Sunday's quarter-final went to penalties after ninety minutes that could have gone either way. The semi-final was a step too far against a side that has been together three years, but the gap was narrower than the result suggested.",
+      "The takeaway for the coaching staff was rest defence — three of the goals conceded across the weekend came from our own attacking transitions. That goes straight into the next training block.",
+    ],
+  },
+  {
+    slug: "sunshine-state-showcase-u12",
+    title: "U12s unbeaten at the Sunshine State Showcase",
+    date: "2026-08-16",
+    team: "u12-boys",
+    tournament: "Sunshine State Showcase",
+    excerpt:
+      "Three matches, no defeats, and the first real evidence that playing out from the back is becoming instinct rather than instruction.",
+    body: [
+      "Showcase weekends aren't scored on trophies, which suits a U12 group still building habits. The instruction going in was simple: play out from the back every time, including when it's uncomfortable.",
+      "They did — and it cost them a goal in the first match. It also produced the best twenty minutes of football the group has played, in the third.",
+      "Across three matches the side kept the ball through pressure more often than it gave it away, and the goalkeeper's distribution was a genuine weapon rather than a reset button.",
+      "Unbeaten is a nice line for a report. The more useful line is that nobody kicked it long when the game got hard.",
+    ],
+  },
+  {
+    slug: "preseason-friendlies-recap",
+    title: "What we learned from preseason",
+    date: "2026-07-26",
+    team: "club",
+    tournament: "Preseason friendlies",
+    excerpt:
+      "Six friendlies across both squads before a competitive ball was kicked. Here's what the staff took from them.",
+    body: [
+      "Preseason friendlies exist to find problems while they're still cheap. Across six matches between the two squads, three came up repeatedly.",
+      "First, both groups defended the first pass well and the second pass poorly — the press triggered correctly, then the cover arrived late. That's now a standing item in the Tuesday session.",
+      "Second, the U14s' set-piece delivery was inconsistent enough to be worth dedicated time rather than the ten minutes tacked onto the end of a session.",
+      "Third, and most encouraging: fitness was not the limiting factor in any of the six. In August, in Florida, that is not nothing.",
+    ],
+  },
+];
