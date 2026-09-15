@@ -414,23 +414,40 @@ export const pathway = {
       body: "Honest sessions on divisions, timelines, scholarships, and what college soccer actually costs — so decisions get made on facts.",
     },
   ],
+  /** Ordered widest-to-narrowest — the page renders these as a funnel. */
   stages: [
     {
       age: "U12",
+      label: "Everyone starts here",
       title: "Foundation",
       body: "Technique and habits. No recruiting talk — just building a player worth recruiting later.",
     },
     {
       age: "U14",
+      label: "The ones who do the work",
       title: "Profile",
-      body: "Video capture begins, profile is built, and families get their first eligibility walkthrough.",
+      body: "Video capture begins, the player profile is built, and families get their first eligibility walkthrough.",
     },
     {
       age: "High school",
+      label: "The ones who keep showing up",
       title: "Exposure",
-      body: "Showcase planning, coach outreach coaching, and continued support even after a player ages out of the academy.",
+      body: "Showcase planning and coach outreach, continuing even after a player ages out of the academy.",
+    },
+    {
+      age: "College",
+      label: "Where the funnel leads",
+      title: "Commitment",
+      body: "A player with film, grades, a target list, and a family who understands the process.",
     },
   ],
+  /**
+   * The funnel narrows for real. Saying so plainly is deliberate — the club's
+   * voice elsewhere is honest evaluation, and implying guaranteed placement
+   * would be both untrue and the thing every other academy does.
+   */
+  reality:
+    "A funnel narrows, and this one is no exception. Most players who start at U12 will not play college soccer — that is true here and everywhere else. What we control is that nobody gets to seventeen and discovers the door was closed at fourteen because no one told them how it worked.",
 } as const;
 
 /* -------------------------------------------------------------------------- */

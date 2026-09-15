@@ -92,6 +92,28 @@
     );
   }
 
+  /* Funnel bands.
+     Each band is clipped to a trapezoid whose top edge matches the previous
+     band's bottom edge, so consecutive bands read as one continuous taper.
+     `--t` / `--b` are the left inset at the top and bottom of each band.
+     Below lg the taper is dropped — there isn't enough width for it — and the
+     bands stack as full-width blocks instead. */
+  .funnel-band {
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .funnel-band {
+      clip-path: polygon(
+        var(--t) 0,
+        calc(100% - var(--t)) 0,
+        calc(100% - var(--b)) 100%,
+        var(--b) 100%
+      );
+      padding-inline: calc(var(--b) + 3rem);
+    }
+  }
+
   .bolt-divider {
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 2.5rem), 0 100%);
   }
