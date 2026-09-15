@@ -47,7 +47,7 @@ export default function Home() {
         />
 
         {/* Oversized crest watermark */}
-        <Crest className="pointer-events-none absolute -right-24 top-1/2 hidden h-[40rem] w-auto -translate-y-1/2 opacity-[0.07] lg:block" />
+        <Crest className="pointer-events-none absolute -right-24 top-1/2 hidden h-[34rem] w-auto -translate-y-1/2 opacity-[0.07] lg:block" />
 
         <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-5 pb-24 pt-20 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:pb-32 lg:pt-28">
           <div className="flex flex-col items-start gap-7">
@@ -90,7 +90,7 @@ export default function Home() {
                 aria-hidden
                 className="absolute inset-0 -m-12 rounded-full bg-electric-500/15 blur-3xl"
               />
-              <Crest className="relative h-[24rem] w-auto drop-shadow-[0_25px_60px_rgba(7,16,29,0.85)]" />
+              <Crest className="relative h-[21rem] w-auto drop-shadow-[0_25px_60px_rgba(7,16,29,0.85)]" />
             </div>
           </div>
         </div>

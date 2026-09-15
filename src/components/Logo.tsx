@@ -2,16 +2,15 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/cn";
 import { club } from "@/data/site";
 
-/** Drop the real crest here and every logo on the site upgrades automatically. */
+/** The club's official crest. */
 const CREST_SRC = "/brand/logo.png";
 
 /**
- * Renders a vector crest built from the club logo's geometry — navy shield,
- * electric bolts, gold panels, silver ball. If `public/brand/logo.png` exists
- * it quietly swaps in the real artwork once it has loaded (no broken-image
- * flash, and the SVG still ships in the prerendered HTML).
+ * Resolves the real crest artwork. Preloading rather than rendering an <img>
+ * straight away means the prerendered HTML ships the vector crest below — so
+ * there's no broken-image flash and no layout shift if the file is missing.
  */
-export function Crest({ className }: { className?: string }) {
+function useCrestArtwork() {
   const [artwork, setArtwork] = useState<string | null>(null);
 
   useEffect(() => {
@@ -19,6 +18,13 @@ export function Crest({ className }: { className?: string }) {
     img.onload = () => setArtwork(CREST_SRC);
     img.src = CREST_SRC;
   }, []);
+
+  return artwork;
+}
+
+/** The crest on its own, sized by the caller. */
+export function Crest({ className }: { className?: string }) {
+  const artwork = useCrestArtwork();
 
   if (artwork) {
     return (
@@ -89,17 +95,27 @@ export function Crest({ className }: { className?: string }) {
   );
 }
 
-/** Crest plus wordmark, used in the header and footer. */
-export default function Logo({
-  className,
-  compact = false,
-}: {
-  className?: string;
-  compact?: boolean;
-}) {
+/**
+ * Header/footer lockup. The official crest already carries the wordmark, so it
+ * stands alone when present; the vector fallback has an empty banner and gets
+ * the club name set in type beside it.
+ */
+export default function Logo({ className }: { className?: string }) {
+  const artwork = useCrestArtwork();
+
+  if (artwork) {
+    return (
+      <img
+        src={artwork}
+        alt={`${club.name} — ${club.city}, ${club.state}`}
+        className={cn("h-14 w-auto object-contain", className)}
+      />
+    );
+  }
+
   return (
     <span className={cn("flex items-center gap-2.5", className)}>
-      <Crest className={compact ? "h-9 w-auto" : "h-11 w-auto"} />
+      <Crest className="h-11 w-auto" />
       <span className="flex flex-col leading-none">
         <span className="font-display text-xl font-extrabold italic uppercase tracking-tight text-white sm:text-[1.4rem]">
           Top Game

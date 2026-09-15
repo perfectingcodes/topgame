@@ -13,6 +13,7 @@ pnpm dev        # dev server
 pnpm build      # client build → SSR build → prerender to dist/public
 pnpm serve      # preview the production build
 pnpm typecheck  # tsc --noEmit
+pnpm brand      # regenerate brand assets from the crest
 ```
 
 `pnpm build` emits `dist/public/` containing one `index.html` per route plus
@@ -41,10 +42,23 @@ oversized watermark.
 
 ### Logo artwork
 
-`src/components/Logo.tsx` draws a vector crest built from the real logo's
-geometry, so the site is complete without any image assets. **Drop the official
-artwork at `public/brand/logo.png`** and every crest on the site swaps to it
-automatically — no code change needed.
+The official crest lives at `public/brand/logo.png` — background removed and
+cropped from the supplied JPEG. `favicon-32.png`, `apple-touch-icon.png`,
+`icon-512.png`, and the `og.png` share card are all generated from it.
+
+`src/components/Logo.tsx` also carries a vector crest built from the same
+geometry. It renders in the prerendered HTML and is replaced by the real artwork
+once that loads, so there is never a broken-image flash.
+
+**Resolution note:** the source was a 447×447 JPEG, leaving the crest 438×373
+after cropping. That is sharp everywhere on a standard display and in the header
+and footer on any display, but the large hero crest will look slightly soft on a
+retina screen. If the club has the original vector (AI/EPS/SVG) or a PNG of
+1000px or more, point the generator at it and every size is re-cut:
+
+```bash
+pnpm brand path/to/higher-res-crest.png
+```
 
 ## Before launch — replace the placeholder content
 
@@ -66,7 +80,7 @@ scaffolding so the site renders complete; search the file for `TODO`.
 - [ ] Real tournament reports (`articles`)
 - [ ] Confirm the FAQ answers are accurate — especially travel expectations and
       whether financial assistance is genuinely offered (`faqs`)
-- [ ] Add an Open Graph share image at `public/brand/og.png` (1200×630)
+- [ ] Supply a higher-resolution or vector version of the crest (see above)
 
 ### Naming players
 
