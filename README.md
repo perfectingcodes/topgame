@@ -62,28 +62,54 @@ pnpm brand path/to/higher-res-crest.png
 
 ## Before publishing
 
-`pnpm build` **fails** while any `PLACEHOLDER` tag remains in
-[`src/data/site.ts`](src/data/site.ts). Run `pnpm check` on its own to list
-what's outstanding. Replace the value, delete the tag on that line, rebuild.
+`pnpm check` (which `pnpm build` runs first) blocks while anything on the site
+would be unverified. **Two items are blocking right now:**
 
-That guard exists so invented contact details can't reach a live site by
-accident. `SKIP_CONTENT_CHECK=1 pnpm build` bypasses it for a local preview —
-never for something you're publishing.
+1. **`club.email`** — unset. The contact form and every mailto on the site
+   depend on it. Nothing else can stand in for it.
+2. **`mediaReleasesOnFile`** — false. The photos show identifiable minors.
+   Confirm a signed release is on file for every player shown, then set it true.
 
-### Required (the build blocks on these)
+Everything else invented has been deleted rather than tagged, so there is no
+placeholder text left in the UI.
 
-- [ ] **Media releases for the team photos.** `public/photos/` shows
-      identifiable minors. Set `mediaReleasesOnFile` to `true` in
-      [`src/data/site.ts`](src/data/site.ts) only once a signed release is on
-      file for every player visible, then delete the tag on that line. The build
-      blocks until you do — deliberately.
+### What was removed to get here
 
-- [ ] Email, phone, and street address
-- [ ] Production domain (`club.url`) — also used for canonical URLs and sitemap
-- [ ] Instagram and Facebook URLs
-- [ ] Team birth years, confirmed against the current seasonal year
-- [ ] Roster sizes for both squads
-- [ ] Season fee, and what it covers (also referenced in the FAQ)
+Content the club had not confirmed, taken out rather than published:
+
+- Phone number and street address — the footer and contact page now show
+  "Cape Coral, FL" and hide the rest until real values exist
+- Team birth years, roster sizes, league names and season-focus lists
+- The whole tryouts page, its dates, fees, kit list and evaluation criteria
+  (the club is not recruiting — the season is underway)
+- Sponsorship tiers and pricing
+- The College Pathway's four "services", which described a programme the club
+  never confirmed it runs. The funnel stays; it now describes development
+  rather than promising a service.
+- Tournament reports page and its invented match results
+- The separate Academy/About page — Coach Leo now lives on `/coaches`
+
+### Copy you should still read before launch
+
+These were written for the club, not supplied by it. Nothing in them states a
+fact, price or date, but they are the club's voice and should be approved:
+
+- `club.tagline`
+- `pillars` — the four "Four things we build" cards
+- `teams[].blurb` — the one-line description of each squad
+- `founder.coaching.lede` and `.body` — the "Developing players" section
+- `pathway.blurb`, `pathway.stages[].body`, `pathway.reality`
+
+Supplied by the club and left untouched: Coach Leo's record, honours, both
+quotes, the four-point academy standard, the Instagram handle, and the sponsors.
+
+### Optional, renders fine while empty
+
+- `founder.coaching.proof` — a stat row for Leo's coaching record, hidden
+  while empty
+- `coaches[].bio` for Sebastian Lopez — shows "Full profile coming soon"
+- `club.phone` / `club.address` / `club.social.facebook` — hidden while unset
+- `club.founded` — the footer hides "Est." until set
 
 ### Photography
 

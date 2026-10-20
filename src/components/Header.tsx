@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Instagram } from "lucide-react";
 
 import Logo from "./Logo";
 import { Button } from "./ui";
 import { cn } from "@/lib/cn";
-import { club } from "@/data/site";
+import { club, season } from "@/data/site";
 
 const NAV = [
-  { href: "/about", label: "Academy" },
   { href: "/teams", label: "Teams" },
-  { href: "/pathway", label: "Pathway" },
   { href: "/coaches", label: "Coaches" },
-  { href: "/news", label: "Reports" },
+  { href: "/pathway", label: "Pathway" },
+  { href: "/sponsors", label: "Sponsors" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -45,18 +44,16 @@ export default function Header() {
   return (
     <>
       {/* Announcement strip */}
-      <div className="relative z-50 bg-flare-500 px-4 py-1.5 text-center">
-        <Link
-          href="/tryouts"
-          className="font-display text-xs font-bold uppercase tracking-[0.18em] text-white hover:text-gold-300 sm:text-sm"
+      <div className="relative z-50 bg-electric-600 px-4 py-1.5 text-center">
+        <a
+          href={club.social.instagram}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.18em] text-white hover:text-navy-950 sm:text-sm"
         >
-          <span className="sm:hidden">
-            Now recruiting — U12 &amp; U14 boys →
-          </span>
-          <span className="hidden sm:inline">
-            Now recruiting U12 &amp; U14 boys — register your interest →
-          </span>
-        </Link>
+          <Instagram className="h-3.5 w-3.5" aria-hidden />
+          {season.status} — follow {club.social.instagramHandle} for every match
+        </a>
       </div>
 
       <header
@@ -106,14 +103,9 @@ export default function Header() {
           </nav>
 
           <div className="hidden items-center gap-3 xl:flex">
-            <a
-              href={`tel:${club.phoneHref}`}
-              className="hidden items-center gap-2 text-sm font-semibold text-silver-300 transition-colors hover:text-electric-300 2xl:flex"
-            >
-              <Phone className="h-4 w-4" aria-hidden />
-              {club.phone}
-            </a>
-            <Button href="/tryouts">Try Out</Button>
+            <Button href={club.social.instagram} variant="secondary">
+              Follow Us
+            </Button>
           </div>
 
           <button
@@ -154,16 +146,14 @@ export default function Header() {
                   </Link>
                 ))}
                 <div className="flex flex-col gap-3 pt-6">
-                  <Button href="/tryouts" size="lg" className="w-full">
-                    Try Out
-                  </Button>
-                  <a
-                    href={`tel:${club.phoneHref}`}
-                    className="flex items-center justify-center gap-2 py-2 font-semibold text-silver-300"
+                  <Button
+                    href={club.social.instagram}
+                    size="lg"
+                    variant="secondary"
+                    className="w-full"
                   >
-                    <Phone className="h-4 w-4" aria-hidden />
-                    {club.phone}
-                  </a>
+                    Follow {club.social.instagramHandle}
+                  </Button>
                 </div>
               </nav>
             </motion.div>

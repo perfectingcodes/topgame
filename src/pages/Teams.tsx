@@ -1,8 +1,8 @@
 import { Link } from "wouter";
-import { ArrowRight, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import PageHero from "@/components/PageHero";
-import { Badge, Button, Reveal, Section } from "@/components/ui";
+import { Button, Reveal, Section } from "@/components/ui";
 import Photo from "@/components/Photo";
 import { coaches, photos, teams } from "@/data/site";
 import { cn } from "@/lib/cn";
@@ -24,7 +24,7 @@ export default function Teams() {
 
       <Photo
         photo={photos.celebrationCoach}
-        className="aspect-[21/9] w-full"
+        className="aspect-[21/9] w-full rounded-none"
         sizes="100vw"
         imgClassName="object-[50%_38%]"
       />
@@ -37,7 +37,7 @@ export default function Teams() {
 
             return (
               <Reveal key={team.slug} delay={i * 100}>
-                <article className="relative overflow-hidden border border-white/10 bg-navy-900">
+                <article className="relative overflow-hidden border border-white/10 bg-navy-900 rounded-2xl">
                   <div
                     aria-hidden
                     className={cn(
@@ -48,16 +48,6 @@ export default function Teams() {
 
                   <div className="grid gap-8 p-8 lg:grid-cols-[1.3fr_1fr] lg:gap-14 lg:p-12">
                     <div className="flex flex-col gap-6">
-                      <div className="flex flex-wrap items-center gap-3">
-                        <Badge tone={isElectric ? "electric" : "gold"}>
-                          {team.birthYears}
-                        </Badge>
-                        <Badge tone="muted">
-                          <Users className="h-3 w-3" aria-hidden />
-                          {team.roster.size} players
-                        </Badge>
-                      </div>
-
                       <div>
                         <h2 className="text-5xl leading-none lg:text-6xl">
                           {team.name}
@@ -67,31 +57,6 @@ export default function Teams() {
                       <p className="max-w-xl text-lg leading-relaxed text-silver-300">
                         {team.blurb}
                       </p>
-
-                      <div>
-                        <h3 className="font-display text-sm font-bold uppercase tracking-[0.24em] text-gold-400">
-                          Season Focus
-                        </h3>
-                        <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-                          {team.focus.map((f) => (
-                            <li
-                              key={f}
-                              className="flex items-start gap-2.5 text-sm text-silver-300"
-                            >
-                              <span
-                                aria-hidden
-                                className={cn(
-                                  "mt-1.5 h-1.5 w-1.5 shrink-0 rotate-45",
-                                  isElectric
-                                    ? "bg-electric-500"
-                                    : "bg-gold-500",
-                                )}
-                              />
-                              {f}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
 
                       <Link
                         href={`/teams/${team.slug}`}
@@ -112,7 +77,7 @@ export default function Teams() {
 
                     {/* Coach card */}
                     {coach ? (
-                      <div className="flex flex-col justify-center gap-4 border border-white/10 bg-navy-850 p-7">
+                      <div className="flex flex-col justify-center gap-4 border border-white/10 bg-navy-850 p-7 rounded-2xl">
                         <h3 className="font-display text-sm font-bold uppercase tracking-[0.24em] text-electric-400">
                           Coached by
                         </h3>

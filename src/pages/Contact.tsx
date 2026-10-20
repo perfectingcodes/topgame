@@ -2,21 +2,20 @@ import { useState } from "react";
 import { Mail, Phone, MapPin, Instagram, Facebook } from "lucide-react";
 
 import PageHero from "@/components/PageHero";
-import { Button, Reveal, Section, SectionHeading } from "@/components/ui";
+import { Button, Reveal, Section } from "@/components/ui";
 import { club } from "@/data/site";
 import { cn } from "@/lib/cn";
 
 const FIELD =
-  "w-full border border-white/15 bg-navy-950 px-4 py-3 text-white placeholder:text-silver-500 transition-colors focus:border-electric-500 focus:outline-none";
+  "w-full rounded-lg border border-white/15 bg-navy-950 px-4 py-3 text-white placeholder:text-silver-500 transition-colors focus:border-electric-500 focus:outline-none";
 const LABEL =
   "font-display text-xs font-bold uppercase tracking-[0.2em] text-silver-400";
 
 const TOPICS = [
-  "Tryouts & registration",
-  "Team or training question",
-  "Fees & financial assistance",
-  "Coaching enquiry",
+  "Joining the academy",
+  "Team question",
   "Sponsorship",
+  "Coaching enquiry",
   "Something else",
 ];
 
@@ -32,66 +31,86 @@ export default function Contact() {
             <span className="text-electric-400">soccer</span>
           </>
         }
-        lede="Questions about tryouts, fees, or whether your son is ready? We answer every message."
+        lede="Questions about the academy, joining a future squad, or sponsorship? We answer every message."
       />
 
       <Section tone="darker">
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-          {/* Details */}
           <Reveal>
             <div className="flex flex-col gap-10">
               <div>
                 <h2 className="text-3xl">Reach the academy</h2>
                 <ul className="mt-6 flex flex-col gap-5">
+                  {club.phone && club.phoneHref ? (
+                    <li>
+                      <a
+                        href={`tel:${club.phoneHref}`}
+                        className="group flex items-start gap-4 text-silver-300 transition-colors hover:text-white"
+                      >
+                        <Phone
+                          className="mt-0.5 h-5 w-5 shrink-0 text-electric-500"
+                          aria-hidden
+                        />
+                        <span>
+                          <span className={cn(LABEL, "block")}>Phone</span>
+                          <span className="text-lg font-semibold text-white group-hover:text-electric-300">
+                            {club.phone}
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+                  ) : null}
+
+                  {club.email ? (
+                    <li>
+                      <a
+                        href={`mailto:${club.email}`}
+                        className="group flex items-start gap-4 text-silver-300 transition-colors hover:text-white"
+                      >
+                        <Mail
+                          className="mt-0.5 h-5 w-5 shrink-0 text-electric-500"
+                          aria-hidden
+                        />
+                        <span>
+                          <span className={cn(LABEL, "block")}>Email</span>
+                          <span className="text-lg font-semibold text-white group-hover:text-electric-300">
+                            {club.email}
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+                  ) : null}
+
                   <li>
                     <a
-                      href={`tel:${club.phoneHref}`}
+                      href={club.social.instagram}
                       className="group flex items-start gap-4 text-silver-300 transition-colors hover:text-white"
                     >
-                      <Phone
+                      <Instagram
                         className="mt-0.5 h-5 w-5 shrink-0 text-electric-500"
                         aria-hidden
                       />
                       <span>
-                        <span className={cn(LABEL, "block")}>Phone</span>
+                        <span className={cn(LABEL, "block")}>Instagram</span>
                         <span className="text-lg font-semibold text-white group-hover:text-electric-300">
-                          {club.phone}
+                          {club.social.instagramHandle}
                         </span>
                       </span>
                     </a>
                   </li>
-                  <li>
-                    <a
-                      href={`mailto:${club.email}`}
-                      className="group flex items-start gap-4 text-silver-300 transition-colors hover:text-white"
-                    >
-                      <Mail
-                        className="mt-0.5 h-5 w-5 shrink-0 text-electric-500"
-                        aria-hidden
-                      />
-                      <span>
-                        <span className={cn(LABEL, "block")}>Email</span>
-                        <span className="text-lg font-semibold text-white group-hover:text-electric-300">
-                          {club.email}
-                        </span>
-                      </span>
-                    </a>
-                  </li>
+
                   <li className="flex items-start gap-4">
                     <MapPin
                       className="mt-0.5 h-5 w-5 shrink-0 text-electric-500"
                       aria-hidden
                     />
                     <span>
-                      <span className={cn(LABEL, "block")}>Home ground</span>
-                      <address className="text-lg font-semibold not-italic leading-snug text-white">
-                        {club.address.line1}
-                        <br />
-                        {club.address.line2}
-                        <br />
-                        {club.address.city}, {club.address.state}{" "}
-                        {club.address.zip}
-                      </address>
+                      <span className={cn(LABEL, "block")}>Based in</span>
+                      <span className="text-lg font-semibold text-white">
+                        {club.address
+                          ? `${club.address.line1}, ${club.address.city}, ${club.address.state}`
+                          : `${club.city}, ${club.state}`}
+                      </span>
                     </span>
                   </li>
                 </ul>
@@ -101,54 +120,29 @@ export default function Contact() {
                 <a
                   href={club.social.instagram}
                   aria-label={`${club.name} on Instagram`}
-                  className="flex items-center gap-2 border border-white/15 px-4 py-2.5 text-sm font-semibold text-silver-300 transition-colors hover:border-electric-500 hover:text-electric-300"
+                  className="flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2.5 text-sm font-semibold text-silver-300 transition-colors hover:border-electric-500 hover:text-electric-300"
                 >
                   <Instagram className="h-4 w-4" aria-hidden />
                   Instagram
                 </a>
-                <a
-                  href={club.social.facebook}
-                  aria-label={`${club.name} on Facebook`}
-                  className="flex items-center gap-2 border border-white/15 px-4 py-2.5 text-sm font-semibold text-silver-300 transition-colors hover:border-electric-500 hover:text-electric-300"
-                >
-                  <Facebook className="h-4 w-4" aria-hidden />
-                  Facebook
-                </a>
+                {club.social.facebook ? (
+                  <a
+                    href={club.social.facebook}
+                    aria-label={`${club.name} on Facebook`}
+                    className="flex items-center gap-2 rounded-lg border border-white/15 px-4 py-2.5 text-sm font-semibold text-silver-300 transition-colors hover:border-electric-500 hover:text-electric-300"
+                  >
+                    <Facebook className="h-4 w-4" aria-hidden />
+                    Facebook
+                  </a>
+                ) : null}
               </div>
             </div>
           </Reveal>
 
-          {/* Form */}
           <Reveal delay={100}>
             <ContactForm />
           </Reveal>
         </div>
-      </Section>
-
-      {/* Map */}
-      <Section tone="dark" className="pitch-lines">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Getting Here"
-            title="Home ground"
-            lede={`${club.address.line1}. Parking is free; academy fields are on the north side.`}
-          />
-        </Reveal>
-
-        <Reveal delay={100}>
-          {/* TODO: swap for an embedded map once the exact field address is confirmed. */}
-          <div className="mt-10 aspect-[16/8] w-full overflow-hidden border border-white/10">
-            <iframe
-              title={`Map showing ${club.name} in ${club.city}, ${club.state}`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="h-full w-full grayscale-[35%]"
-              src={`https://www.google.com/maps?q=${encodeURIComponent(
-                `${club.address.line2}, ${club.address.city}, ${club.address.state} ${club.address.zip}`,
-              )}&output=embed`}
-            />
-          </div>
-        </Reveal>
       </Section>
     </>
   );
@@ -157,16 +151,18 @@ export default function Contact() {
 /* -------------------------------------------------------------------------- */
 
 /**
- * TODO: wire to a real form endpoint. Falls back to a prefilled mailto so no
- * message is silently lost in the meantime.
+ * Opens the visitor's mail client with a prefilled message, so nothing is
+ * silently dropped. Point it at a real endpoint (Formspree, Netlify Forms) if
+ * the club would rather receive submissions directly.
  */
 function ContactForm() {
   const [sent, setSent] = useState(false);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    if (!club.email) return;
 
+    const data = new FormData(event.currentTarget);
     const body = [
       `Name: ${data.get("name")}`,
       `Email: ${data.get("email")}`,
@@ -186,7 +182,7 @@ function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-5 border border-white/10 bg-navy-900 p-7 lg:p-9"
+      className="flex flex-col gap-5 rounded-2xl border border-white/10 bg-navy-900 p-7 lg:p-9"
     >
       <h2 className="text-3xl">Send a message</h2>
 

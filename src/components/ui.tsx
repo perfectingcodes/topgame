@@ -34,7 +34,7 @@ export function Button({
 }: ButtonProps) {
   // The -8deg skew echoes the italic lettering and bolts in the crest.
   const classes = cn(
-    "group inline-flex -skew-x-8 items-center justify-center font-display font-bold uppercase italic tracking-wide transition-all duration-200 active:translate-y-px",
+    "group inline-flex -skew-x-8 items-center justify-center rounded-xl font-display font-bold uppercase italic tracking-wide transition-all duration-200 active:translate-y-px",
     size === "lg" ? "px-8 py-3.5 text-lg" : "px-6 py-2.5 text-base",
     VARIANTS[variant],
     className,

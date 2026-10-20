@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import {
+  Instagram,
   Brain,
   Zap,
   Users,
@@ -17,7 +18,7 @@ import {
   Section,
   SectionHeading,
 } from "@/components/ui";
-import { club, photos, pillars, stats, teams } from "@/data/site";
+import { club, photos, pillars, season, sponsors, teams } from "@/data/site";
 import { cn } from "@/lib/cn";
 
 const PILLAR_ICONS = {
@@ -36,7 +37,7 @@ export default function Home() {
       <section className="relative isolate overflow-hidden">
         <Photo
           photo={photos.attack}
-          className="absolute inset-0 -z-10 h-full w-full"
+          className="absolute inset-0 -z-10 h-full w-full rounded-none"
           sizes="100vw"
           imgClassName="object-[55%_45%]"
           priority
@@ -70,34 +71,40 @@ export default function Home() {
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
-            <Button href="/tryouts" size="lg">
-              Book a Tryout
+            <Button href={club.social.instagram} size="lg">
+              Follow the Season
             </Button>
-            <Button href="/about" size="lg" variant="ghost">
+            <Button href="/coaches" size="lg" variant="ghost">
               Meet Coach Leo
             </Button>
           </div>
         </div>
 
-        {/* Stat strip sits on the photo's dark foot */}
-        <div className="relative border-t border-white/10 bg-navy-950/75 backdrop-blur-sm">
-          <dl className="mx-auto grid w-full max-w-7xl grid-cols-2 divide-x divide-white/10 px-5 sm:px-8 lg:grid-cols-4">
-            {stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="flex flex-col gap-1 px-2 py-7 first:pl-0 sm:px-6"
-              >
-                <dt className="sr-only">{stat.label}</dt>
-                <dd className="font-display text-4xl font-extrabold italic text-gold-500 lg:text-5xl">
-                  {stat.value}
-                </dd>
-                <p className="font-display text-sm font-bold uppercase tracking-[0.14em] text-white">
-                  {stat.label}
-                </p>
-                <p className="text-xs text-silver-500">{stat.detail}</p>
-              </div>
-            ))}
-          </dl>
+        {/* Sponsor strip on the photo's dark foot */}
+        <div className="relative border-t border-white/10 bg-navy-950/85 backdrop-blur-sm">
+          <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-5 py-8 sm:px-8 lg:flex-row lg:items-center lg:gap-10">
+            <p className="shrink-0 font-display text-xs font-bold uppercase tracking-[0.24em] text-silver-500">
+              Backed by
+            </p>
+            <ul className="grid flex-1 grid-cols-2 items-center gap-x-8 gap-y-6 sm:grid-cols-4">
+              {sponsors.map((sponsor) => (
+                <li key={sponsor.name} className="flex justify-center">
+                  <img
+                    src={sponsor.logo}
+                    alt={sponsor.name}
+                    loading="lazy"
+                    className="h-12 w-auto max-w-full object-contain opacity-80 transition-opacity duration-300 hover:opacity-100"
+                  />
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/sponsors"
+              className="shrink-0 font-display text-xs font-bold uppercase tracking-[0.2em] text-electric-400 hover:text-electric-300"
+            >
+              Become a sponsor →
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -125,7 +132,7 @@ export default function Home() {
             // One pillar doubles as the entry point to the College Pathway page.
             const href = "href" in pillar ? pillar.href : undefined;
             const cardClass =
-              "group relative flex h-full flex-col overflow-hidden border border-white/10 bg-navy-900 p-7 transition-colors duration-300 hover:border-electric-500/50";
+              "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-navy-900 p-7 transition-colors duration-300 hover:border-electric-500/50";
 
             const content = (
               <>
@@ -168,7 +175,7 @@ export default function Home() {
       {/* ------------------------------------------------------------------ */}
       {/*  Photo break — offset pair, text in the gutter                      */}
       {/* ------------------------------------------------------------------ */}
-      <Section tone="dark" className="pitch-lines">
+      <Section tone="panel">
         <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
           <Reveal className="lg:col-span-7">
             <Photo
@@ -219,7 +226,7 @@ export default function Home() {
             <Reveal key={team.slug} delay={i * 120}>
               <Link
                 href={`/teams/${team.slug}`}
-                className="group relative flex h-full flex-col overflow-hidden border border-white/10 bg-navy-850 transition-all duration-300 hover:border-white/25"
+                className="group relative flex h-full flex-col overflow-hidden border border-white/10 bg-navy-850 transition-all duration-300 hover:border-white/25 rounded-2xl"
               >
                 <div
                   aria-hidden
@@ -243,34 +250,15 @@ export default function Home() {
                     >
                       {team.ageGroup}
                     </span>
-                    <Badge
-                      tone={team.accent === "electric" ? "electric" : "gold"}
-                    >
-                      {team.roster.size} players
-                    </Badge>
                   </div>
 
                   <div>
                     <h3 className="text-3xl lg:text-4xl">{team.name}</h3>
-                    <p className="mt-1 font-display text-sm font-semibold uppercase tracking-[0.18em] text-silver-500">
-                      {team.birthYears}
-                    </p>
                   </div>
 
                   <p className="text-base leading-relaxed text-silver-300">
                     {team.blurb}
                   </p>
-
-                  <ul className="mt-auto flex flex-wrap gap-2 pt-2">
-                    {team.focus.slice(0, 3).map((f) => (
-                      <li
-                        key={f}
-                        className="rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-silver-400 ring-1 ring-inset ring-white/10"
-                      >
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
 
                   <span
                     className={cn(
@@ -294,36 +282,41 @@ export default function Home() {
       </Section>
 
       {/* ------------------------------------------------------------------ */}
-      {/*  CTA                                                                */}
+      {/*  Follow — the club posts constantly, so this is the live feed       */}
       {/* ------------------------------------------------------------------ */}
-      <section className="relative overflow-hidden bg-navy-900 px-5 py-24 sm:px-8 lg:py-32">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_100%_at_50%_100%,rgba(49,169,224,0.22),transparent_65%)]"
+      <section className="relative isolate overflow-hidden">
+        <Photo
+          photo={photos.duel}
+          className="absolute inset-0 -z-10 h-full w-full rounded-none"
+          sizes="100vw"
+          imgClassName="object-[50%_45%]"
         />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-navy-950/88" />
         <div
           aria-hidden
           className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-flare-500 via-electric-500 to-gold-500"
         />
 
-        <Reveal className="relative mx-auto flex w-full max-w-3xl flex-col items-center gap-7 text-center">
-          <Eyebrow className="justify-center">Tryouts Open</Eyebrow>
-          <h2 className="text-5xl leading-[0.9] sm:text-6xl lg:text-7xl">
-            Bring your boots.
+        <Reveal className="mx-auto flex w-full max-w-3xl flex-col items-center gap-7 px-5 py-24 text-center sm:px-8 lg:py-32">
+          <Eyebrow className="justify-center">{season.status}</Eyebrow>
+
+          <h2 className="text-5xl leading-[0.9] sm:text-6xl">
+            Every match,
             <br />
-            <span className="text-gold-500">We'll bring the level.</span>
+            <span className="text-gold-500">as it happens</span>
           </h2>
-          <p className="max-w-xl text-lg leading-relaxed text-silver-300">
-            Open to U12 and U14 boys. No prior academy experience required.
+
+          <p className="max-w-lg text-lg leading-relaxed text-silver-300">
+            Highlights, goals and match days go up on Instagram first. It is the
+            quickest way to see what a season here actually looks like.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button href="/tryouts" size="lg">
-              Tryout Dates
-            </Button>
-            <Button href="/contact" size="lg" variant="ghost">
-              Ask a Question
-            </Button>
-          </div>
+
+          <Button href={club.social.instagram} size="lg">
+            <span className="inline-flex items-center gap-2">
+              <Instagram className="h-5 w-5" aria-hidden />
+              Follow {club.social.instagramHandle}
+            </span>
+          </Button>
         </Reveal>
       </section>
     </>

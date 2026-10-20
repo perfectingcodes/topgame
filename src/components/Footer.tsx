@@ -8,10 +8,8 @@ const COLUMNS = [
   {
     title: "Academy",
     links: [
-      { href: "/about", label: "About Us" },
-      { href: "/coaches", label: "Coaching Staff" },
+      { href: "/coaches", label: "Coach Leo & Staff" },
       { href: "/pathway", label: "College Pathway" },
-      { href: "/tryouts", label: "Tryouts" },
     ],
   },
   {
@@ -19,7 +17,6 @@ const COLUMNS = [
     links: [
       { href: "/teams", label: "All Teams" },
       ...teams.map((t) => ({ href: `/teams/${t.slug}`, label: t.name })),
-      { href: "/news", label: "Tournament Reports" },
       { href: "/sponsors", label: "Sponsors" },
     ],
   },
@@ -51,13 +48,15 @@ export default function Footer() {
             >
               <Instagram className="h-4 w-4" />
             </a>
-            <a
-              href={club.social.facebook}
-              aria-label={`${club.name} on Facebook`}
-              className="rounded-md border border-white/15 p-2.5 text-silver-300 transition-colors hover:border-electric-500 hover:text-electric-300"
-            >
-              <Facebook className="h-4 w-4" />
-            </a>
+            {club.social.facebook ? (
+              <a
+                href={club.social.facebook}
+                aria-label={`${club.name} on Facebook`}
+                className="rounded-md border border-white/15 p-2.5 text-silver-300 transition-colors hover:border-electric-500 hover:text-electric-300"
+              >
+                <Facebook className="h-4 w-4" />
+              </a>
+            ) : null}
           </div>
         </div>
 
@@ -90,43 +89,67 @@ export default function Footer() {
             Get in Touch
           </h3>
           <ul className="flex flex-col gap-3 text-sm text-silver-300">
+            {club.phone && club.phoneHref ? (
+              <li>
+                <a
+                  href={`tel:${club.phoneHref}`}
+                  className="flex items-center gap-2.5 hover:text-electric-300"
+                >
+                  <Phone
+                    className="h-4 w-4 shrink-0 text-electric-500"
+                    aria-hidden
+                  />
+                  {club.phone}
+                </a>
+              </li>
+            ) : null}
+            {club.email ? (
+              <li>
+                <a
+                  href={`mailto:${club.email}`}
+                  className="flex items-center gap-2.5 hover:text-electric-300"
+                >
+                  <Mail
+                    className="h-4 w-4 shrink-0 text-electric-500"
+                    aria-hidden
+                  />
+                  {club.email}
+                </a>
+              </li>
+            ) : null}
             <li>
               <a
-                href={`tel:${club.phoneHref}`}
+                href={club.social.instagram}
                 className="flex items-center gap-2.5 hover:text-electric-300"
               >
-                <Phone
+                <Instagram
                   className="h-4 w-4 shrink-0 text-electric-500"
                   aria-hidden
                 />
-                {club.phone}
+                {club.social.instagramHandle}
               </a>
             </li>
-            <li>
-              <a
-                href={`mailto:${club.email}`}
-                className="flex items-center gap-2.5 hover:text-electric-300"
-              >
-                <Mail
-                  className="h-4 w-4 shrink-0 text-electric-500"
+            {club.address ? (
+              <li className="flex items-start gap-2.5">
+                <MapPin
+                  className="mt-0.5 h-4 w-4 shrink-0 text-electric-500"
                   aria-hidden
                 />
-                {club.email}
-              </a>
-            </li>
-            <li className="flex items-start gap-2.5">
-              <MapPin
-                className="mt-0.5 h-4 w-4 shrink-0 text-electric-500"
-                aria-hidden
-              />
-              <address className="not-italic leading-relaxed">
-                {club.address.line1}
-                <br />
-                {club.address.line2}
-                <br />
-                {club.address.city}, {club.address.state} {club.address.zip}
-              </address>
-            </li>
+                <address className="not-italic leading-relaxed">
+                  {club.address.line1}
+                  <br />
+                  {club.address.city}, {club.address.state} {club.address.zip}
+                </address>
+              </li>
+            ) : (
+              <li className="flex items-start gap-2.5">
+                <MapPin
+                  className="mt-0.5 h-4 w-4 shrink-0 text-electric-500"
+                  aria-hidden
+                />
+                {club.city}, {club.state}
+              </li>
+            )}
           </ul>
         </div>
       </div>

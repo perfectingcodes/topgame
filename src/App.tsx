@@ -7,15 +7,11 @@ import { routeByPath } from "@/data/routes";
 import { club } from "@/data/site";
 
 import Home from "@/pages/Home";
-import About from "@/pages/About";
 import Teams from "@/pages/Teams";
 import Pathway from "@/pages/Pathway";
-import News from "@/pages/News";
-import Article from "@/pages/Article";
 import Sponsors from "@/pages/Sponsors";
 import TeamDetail from "@/pages/TeamDetail";
 import Coaches from "@/pages/Coaches";
-import Tryouts from "@/pages/Tryouts";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 
@@ -54,15 +50,11 @@ export default function App() {
       <main id="main" className="flex-1">
         <Switch>
           <Route path="/" component={Home} />
-          <Route path="/about" component={About} />
           <Route path="/teams" component={Teams} />
           <Route path="/teams/:slug" component={TeamDetail} />
           <Route path="/pathway" component={Pathway} />
-          <Route path="/news" component={News} />
-          <Route path="/news/:slug" component={Article} />
           <Route path="/sponsors" component={Sponsors} />
           <Route path="/coaches" component={Coaches} />
-          <Route path="/tryouts" component={Tryouts} />
           <Route path="/contact" component={Contact} />
           <Route component={NotFound} />
         </Switch>

@@ -17,28 +17,31 @@ export const club = {
   city: "Cape Coral",
   state: "FL",
   founded: null as number | null, // Optional — the footer hides "Est." until this is set
-  url: "https://topgameacademy.com", // PLACEHOLDER: real domain
+  url: "https://topgameacademy.com", // from the club's own tent banner
 
-  email: "info@topgameacademy.com", // PLACEHOLDER
-  phone: "(239) 555-0147", // PLACEHOLDER
-  phoneHref: "+12395550147", // PLACEHOLDER
-  address: {
-    line1: "Cape Coral Sports Complex",
-    line2: "1410 SW 6th Pl", // PLACEHOLDER
-    city: "Cape Coral",
-    state: "FL",
-    zip: "33991",
-  },
+  email: null as string | null, // REQUIRED: the club's real address — forms and every mailto depend on it
+  phone: null as string | null,
+  phoneHref: null as string | null,
+  address: null as { line1: string; line2: string; city: string; state: string; zip: string } | null,
   social: {
-    instagram: "https://instagram.com/topgameacademy", // PLACEHOLDER
-    facebook: "https://facebook.com/topgameacademy", // PLACEHOLDER
+    instagram: "https://instagram.com/topgameacademy",
+    instagramHandle: "@topgameacademy",
+    facebook: null as string | null,
   },
+} as const;
+
+/**
+ * Drives the announcement bar and the tryout page. Flip `recruiting` to true
+ * and set `nextWindow` when the club opens its next intake.
+ */
+export const season = {
+  recruiting: false,
+  status: "Season underway",
+  nextWindow: null as string | null, // e.g. "Tryouts open June 2027"
 } as const;
 
 export const stats = [
   { value: "2", label: "Squads", detail: "U12 & U14 boys" },
-  { value: "D-I", label: "Coaching", detail: "Navy, Division I" },
-  { value: "153", label: "Career goals", detail: "Founder's state record" },
   { value: "1", label: "Standard", detail: "Outwork everyone" },
 ] as const;
 
@@ -70,12 +73,9 @@ export type Team = {
   slug: string;
   name: string;
   ageGroup: string;
-  birthYears: string;
   coachId: string;
   accent: "electric" | "gold";
   blurb: string;
-  focus: string[];
-  roster: { size: number; note: string };
 };
 
 export const teams: Team[] = [
@@ -83,35 +83,19 @@ export const teams: Team[] = [
     slug: "u12-boys",
     name: "U12 Boys",
     ageGroup: "U12",
-    birthYears: "Born 2014–2015", // PLACEHOLDER: confirm against the current seasonal year
     coachId: "leo",
     accent: "electric",
     blurb:
       "The foundation years, where technique becomes instinct. More minutes on the ball than any other group in the academy.",
-    focus: [
-      "Receiving on the half-turn",
-      "1v1 in wide areas",
-      "Defending the first pass",
-      "Playing out from the back",
-    ],
-    roster: { size: 14, note: "9v9" }, // PLACEHOLDER: roster size
   },
   {
     slug: "u14-boys",
     name: "U14 Boys",
     ageGroup: "U14",
-    birthYears: "Born 2012–2013", // PLACEHOLDER: confirm against the current seasonal year
     coachId: "leo",
     accent: "gold",
     blurb:
       "The proving years. The full 11v11 game, where positional discipline decides results as much as talent.",
-    focus: [
-      "11v11 shape and rotations",
-      "Pressing triggers",
-      "Set pieces, both ends",
-      "Physical preparation",
-    ],
-    roster: { size: 18, note: "11v11" }, // PLACEHOLDER: roster size
   },
 ];
 
@@ -129,6 +113,14 @@ export type Coach = {
 // confirmed, and don't claim any that aren't held.
 export const coaches: Coach[] = [
   {
+    id: "sebastian",
+    name: "Coach Sebastian Lopez",
+    role: "Coach",
+    licenses: [],
+    bio: "", // TODO: Sebastian's background — the card shows "Full profile coming soon" until filled
+    initials: "SL",
+  },
+  {
     id: "leo",
     name: "Coach Leo Perez",
     role: "Founder & Head Coach",
@@ -137,47 +129,6 @@ export const coaches: Coach[] = [
     initials: "LP",
   },
 ];
-
-export const tryouts = {
-  /** Empty = dates not announced yet; the page shows a register-interest state. */
-  sessions: [] as {
-    date: string;
-    time: string;
-    group: string;
-    location: string;
-  }[],
-  bring: [
-    "Cleats, shin guards, a light and a dark shirt",
-    "Two full water bottles",
-    "Medical release form (emailed after you register)",
-    "A ball — size 4 for U12, size 5 for U14",
-  ],
-  evaluated: [
-    {
-      title: "Technical",
-      body: "First touch under pressure, passing range, 1v1.",
-    },
-    { title: "Tactical", body: "Scanning, positioning, decision speed." },
-    { title: "Physical", body: "Movement quality and repeat sprint ability." },
-    { title: "Character", body: "Coachability and response to mistakes." },
-  ],
-  seasonFee: "$TBD per season", // PLACEHOLDER: season fee and what it covers
-} as const;
-
-export const faqs = [
-  {
-    q: "Who can try out?",
-    a: "Any boy in the U12 or U14 age group, from any club or none. No prior academy experience needed.",
-  },
-  {
-    q: "What does the season fee cover?",
-    a: "Coaching, field time, and competition entry. Kits are ordered separately. Get in touch for the current fee schedule.", // PLACEHOLDER: confirm what the fee actually covers
-  },
-  {
-    q: "What if my son misses tryouts?",
-    a: "Get in touch anyway. We run individual looks during preseason.",
-  },
-] as const;
 
 /* -------------------------------------------------------------------------- */
 /*  Photography                                                                */
@@ -202,7 +153,7 @@ export type Photo = { src: string; alt: string };
  * images of minors, and that consent is the club's to obtain, not something
  * a website build should assume.
  */
-export const mediaReleasesOnFile = false; // PLACEHOLDER: confirm releases before launch
+export const mediaReleasesOnFile = false; // REQUIRED: confirm signed releases for every player shown
 
 export const photos = {
   /** Cropped tight to the founder — no player faces remain in frame. */
@@ -268,7 +219,7 @@ export const founder = {
      * play, and a parent or player voice. This section is the focus of the page
      * and it is thin until that lands. Nothing is invented here on purpose.
      */
-    proof: [] as { value: string; label: string }[], // PLACEHOLDER: coaching record
+    proof: [] as { value: string; label: string }[], // TODO: coaching record — the stat row is hidden while empty
   },
 
   /* ---- Playing career: credential, deliberately compact ---- */
@@ -334,60 +285,40 @@ export const founder = {
 
 export const pathway = {
   blurb:
-    "Most players don't get recruited because nobody showed them how it works. This is a structured track from U12 through high school.",
-  // TODO: confirm these match what the club actually delivers before publishing.
-  pillars: [
-    {
-      title: "Player Profile",
-      body: "Position, measurables, academics, and a highlight reel cut from real match footage.",
-    },
-    {
-      title: "Academic Guidance",
-      body: "NCAA and NAIA eligibility walked through early, while grades can still move.",
-    },
-    {
-      title: "Exposure",
-      body: "Targeted showcases. Two events that fit beat eight that don't.",
-    },
-    {
-      title: "Family Education",
-      body: "Divisions, timelines, scholarships, and what college soccer actually costs.",
-    },
-  ],
+    "Most players never get a clear picture of how college soccer actually works. This is the track from first touch to a college roster.",
   /** Ordered widest-to-narrowest — the page renders these as a funnel. */
   stages: [
     {
       age: "U12",
       label: "Everyone starts here",
       title: "Foundation",
-      body: "Technique and habits. No recruiting talk yet.",
+      body: "Technique and habits, built before any of it is about recruiting.",
     },
     {
       age: "U14",
       label: "The ones who do the work",
-      title: "Profile",
-      body: "Video starts, the profile is built, eligibility is explained.",
+      title: "Development",
+      body: "The full-sided game, and the decisions that come with it.",
     },
     {
       age: "High school",
       label: "The ones who keep showing up",
       title: "Exposure",
-      body: "Showcase planning and coach outreach, continuing after a player ages out.",
+      body: "Competing at a level that gets a player seen.",
     },
     {
       age: "College",
       label: "Where the funnel leads",
       title: "Commitment",
-      body: "Film, grades, a target list, and a family who understands the process.",
+      body: "A player ready for the standard a college program expects.",
     },
   ],
   /**
-   * The funnel narrows for real. Saying so plainly is deliberate — the club's
-   * voice elsewhere is honest evaluation, and implying guaranteed placement
-   * would be both untrue and the thing every other academy does.
+   * The funnel narrows for real. Saying so plainly is deliberate — implying
+   * guaranteed placement would be untrue.
    */
   reality:
-    "A funnel narrows. Most players who start at U12 won't play college soccer — here or anywhere. What we control is that nobody reaches seventeen and finds out the door closed at fourteen.",
+    "A funnel narrows. Most players who start at U12 won't play college soccer — here or anywhere. What we control is the standard they're held to while they're with us.",
 } as const;
 
 /* -------------------------------------------------------------------------- */
@@ -401,12 +332,6 @@ export type Sponsor = {
   note?: string;
   logo?: string;
   url?: string;
-  /**
-   * Which card the mark needs behind it. Several of these logos bake in their
-   * own background, so one uniform card would break at least one of them:
-   * Timeless is a white wordmark on black and disappears on a light card.
-   */
-  logoBg?: "light" | "dark";
 };
 
 export const sponsors: Sponsor[] = [
@@ -415,79 +340,19 @@ export const sponsors: Sponsor[] = [
     name: "Elevate Home Services",
     note: "AC · Heat · Plumbing · Electric",
     logo: "/brand/sponsors/elevate-home-services.png",
-    logoBg: "light",
   },
   {
     name: "Super Screen",
     note: "The screen that lasts",
     logo: "/brand/sponsors/super-screen.png",
-    logoBg: "light",
   },
   {
     name: "Gulfside Marine Services",
     logo: "/brand/sponsors/gulfside-marine.png",
-    logoBg: "light",
   },
   {
     name: "Timeless Stone Solutions LLC",
     note: "Resonating with timeless aesthetics",
     logo: "/brand/sponsors/timeless-stone.png",
-    logoBg: "dark",
   },
 ];
-
-export const sponsorTiers = [
-  {
-    name: "Headline",
-    price: "Let's talk",
-    items: [
-      "Logo on both match kits",
-      "Named on every fixture post",
-      "Banner at home matches",
-      "Logo on this site",
-    ],
-  },
-  {
-    name: "Club",
-    price: "Let's talk",
-    items: [
-      "Logo on training tops",
-      "Quarterly social feature",
-      "Banner at home matches",
-      "Logo on this site",
-    ],
-  },
-  {
-    name: "Community",
-    price: "Let's talk",
-    items: [
-      "Logo on this site",
-      "Match-day shout-out",
-      "Supports the scholarship fund",
-    ],
-  },
-] as const;
-
-/* -------------------------------------------------------------------------- */
-/*  Tournament reports                                                         */
-/* -------------------------------------------------------------------------- */
-
-export type Article = {
-  slug: string;
-  title: string;
-  date: string; // ISO
-  team: string; // team slug, or "club"
-  tournament: string;
-  excerpt: string;
-  body: string[];
-};
-
-/**
- * Empty until the club writes real reports — the page shows a "first reports
- * coming" state.
- *
- * When you do write them: decide a policy on naming players first. Publishing
- * the full names of minors is a real consideration for a youth club (first
- * names only, or written parental consent).
- */
-export const articles: Article[] = [];

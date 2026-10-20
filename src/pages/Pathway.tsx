@@ -1,13 +1,7 @@
 import { ChevronDown } from "lucide-react";
 
 import PageHero from "@/components/PageHero";
-import {
-  Badge,
-  Button,
-  Reveal,
-  Section,
-  SectionHeading,
-} from "@/components/ui";
+import { Button, Reveal, Section, SectionHeading } from "@/components/ui";
 import { pathway } from "@/data/site";
 import { cn } from "@/lib/cn";
 
@@ -35,9 +29,7 @@ export default function Pathway() {
           </>
         }
         lede={pathway.blurb}
-      >
-        <Badge tone="gold">Included for every U14 player</Badge>
-      </PageHero>
+      ></PageHero>
 
       {/* ------------------------------------------------------------------ */}
       {/*  The funnel                                                         */}
@@ -126,40 +118,6 @@ export default function Pathway() {
             {pathway.reality}
           </p>
         </Reveal>
-      </Section>
-
-      {/* ------------------------------------------------------------------ */}
-      {/*  What's included                                                    */}
-      {/* ------------------------------------------------------------------ */}
-      <Section tone="dark" className="pitch-lines">
-        <Reveal>
-          <SectionHeading
-            eyebrow="What's Included"
-            title="Four moving parts"
-            lede="These run underneath every stage of the funnel."
-          />
-        </Reveal>
-
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
-          {pathway.pillars.map((pillar, i) => (
-            <Reveal key={pillar.title} delay={i * 80}>
-              <article className="flex h-full gap-5 border border-white/10 bg-navy-900 p-7">
-                <span
-                  aria-hidden
-                  className="font-display text-2xl font-extrabold italic leading-none text-electric-500/60"
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="text-2xl">{pillar.title}</h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-silver-400">
-                    {pillar.body}
-                  </p>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
       </Section>
 
       <Section tone="panel">

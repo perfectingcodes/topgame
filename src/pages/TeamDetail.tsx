@@ -1,14 +1,8 @@
 import { Link, useRoute } from "wouter";
-import { Users, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 import PageHero from "@/components/PageHero";
-import {
-  Badge,
-  Button,
-  Reveal,
-  Section,
-  SectionHeading,
-} from "@/components/ui";
+import { Button, Reveal, Section } from "@/components/ui";
 import NotFound from "./NotFound";
 import { coaches, teams } from "@/data/site";
 import { cn } from "@/lib/cn";
@@ -27,76 +21,38 @@ export default function TeamDetail() {
     <>
       <PageHero
         eyebrow="Our Teams"
-        title={
-          <>
-            {team.name}
-            <span className={cn("block", accentText)}>{team.birthYears}</span>
-          </>
-        }
+        title={<>{team.name}</>}
         lede={team.blurb}
-      >
-        <Badge tone={isElectric ? "electric" : "gold"}>
-          <Users className="h-3 w-3" aria-hidden />
-          {team.roster.note}
-        </Badge>
-      </PageHero>
+      ></PageHero>
 
-      {/* Focus + coach */}
+      {/* Coach */}
       <Section tone="darker">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+        {coach ? (
           <Reveal>
-            <SectionHeading
-              eyebrow="Season Focus"
-              title="What we're working on"
-            />
-            <ul className="mt-10 grid gap-3 sm:grid-cols-2">
-              {team.focus.map((f) => (
-                <li
-                  key={f}
-                  className="border-l-2 border-white/15 py-1 pl-4 text-silver-300"
-                >
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-
-          {coach ? (
-            <Reveal delay={100}>
-              <div className="border border-white/10 bg-navy-850 p-8">
-                <h2 className="font-display text-sm font-bold uppercase tracking-[0.24em] text-electric-400">
-                  Coached by
-                </h2>
-                <div className="mt-6 flex gap-4">
-                  <span
-                    className={cn(
-                      "flex h-14 w-14 shrink-0 items-center justify-center font-display text-lg font-extrabold italic",
-                      isElectric
-                        ? "bg-electric-500 text-navy-950"
-                        : "bg-gold-500 text-navy-950",
-                    )}
-                  >
-                    {coach.initials}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="font-display text-xl font-bold uppercase italic text-white">
-                      {coach.name}
-                    </p>
-                    <p className="text-xs uppercase tracking-wider text-silver-500">
-                      {coach.role}
-                    </p>
-                  </div>
-                </div>
-                <p className="mt-5 leading-relaxed text-silver-400">
-                  {coach.bio}
+            <div className="mx-auto flex max-w-2xl flex-col items-center gap-5 rounded-2xl border border-white/10 bg-navy-850 p-8 text-center">
+              <span
+                className={cn(
+                  "flex h-16 w-16 items-center justify-center rounded-xl font-display text-xl font-extrabold italic",
+                  isElectric
+                    ? "bg-electric-500 text-navy-950"
+                    : "bg-gold-500 text-navy-950",
+                )}
+              >
+                {coach.initials}
+              </span>
+              <div>
+                <h2 className="text-2xl">{coach.name}</h2>
+                <p className="mt-1 text-xs uppercase tracking-wider text-silver-500">
+                  {coach.role}
                 </p>
-                <Button href="/about" variant="ghost" className="mt-7 w-full">
-                  His Story
-                </Button>
               </div>
-            </Reveal>
-          ) : null}
-        </div>
+              <p className="leading-relaxed text-silver-400">{coach.bio}</p>
+              <Button href="/coaches" variant="ghost">
+                Meet the Coaches
+              </Button>
+            </div>
+          </Reveal>
+        ) : null}
       </Section>
 
       <Section tone="panel">

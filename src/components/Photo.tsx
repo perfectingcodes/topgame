@@ -19,7 +19,7 @@ export default function Photo({
   priority?: boolean;
 }) {
   return (
-    <div className={cn("overflow-hidden bg-navy-850", className)}>
+    <div className={cn("overflow-hidden rounded-2xl bg-navy-850", className)}>
       <img
         src={`${photo.src}.jpg`}
         srcSet={`${photo.src}-sm.jpg 640w, ${photo.src}.jpg 1206w`}

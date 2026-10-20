@@ -55,18 +55,31 @@ function sportsClubJsonLd() {
     name: club.name,
     description: club.tagline,
     url: club.url,
-    telephone: club.phone,
-    email: club.email,
     sport: "Soccer",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: club.address.line2,
-      addressLocality: club.address.city,
-      addressRegion: club.address.state,
-      postalCode: club.address.zip,
-      addressCountry: "US",
-    },
-    sameAs: [club.social.instagram, club.social.facebook],
+    // Only emit fields the club has actually confirmed.
+    ...(club.phone ? { telephone: club.phone } : {}),
+    ...(club.email ? { email: club.email } : {}),
+    ...(club.address
+      ? {
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: club.address.line2,
+            addressLocality: club.address.city,
+            addressRegion: club.address.state,
+            postalCode: club.address.zip,
+            addressCountry: "US",
+          },
+        }
+      : {
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: club.city,
+            addressRegion: club.state,
+            addressCountry: "US",
+          },
+        }),
+    sameAs: [club.social.instagram, club.social.facebook].filter(Boolean),
   };
+
   return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
 }
