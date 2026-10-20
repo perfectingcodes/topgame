@@ -87,9 +87,13 @@ never for something you're publishing.
 
 ### Photography
 
-Four club photos live in `public/photos/`, each with a 640px `-sm` variant for
+Five club photos live in `public/photos/`, each with a smaller variant for
 mobile. All metadata was stripped on import (none carried GPS, but it's stripped
 regardless).
+
+`coach-leo.jpg` is cropped tight to the founder — the original had a child at
+the left edge and two more in the bottom foreground, and the crop removes all
+three, so his is the only identifiable face in it.
 
 Alt text describes the action rather than naming a squad on purpose: two of the
 four were shot under another club's tent at a tournament, so captioning them as
@@ -99,11 +103,27 @@ which photo, the captions can be made specific.
 To add more photos, drop them in and mirror the existing naming — `name.jpg`
 plus `name-sm.jpg` — then add an entry to `photos` in `src/data/site.ts`.
 
+### Sponsor logos
+
+Each mark carries its own background, so the card follows the logo rather than
+one treatment being forced on all four (`logoBg` in `src/data/site.ts`):
+
+| Sponsor | Card |
+| --- | --- |
+| Elevate Home Services | light — purple on white |
+| Super Screen | light — transparent PNG, trimmed |
+| Gulfside Marine Services | light — watercolour fades into white |
+| Timeless Stone Solutions | **dark** — white wordmark on black, invisible on a light card |
+
+Timeless was also cropped in from a 1024px square with heavy black margin so it
+fills its card like the others.
+
 ### Optional
 
 - [ ] `club.founded` — the footer hides "Est." until this is set
-- [ ] Real sponsors (`sponsors`) — the page shows a "be our first partner" state
-      while the list is empty
+- [ ] Sponsor websites (`sponsors[].url`), and a `tier` for any sponsor where a
+      level has actually been agreed — four sponsors are live, none has a tier
+      set, because guessing one would misstate the arrangement
 - [ ] Tournament reports (`articles`) — the page shows a "first reports coming"
       state while empty
 - [ ] Tryout dates (`tryouts.sessions`) — the page invites families to register

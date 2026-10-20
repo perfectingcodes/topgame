@@ -49,40 +49,51 @@ export default function About() {
 
       {/* Story */}
       <Section tone="darker">
-        <div className="mx-auto flex max-w-3xl flex-col gap-6">
-          {founder.story.map((paragraph, i) => (
-            <Reveal key={i} delay={i * 70}>
-              <p
-                className={
-                  i === 0
-                    ? "text-xl leading-relaxed text-silver-200"
-                    : "text-lg leading-relaxed text-silver-400"
-                }
-              >
-                {paragraph}
-              </p>
-            </Reveal>
-          ))}
-
-          <Reveal delay={240}>
-            <figure className="my-4 border-l-2 border-gold-500 pl-6">
-              <Quote className="mb-3 h-6 w-6 text-gold-500" aria-hidden />
-              <blockquote className="font-display text-2xl font-bold uppercase italic leading-tight text-white sm:text-3xl">
-                “{founder.quote.text}”
-              </blockquote>
-              <figcaption className="mt-3 font-display text-xs font-bold uppercase tracking-[0.2em] text-silver-500">
-                — {founder.quote.source}
-              </figcaption>
-            </figure>
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+          <Reveal>
+            <Photo
+              photo={photos.coachLeo}
+              className="aspect-[4/5] w-full lg:sticky lg:top-28"
+              sizes="(min-width: 1024px) 38vw, 100vw"
+              priority
+            />
           </Reveal>
 
-          {founder.storyAfterQuote.map((paragraph, i) => (
-            <Reveal key={i} delay={i * 70}>
-              <p className="text-lg leading-relaxed text-silver-400">
-                {paragraph}
-              </p>
+          <div className="flex flex-col gap-6">
+            {founder.story.map((paragraph, i) => (
+              <Reveal key={i} delay={i * 70}>
+                <p
+                  className={
+                    i === 0
+                      ? "text-xl leading-relaxed text-silver-200"
+                      : "text-lg leading-relaxed text-silver-400"
+                  }
+                >
+                  {paragraph}
+                </p>
+              </Reveal>
+            ))}
+
+            <Reveal delay={240}>
+              <figure className="my-2 border-l-2 border-gold-500 pl-6">
+                <Quote className="mb-3 h-6 w-6 text-gold-500" aria-hidden />
+                <blockquote className="font-display text-2xl font-bold uppercase italic leading-tight text-white sm:text-3xl">
+                  “{founder.quote.text}”
+                </blockquote>
+                <figcaption className="mt-3 font-display text-xs font-bold uppercase tracking-[0.2em] text-silver-500">
+                  — {founder.quote.source}
+                </figcaption>
+              </figure>
             </Reveal>
-          ))}
+
+            {founder.storyAfterQuote.map((paragraph, i) => (
+              <Reveal key={i} delay={i * 70}>
+                <p className="text-lg leading-relaxed text-silver-400">
+                  {paragraph}
+                </p>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </Section>
 

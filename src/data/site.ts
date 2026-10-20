@@ -205,6 +205,11 @@ export type Photo = { src: string; alt: string };
 export const mediaReleasesOnFile = false; // PLACEHOLDER: confirm releases before launch
 
 export const photos = {
+  /** Cropped tight to the founder — no player faces remain in frame. */
+  coachLeo: {
+    src: "/photos/coach-leo",
+    alt: "Coach Leo Perez on the touchline in a Top Game Academy polo",
+  },
   attack: {
     src: "/photos/attack",
     alt: "Academy players in white driving forward with the ball at a tournament",
@@ -391,14 +396,38 @@ export type Sponsor = {
   note?: string;
   logo?: string;
   url?: string;
+  /**
+   * Which card the mark needs behind it. Several of these logos bake in their
+   * own background, so one uniform card would break at least one of them:
+   * Timeless is a white wordmark on black and disappears on a light card.
+   */
+  logoBg?: "light" | "dark";
 };
 
 export const sponsors: Sponsor[] = [
+  // TODO: add each sponsor's website, and a `tier` where one has been agreed.
   {
     name: "Elevate Home Services",
     note: "AC · Heat · Plumbing · Electric",
     logo: "/brand/sponsors/elevate-home-services.png",
-    // TODO: add the sponsor's website once confirmed, and a `tier` if one applies.
+    logoBg: "light",
+  },
+  {
+    name: "Super Screen",
+    note: "The screen that lasts",
+    logo: "/brand/sponsors/super-screen.png",
+    logoBg: "light",
+  },
+  {
+    name: "Gulfside Marine Services",
+    logo: "/brand/sponsors/gulfside-marine.png",
+    logoBg: "light",
+  },
+  {
+    name: "Timeless Stone Solutions LLC",
+    note: "Resonating with timeless aesthetics",
+    logo: "/brand/sponsors/timeless-stone.png",
+    logoBg: "dark",
   },
 ];
 

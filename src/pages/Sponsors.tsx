@@ -58,14 +58,21 @@ export default function Sponsors() {
                 )}
               >
                 {sponsor.logo ? (
-                  // The mark is purple on white, so it keeps a light card rather
-                  // than being knocked out against the navy.
-                  <span className="flex w-full items-center justify-center rounded bg-white px-5 py-4">
+                  // Each mark carries its own ground, so the card follows the
+                  // logo rather than forcing one treatment on all of them.
+                  <span
+                    className={cn(
+                      "flex h-24 w-full items-center justify-center rounded px-5 py-4",
+                      sponsor.logoBg === "dark"
+                        ? "bg-black ring-1 ring-inset ring-white/10"
+                        : "bg-white",
+                    )}
+                  >
                     <img
                       src={sponsor.logo}
                       alt={sponsor.name}
                       loading="lazy"
-                      className="h-14 w-auto object-contain"
+                      className="max-h-full w-auto object-contain"
                     />
                   </span>
                 ) : (
