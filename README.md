@@ -141,6 +141,23 @@ coaching staff. Publishing those would have misrepresented the club, so they
 were deleted rather than shipped as placeholder text. The pages that displayed
 them now render honest empty states instead.
 
+### The About page needs Coach Leo's coaching story
+
+The page now leads with **"Developing players"** and demotes the playing career
+to a short credential block below it, as asked. But that lead section is thin,
+because the club has supplied a playing record and no coaching record.
+
+Nothing has been invented to fill it. To make it the real focus of the page,
+send over any of:
+
+- How long Leo has been coaching, and when the academy started
+- How many players have come through, and where they've gone on to play
+- A parent or player quote
+- What a session actually looks like, in his words
+
+Numbers drop straight into `founder.coaching.proof` in `src/data/site.ts` and
+render as a stat row; prose goes in `founder.coaching.body`.
+
 ### Founder content
 
 Coach Leo's record on the About page is real information supplied by the club —

@@ -252,29 +252,35 @@ export const founder = {
   shortName: "Coach Leo",
   role: "Founder & Head Coach",
   initials: "LP",
-  headline:
-    "Florida's Mr. Soccer. Gatorade Player of the Year. Navy Division I.",
-  tagline: "Now he's building the next generation.",
+  headline: "Florida's Mr. Soccer. Navy Division I.",
+  tagline: "What he does now matters more.",
 
-  line: [
-    { value: "153", label: "Goals" },
-    { value: "68", label: "Assists" },
-    { value: "1", label: "Standard" },
-  ],
-  standardLine: "Work harder than everyone else.",
+  /* ---- Coaching: the main story on the About page ---- */
+  coaching: {
+    lede: "Leo built Top Game Academy to be the environment he wanted locally — small groups, real coaching, and a standard that doesn't move.",
+    body: [
+      "He coaches both squads himself. That is deliberate: a hundred players spread across eight teams is a business model, not a development plan.",
+      "The work is the same every week. Technique under pressure, decisions made a beat earlier than last season, and the habits that still hold up when a game gets loud.",
+    ],
+    /**
+     * PLACEHOLDER: the club should supply specifics — how long he has been
+     * coaching, how many players have come through, where they have gone on to
+     * play, and a parent or player voice. This section is the focus of the page
+     * and it is thin until that lands. Nothing is invented here on purpose.
+     */
+    proof: [] as { value: string; label: string }[], // PLACEHOLDER: coaching record
+  },
 
-  story: [
-    "Before Leo Perez founded Top Game Academy, he was the most prolific scorer in Southwest Florida soccer history.",
-    "At Mariner High School in Cape Coral, Leo finished his career with a school-record 153 goals and 68 assists. In his junior year he scored 47 goals with 17 assists and 7 hat tricks, leading the Tritons to a 24-2-4 record. That season he became the first player in Mariner history named Gatorade Florida Boys Soccer Player of the Year, while carrying a 3.90 GPA.",
-    "Then he got better. As a senior, Leo exploded for 71 goals and 33 assists and led Mariner to its first-ever state championship match. He was named Florida's Mr. Soccer, the first Lee County athlete to win the award since it began in 1993.",
-  ],
-  storyAfterQuote: [
-    "Leo went on to play Division I soccer at the United States Naval Academy, where discipline, accountability and work ethic aren't just talked about. They're lived every day.",
-    "Now he's built an academy around those same standards.",
-  ],
+  /* ---- Playing career: credential, deliberately compact ---- */
+  playing: {
+    summary:
+      "At Mariner High School in Cape Coral he scored a school-record 153 goals, was named Gatorade Florida Boys Soccer Player of the Year as a junior and Florida's Mr. Soccer as a senior — the first Lee County athlete to win it since 1993 — then played Division I soccer at the United States Naval Academy.",
+    closer:
+      "That is the short version, and it is the least interesting thing about him now.",
+  },
 
   // TODO: the club supplied this unattributed. Name the coach if you have
-  // permission — an attributed quote carries far more weight than an anonymous one.
+  // permission — an attributed quote carries far more weight.
   quote: {
     text: "Leo with the ball at his feet is unlike any other player I've coached in 26 years.",
     source: "His high school coach",
@@ -286,7 +292,7 @@ export const founder = {
   },
 
   honors: [
-    "2019 Gatorade Florida Boys Soccer Player of the Year",
+    "Gatorade Florida Boys Soccer Player of the Year",
     "Florida Mr. Soccer (Florida Dairy Farmers)",
     "2x All-American",
     "3x SWFL News-Press Player of the Year",
@@ -297,10 +303,9 @@ export const founder = {
 
   records: [
     { value: "153", label: "Career goals" },
-    { value: "71", label: "Goals in a season" },
-    { value: "6", label: "Goals in a game" },
-    { value: "15", label: "Hat tricks in a season" },
-    { value: "14", label: "Goals in one postseason" },
+    { value: "71", label: "In a season" },
+    { value: "68", label: "Assists" },
+    { value: "15", label: "Hat tricks" },
   ],
 
   standard: [

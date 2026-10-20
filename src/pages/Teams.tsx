@@ -23,9 +23,10 @@ export default function Teams() {
       />
 
       <Photo
-        photo={photos.attack}
+        photo={photos.celebrationCoach}
         className="aspect-[21/9] w-full"
         sizes="100vw"
+        imgClassName="object-[50%_38%]"
       />
 
       <Section tone="darker">

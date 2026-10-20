@@ -6,10 +6,8 @@ import {
   GraduationCap,
   ArrowRight,
   MapPin,
-  CalendarDays,
 } from "lucide-react";
 
-import { Crest } from "@/components/Logo";
 import Photo from "@/components/Photo";
 import {
   Badge,
@@ -19,7 +17,7 @@ import {
   Section,
   SectionHeading,
 } from "@/components/ui";
-import { club, photoReel, pillars, stats, teams } from "@/data/site";
+import { club, photos, pillars, stats, teams } from "@/data/site";
 import { cn } from "@/lib/cn";
 
 const PILLAR_ICONS = {
@@ -35,66 +33,54 @@ export default function Home() {
       {/* ------------------------------------------------------------------ */}
       {/*  Hero                                                               */}
       {/* ------------------------------------------------------------------ */}
-      <section className="relative overflow-hidden bg-navy-900 pitch-lines">
+      <section className="relative isolate overflow-hidden">
+        <Photo
+          photo={photos.attack}
+          className="absolute inset-0 -z-10 h-full w-full"
+          sizes="100vw"
+          imgClassName="object-[55%_45%]"
+          priority
+        />
+        {/* Two overlays: a vertical scrim for text contrast, and a navy wash
+            so the photo reads as part of the brand rather than a stock image. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_80%_at_75%_0%,rgba(49,169,224,0.20),transparent_60%)]"
+          className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950 via-navy-950/85 to-navy-950/35"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-32 -left-24 h-[30rem] w-[30rem] rounded-full bg-gold-500/8 blur-3xl"
+          className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950 via-transparent to-navy-950/60"
         />
 
-        {/* Oversized crest watermark */}
-        <Crest className="pointer-events-none absolute -right-24 top-1/2 hidden h-[34rem] w-auto -translate-y-1/2 opacity-[0.07] lg:block" />
+        <div className="relative mx-auto flex w-full max-w-7xl flex-col items-start gap-7 px-5 pb-20 pt-24 sm:px-8 lg:pb-28 lg:pt-36">
+          <Badge tone="gold">
+            <MapPin className="h-3 w-3" aria-hidden />
+            {club.city}, Florida · U12 &amp; U14 Boys
+          </Badge>
 
-        <div className="relative mx-auto grid w-full max-w-7xl gap-12 px-5 pb-24 pt-20 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:pb-32 lg:pt-28">
-          <div className="flex flex-col items-start gap-7">
-            <Badge tone="gold">
-              <MapPin className="h-3 w-3" aria-hidden />
-              {club.city}, Florida · U12 &amp; U14 Boys
-            </Badge>
+          <h1 className="text-6xl leading-[0.85] sm:text-7xl lg:text-[5.75rem]">
+            <span className="block text-white">Develop.</span>
+            <span className="block text-electric-400">Compete.</span>
+            <span className="block text-gold-500">Belong.</span>
+          </h1>
 
-            <h1 className="text-6xl leading-[0.85] sm:text-7xl lg:text-[5.5rem]">
-              <span className="block text-white">Develop.</span>
-              <span className="block text-electric-400">Compete.</span>
-              <span className="block text-gold-500">Belong.</span>
-            </h1>
+          <p className="max-w-lg text-lg leading-relaxed text-silver-200 lg:text-xl">
+            A development-first boys soccer club in {club.city}, founded and
+            coached by Florida's Mr. Soccer.
+          </p>
 
-            <p className="max-w-xl text-lg leading-relaxed text-silver-300 lg:text-xl">
-              A development-first boys soccer club in {club.city}, founded and
-              coached by Florida's Mr. Soccer.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4">
-              <Button href="/tryouts" size="lg">
-                Book a Tryout
-              </Button>
-              <Button href="/teams" size="lg" variant="ghost">
-                Meet the Teams
-              </Button>
-            </div>
-
-            <p className="flex items-center gap-2 text-sm text-silver-500">
-              <CalendarDays className="h-4 w-4 text-electric-500" aria-hidden />
-              Training year-round in {club.city}
-            </p>
-          </div>
-
-          {/* Crest showcase */}
-          <div className="relative hidden justify-center lg:flex">
-            <div className="relative">
-              <div
-                aria-hidden
-                className="absolute inset-0 -m-12 rounded-full bg-electric-500/15 blur-3xl"
-              />
-              <Crest className="relative h-[21rem] w-auto drop-shadow-[0_25px_60px_rgba(7,16,29,0.85)]" />
-            </div>
+          <div className="flex flex-wrap items-center gap-4">
+            <Button href="/tryouts" size="lg">
+              Book a Tryout
+            </Button>
+            <Button href="/about" size="lg" variant="ghost">
+              Meet Coach Leo
+            </Button>
           </div>
         </div>
 
-        {/* Stat strip */}
-        <div className="relative border-t border-white/10 bg-navy-950/60 backdrop-blur-sm">
+        {/* Stat strip sits on the photo's dark foot */}
+        <div className="relative border-t border-white/10 bg-navy-950/75 backdrop-blur-sm">
           <dl className="mx-auto grid w-full max-w-7xl grid-cols-2 divide-x divide-white/10 px-5 sm:px-8 lg:grid-cols-4">
             {stats.map((stat) => (
               <div
@@ -180,24 +166,41 @@ export default function Home() {
       </Section>
 
       {/* ------------------------------------------------------------------ */}
-      {/*  Photo reel                                                         */}
+      {/*  Photo break — offset pair, text in the gutter                      */}
       {/* ------------------------------------------------------------------ */}
-      <section aria-label="The academy on match day" className="bg-navy-950">
-        <ul className="grid grid-cols-2 gap-1 lg:grid-cols-4">
-          {photoReel.map((photo, i) => (
-            <li key={photo.src} className="aspect-[4/3]">
+      <Section tone="dark" className="pitch-lines">
+        <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
+          <Reveal className="lg:col-span-7">
+            <Photo
+              photo={photos.celebrationTeam}
+              className="aspect-[2/1] w-full"
+              sizes="(min-width: 1024px) 58vw, 100vw"
+            />
+          </Reveal>
+
+          <div className="flex flex-col gap-8 lg:col-span-5">
+            <Reveal delay={90}>
               <Photo
-                photo={photo}
-                className="h-full"
-                sizes="(min-width: 1024px) 25vw, 50vw"
-                imgClassName={
-                  i % 2 === 0 ? "object-center" : "object-[50%_35%]"
-                }
+                photo={photos.duel}
+                className="aspect-[5/4] w-full lg:-ml-24 lg:w-[calc(100%+6rem)]"
+                sizes="(min-width: 1024px) 46vw, 100vw"
               />
-            </li>
-          ))}
-        </ul>
-      </section>
+            </Reveal>
+
+            <Reveal delay={160}>
+              <blockquote className="border-l-2 border-gold-500 pl-5">
+                <p className="font-display text-2xl font-bold uppercase italic leading-tight text-white lg:text-3xl">
+                  “If you don't work hard, you're not going to get where you
+                  want to be.”
+                </p>
+                <footer className="mt-3 font-display text-xs font-bold uppercase tracking-[0.22em] text-gold-400">
+                  — Coach Leo
+                </footer>
+              </blockquote>
+            </Reveal>
+          </div>
+        </div>
+      </Section>
 
       {/* ------------------------------------------------------------------ */}
       {/*  Teams                                                              */}

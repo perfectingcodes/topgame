@@ -1,67 +1,77 @@
-import { Trophy, Quote } from "lucide-react";
+import { Quote } from "lucide-react";
 
-import PageHero from "@/components/PageHero";
-import { Button, Reveal, Section, SectionHeading } from "@/components/ui";
 import Photo from "@/components/Photo";
+import {
+  Button,
+  Eyebrow,
+  Reveal,
+  Section,
+  SectionHeading,
+} from "@/components/ui";
 import { founder, photos } from "@/data/site";
 
 export default function About() {
   return (
     <>
-      <PageHero
-        eyebrow="Meet our founder"
-        title={
-          <>
-            Coach
-            <br />
-            <span className="text-gold-500">Leo</span>
-          </>
-        }
-        lede={
-          <>
-            {founder.headline}{" "}
-            <span className="text-white">{founder.tagline}</span>
-          </>
-        }
-      />
+      {/* ------------------------------------------------------------------ */}
+      {/*  Hero — portrait-led, coaching first                                */}
+      {/* ------------------------------------------------------------------ */}
+      <section className="relative overflow-hidden bg-navy-900">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_70%_at_15%_0%,rgba(49,169,224,0.16),transparent_62%)]"
+        />
 
-      {/* Stat line */}
-      <section className="border-y border-white/10 bg-navy-950 px-5 sm:px-8">
-        <dl className="mx-auto flex w-full max-w-7xl flex-col divide-y divide-white/10 sm:flex-row sm:divide-x sm:divide-y-0">
-          {founder.line.map((stat) => (
-            <div
-              key={stat.label}
-              className="flex items-baseline gap-3 py-6 sm:flex-1 sm:flex-col sm:gap-1 sm:px-8 sm:py-8 sm:first:pl-0"
-            >
-              <dd className="font-display text-4xl font-extrabold italic leading-none text-gold-500 sm:text-5xl">
-                {stat.value}
-              </dd>
-              <dt className="font-display text-sm font-bold uppercase tracking-[0.2em] text-white">
-                {stat.label}
-              </dt>
-            </div>
-          ))}
-        </dl>
-        <p className="mx-auto w-full max-w-7xl pb-7 font-display text-sm font-bold uppercase tracking-[0.2em] text-electric-400 sm:pb-8">
-          {founder.standardLine}
-        </p>
+        <div className="relative mx-auto grid w-full max-w-7xl items-end gap-10 px-5 pt-16 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:pt-20">
+          <div className="flex flex-col gap-6 pb-4 lg:pb-20">
+            <Eyebrow>Meet our founder</Eyebrow>
+
+            <h1 className="text-6xl leading-[0.86] sm:text-7xl lg:text-[5.25rem]">
+              Coach
+              <span className="block text-gold-500">Leo</span>
+            </h1>
+
+            <p className="max-w-xl text-xl leading-relaxed text-silver-200 lg:text-2xl">
+              {founder.coaching.lede}
+            </p>
+
+            <p className="font-display text-sm font-bold uppercase tracking-[0.22em] text-electric-400">
+              {founder.headline}{" "}
+              <span className="text-silver-500">{founder.tagline}</span>
+            </p>
+          </div>
+
+          {/* Portrait bleeds down into the section below it. */}
+          <Photo
+            photo={photos.coachLeo}
+            className="aspect-[4/5] w-full lg:-mb-16"
+            sizes="(min-width: 1024px) 46vw, 100vw"
+            priority
+          />
+        </div>
       </section>
 
-      {/* Story */}
-      <Section tone="darker">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+      {/* ------------------------------------------------------------------ */}
+      {/*  Developing players — the focus of the page                         */}
+      {/* ------------------------------------------------------------------ */}
+      <Section tone="darker" className="lg:pt-32">
+        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <Reveal>
-            <Photo
-              photo={photos.coachLeo}
-              className="aspect-[4/5] w-full lg:sticky lg:top-28"
-              sizes="(min-width: 1024px) 38vw, 100vw"
-              priority
+            <SectionHeading
+              eyebrow="The work"
+              title={
+                <>
+                  Developing
+                  <br />
+                  players
+                </>
+              }
             />
           </Reveal>
 
           <div className="flex flex-col gap-6">
-            {founder.story.map((paragraph, i) => (
-              <Reveal key={i} delay={i * 70}>
+            {founder.coaching.body.map((paragraph, i) => (
+              <Reveal key={i} delay={i * 80}>
                 <p
                   className={
                     i === 0
@@ -74,116 +84,118 @@ export default function About() {
               </Reveal>
             ))}
 
-            <Reveal delay={240}>
-              <figure className="my-2 border-l-2 border-gold-500 pl-6">
-                <Quote className="mb-3 h-6 w-6 text-gold-500" aria-hidden />
-                <blockquote className="font-display text-2xl font-bold uppercase italic leading-tight text-white sm:text-3xl">
-                  “{founder.quote.text}”
-                </blockquote>
-                <figcaption className="mt-3 font-display text-xs font-bold uppercase tracking-[0.2em] text-silver-500">
-                  — {founder.quote.source}
-                </figcaption>
-              </figure>
-            </Reveal>
-
-            {founder.storyAfterQuote.map((paragraph, i) => (
-              <Reveal key={i} delay={i * 70}>
-                <p className="text-lg leading-relaxed text-silver-400">
-                  {paragraph}
-                </p>
+            {/* Renders only once the club supplies a real coaching record. */}
+            {founder.coaching.proof.length > 0 ? (
+              <Reveal delay={160}>
+                <dl className="mt-4 grid grid-cols-2 gap-px overflow-hidden border border-white/10 bg-white/10 sm:grid-cols-4">
+                  {founder.coaching.proof.map((item) => (
+                    <div
+                      key={item.label}
+                      className="flex flex-col gap-1 bg-navy-900 p-5"
+                    >
+                      <dd className="font-display text-3xl font-extrabold italic leading-none text-gold-500">
+                        {item.value}
+                      </dd>
+                      <dt className="text-xs uppercase tracking-wider text-silver-500">
+                        {item.label}
+                      </dt>
+                    </div>
+                  ))}
+                </dl>
               </Reveal>
-            ))}
+            ) : null}
           </div>
         </div>
+
+        {/* The standard, as editorial rows rather than cards. */}
+        <ul className="mt-16 flex flex-col border-t border-white/10">
+          {founder.standard.map((item, i) => (
+            <Reveal key={item.title} delay={i * 70}>
+              <li className="grid gap-3 border-b border-white/10 py-7 lg:grid-cols-[5rem_1fr_1.3fr] lg:items-baseline lg:gap-8">
+                <span
+                  aria-hidden
+                  className="font-display text-2xl font-extrabold italic leading-none text-electric-500/50"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="text-2xl">{item.title}</h3>
+                <p className="leading-relaxed text-silver-400">{item.body}</p>
+              </li>
+            </Reveal>
+          ))}
+        </ul>
       </Section>
 
-      {/* Photo break */}
-      <Reveal>
-        <Photo
-          photo={photos.celebrationCoach}
-          className="aspect-[21/9] w-full"
-          sizes="100vw"
-        />
-      </Reveal>
-
-      {/* Honors & records */}
-      <Section tone="dark" className="pitch-lines">
-        <Reveal>
-          <SectionHeading eyebrow="Honors & Records" title="The résumé" />
-        </Reveal>
-
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+      {/* ------------------------------------------------------------------ */}
+      {/*  Playing career — credential, kept deliberately brief               */}
+      {/* ------------------------------------------------------------------ */}
+      <section className="relative overflow-hidden bg-navy-900 px-5 py-20 pitch-lines sm:px-8 lg:py-24">
+        <div className="mx-auto grid w-full max-w-7xl gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
           <Reveal>
-            <ul className="flex flex-col divide-y divide-white/10">
-              {founder.honors.map((honor) => (
-                <li
-                  key={honor}
-                  className="flex items-start gap-3.5 py-4 first:pt-0"
-                >
-                  <Trophy
-                    className="mt-0.5 h-4 w-4 shrink-0 text-gold-500"
-                    aria-hidden
-                  />
-                  <span className="text-silver-200">{honor}</span>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <Eyebrow>Before all that</Eyebrow>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-silver-300">
+                {founder.playing.summary}
+              </p>
+              <p className="mt-4 max-w-2xl text-lg leading-relaxed text-silver-500">
+                {founder.playing.closer}
+              </p>
+
+              <ul className="mt-8 flex flex-wrap gap-2">
+                {founder.honors.map((honor) => (
+                  <li
+                    key={honor}
+                    className="rounded-full bg-white/5 px-3.5 py-1.5 text-xs text-silver-400 ring-1 ring-inset ring-white/10"
+                  >
+                    {honor}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="border border-white/10 bg-navy-850 p-7">
-              <h3 className="font-display text-sm font-bold uppercase tracking-[0.24em] text-electric-400">
-                Mariner High School records
-              </h3>
-              <dl className="mt-6 flex flex-col divide-y divide-white/10">
+            <div>
+              <dl className="grid grid-cols-2 gap-px overflow-hidden bg-white/10 ring-1 ring-white/10">
                 {founder.records.map((record) => (
                   <div
                     key={record.label}
-                    className="flex items-baseline justify-between gap-4 py-3 first:pt-0"
+                    className="flex flex-col gap-1 bg-navy-850 p-6"
                   >
-                    <dt className="text-sm text-silver-400">{record.label}</dt>
-                    <dd className="font-display text-2xl font-extrabold italic leading-none text-gold-500">
+                    <dd className="font-display text-3xl font-extrabold italic leading-none text-gold-500">
                       {record.value}
                     </dd>
+                    <dt className="text-xs uppercase tracking-wider text-silver-500">
+                      {record.label}
+                    </dt>
                   </div>
                 ))}
               </dl>
+              <p className="mt-3 text-xs uppercase tracking-wider text-silver-500">
+                Mariner High School records
+              </p>
             </div>
           </Reveal>
         </div>
-      </Section>
+      </section>
 
-      {/* The standard */}
-      <Section tone="darker">
-        <Reveal>
-          <SectionHeading
-            eyebrow="The Standard"
-            title="What that means for your son"
-            lede="Leo has gone from local player to state championship contender to Division I athlete. The academy is built to give Southwest Florida players the same path."
-          />
-        </Reveal>
-
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
-          {founder.standard.map((item, i) => (
-            <Reveal key={item.title} delay={i * 80}>
-              <article className="h-full border-l-2 border-electric-500 bg-navy-900 p-7">
-                <h3 className="text-2xl">{item.title}</h3>
-                <p className="mt-2.5 leading-relaxed text-silver-400">
-                  {item.body}
-                </p>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      {/* Closing quote */}
-      <section className="relative overflow-hidden bg-navy-900 px-5 py-24 sm:px-8">
+      {/* ------------------------------------------------------------------ */}
+      {/*  Closing quote over a photo                                         */}
+      {/* ------------------------------------------------------------------ */}
+      <section className="relative isolate overflow-hidden">
+        <Photo
+          photo={photos.celebrationCoach}
+          className="absolute inset-0 -z-10 h-full w-full"
+          sizes="100vw"
+          imgClassName="object-[50%_35%]"
+        />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_100%_at_50%_0%,rgba(253,200,47,0.12),transparent_65%)]"
+          className="absolute inset-0 -z-10 bg-gradient-to-t from-navy-950 via-navy-950/90 to-navy-950/70"
         />
-        <Reveal className="relative mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
+
+        <Reveal className="mx-auto flex max-w-3xl flex-col items-center gap-6 px-5 py-28 text-center sm:px-8 lg:py-36">
+          <Quote className="h-7 w-7 text-gold-500" aria-hidden />
           <blockquote className="text-4xl leading-[1.05] text-white sm:text-5xl">
             “{founder.closing.text}”
           </blockquote>
