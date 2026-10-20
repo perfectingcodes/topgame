@@ -72,12 +72,32 @@ never for something you're publishing.
 
 ### Required (the build blocks on these)
 
+- [ ] **Media releases for the team photos.** `public/photos/` shows
+      identifiable minors. Set `mediaReleasesOnFile` to `true` in
+      [`src/data/site.ts`](src/data/site.ts) only once a signed release is on
+      file for every player visible, then delete the tag on that line. The build
+      blocks until you do — deliberately.
+
 - [ ] Email, phone, and street address
 - [ ] Production domain (`club.url`) — also used for canonical URLs and sitemap
 - [ ] Instagram and Facebook URLs
 - [ ] Team birth years, confirmed against the current seasonal year
 - [ ] Roster sizes for both squads
 - [ ] Season fee, and what it covers (also referenced in the FAQ)
+
+### Photography
+
+Four club photos live in `public/photos/`, each with a 640px `-sm` variant for
+mobile. All metadata was stripped on import (none carried GPS, but it's stripped
+regardless).
+
+Alt text describes the action rather than naming a squad on purpose: two of the
+four were shot under another club's tent at a tournament, so captioning them as
+a specific Top Game team would be a guess. If you can tell me which squad is in
+which photo, the captions can be made specific.
+
+To add more photos, drop them in and mirror the existing naming — `name.jpg`
+plus `name-sm.jpg` — then add an entry to `photos` in `src/data/site.ts`.
 
 ### Optional
 

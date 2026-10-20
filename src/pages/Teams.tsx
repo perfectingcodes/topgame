@@ -3,7 +3,8 @@ import { ArrowRight, Users } from "lucide-react";
 
 import PageHero from "@/components/PageHero";
 import { Badge, Button, Reveal, Section } from "@/components/ui";
-import { coaches, teams } from "@/data/site";
+import Photo from "@/components/Photo";
+import { coaches, photos, teams } from "@/data/site";
 import { cn } from "@/lib/cn";
 
 export default function Teams() {
@@ -19,6 +20,12 @@ export default function Teams() {
           </>
         }
         lede="Both squads train three times a week. Same curriculum, scaled to the age group."
+      />
+
+      <Photo
+        photo={photos.attack}
+        className="aspect-[21/9] w-full"
+        sizes="100vw"
       />
 
       <Section tone="darker">

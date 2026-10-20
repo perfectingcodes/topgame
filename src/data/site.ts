@@ -180,6 +180,57 @@ export const faqs = [
 ] as const;
 
 /* -------------------------------------------------------------------------- */
+/*  Photography                                                                */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Club photos, supplied by the club. Each has a 640px `-sm` variant alongside
+ * it for mobile; all metadata was stripped on import.
+ *
+ * ⚠️ These show identifiable minors. Make sure a signed media release is on
+ * file for every player visible before this site goes live — see the README.
+ *
+ * Alt text deliberately describes the action rather than naming a squad: two
+ * of the four were shot under another club's tent at a tournament, so captioning
+ * them as a specific Top Game team would be a guess.
+ */
+export type Photo = { src: string; alt: string };
+
+/**
+ * Set true only once a signed media release is on file for every player
+ * identifiable in `photos`. This gates publishing deliberately: these are
+ * images of minors, and that consent is the club's to obtain, not something
+ * a website build should assume.
+ */
+export const mediaReleasesOnFile = false; // PLACEHOLDER: confirm releases before launch
+
+export const photos = {
+  attack: {
+    src: "/photos/attack",
+    alt: "Academy players in white driving forward with the ball at a tournament",
+  },
+  duel: {
+    src: "/photos/duel",
+    alt: "Two players shoulder to shoulder competing for the ball",
+  },
+  celebrationCoach: {
+    src: "/photos/celebration-coach",
+    alt: "A coach applauding as players celebrate a goal",
+  },
+  celebrationTeam: {
+    src: "/photos/celebration-team",
+    alt: "Teammates running together to celebrate a goal",
+  },
+} as const satisfies Record<string, Photo>;
+
+export const photoReel: Photo[] = [
+  photos.celebrationTeam,
+  photos.attack,
+  photos.celebrationCoach,
+  photos.duel,
+];
+
+/* -------------------------------------------------------------------------- */
 /*  Founder                                                                    */
 /* -------------------------------------------------------------------------- */
 
@@ -335,12 +386,21 @@ export const pathway = {
 
 export type Sponsor = {
   name: string;
-  tier: "headline" | "club" | "community";
-  note: string;
+  /** Omit until the club confirms a level — don't guess one. */
+  tier?: "headline" | "club" | "community";
+  note?: string;
+  logo?: string;
+  url?: string;
 };
 
-/** Empty until real partners sign on — the page shows a "be the first" state. */
-export const sponsors: Sponsor[] = [];
+export const sponsors: Sponsor[] = [
+  {
+    name: "Elevate Home Services",
+    note: "AC · Heat · Plumbing · Electric",
+    logo: "/brand/sponsors/elevate-home-services.png",
+    // TODO: add the sponsor's website once confirmed, and a `tier` if one applies.
+  },
+];
 
 export const sponsorTiers = [
   {

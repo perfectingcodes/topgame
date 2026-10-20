@@ -49,21 +49,38 @@ export default function Sponsors() {
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {sponsors.map((sponsor, i) => (
             <Reveal key={sponsor.name} delay={i * 60}>
-              {/* TODO: swap the wordmark for a real logo in public/brand/sponsors/ */}
               <li
                 className={cn(
-                  "flex h-full flex-col justify-center gap-2 border bg-navy-900 p-7 text-center",
+                  "flex h-full flex-col items-center justify-center gap-4 border bg-navy-900 p-7 text-center",
                   sponsor.tier === "headline"
                     ? "border-gold-500/50"
                     : "border-white/10",
                 )}
               >
-                <p className="font-display text-2xl font-extrabold uppercase italic text-white">
-                  {sponsor.name}
-                </p>
-                <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-silver-500">
-                  {TIER_LABEL[sponsor.tier]} · {sponsor.note}
-                </p>
+                {sponsor.logo ? (
+                  // The mark is purple on white, so it keeps a light card rather
+                  // than being knocked out against the navy.
+                  <span className="flex w-full items-center justify-center rounded bg-white px-5 py-4">
+                    <img
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      loading="lazy"
+                      className="h-14 w-auto object-contain"
+                    />
+                  </span>
+                ) : (
+                  <p className="font-display text-2xl font-extrabold uppercase italic text-white">
+                    {sponsor.name}
+                  </p>
+                )}
+
+                {sponsor.tier || sponsor.note ? (
+                  <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-silver-500">
+                    {[sponsor.tier && TIER_LABEL[sponsor.tier], sponsor.note]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </p>
+                ) : null}
               </li>
             </Reveal>
           ))}

@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 
 import { Crest } from "@/components/Logo";
+import Photo from "@/components/Photo";
 import {
   Badge,
   Button,
@@ -18,7 +19,7 @@ import {
   Section,
   SectionHeading,
 } from "@/components/ui";
-import { club, pillars, stats, teams } from "@/data/site";
+import { club, photoReel, pillars, stats, teams } from "@/data/site";
 import { cn } from "@/lib/cn";
 
 const PILLAR_ICONS = {
@@ -177,6 +178,26 @@ export default function Home() {
           })}
         </div>
       </Section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/*  Photo reel                                                         */}
+      {/* ------------------------------------------------------------------ */}
+      <section aria-label="The academy on match day" className="bg-navy-950">
+        <ul className="grid grid-cols-2 gap-1 lg:grid-cols-4">
+          {photoReel.map((photo, i) => (
+            <li key={photo.src} className="aspect-[4/3]">
+              <Photo
+                photo={photo}
+                className="h-full"
+                sizes="(min-width: 1024px) 25vw, 50vw"
+                imgClassName={
+                  i % 2 === 0 ? "object-center" : "object-[50%_35%]"
+                }
+              />
+            </li>
+          ))}
+        </ul>
+      </section>
 
       {/* ------------------------------------------------------------------ */}
       {/*  Teams                                                              */}

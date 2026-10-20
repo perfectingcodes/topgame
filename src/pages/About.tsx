@@ -2,7 +2,8 @@ import { Trophy, Quote } from "lucide-react";
 
 import PageHero from "@/components/PageHero";
 import { Button, Reveal, Section, SectionHeading } from "@/components/ui";
-import { founder } from "@/data/site";
+import Photo from "@/components/Photo";
+import { founder, photos } from "@/data/site";
 
 export default function About() {
   return (
@@ -84,6 +85,15 @@ export default function About() {
           ))}
         </div>
       </Section>
+
+      {/* Photo break */}
+      <Reveal>
+        <Photo
+          photo={photos.celebrationCoach}
+          className="aspect-[21/9] w-full"
+          sizes="100vw"
+        />
+      </Reveal>
 
       {/* Honors & records */}
       <Section tone="dark" className="pitch-lines">

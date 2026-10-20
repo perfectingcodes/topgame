@@ -9,7 +9,8 @@ import {
   Section,
   SectionHeading,
 } from "@/components/ui";
-import { club, faqs, tryouts, teams } from "@/data/site";
+import Photo from "@/components/Photo";
+import { club, faqs, photos, tryouts, teams } from "@/data/site";
 import { cn, formatDate } from "@/lib/cn";
 
 export default function Tryouts() {
@@ -84,6 +85,13 @@ export default function Tryouts() {
           })}
         </ul>
       </Section>
+
+      <Photo
+        photo={photos.duel}
+        className="aspect-[21/9] w-full"
+        sizes="100vw"
+        imgClassName="object-[50%_40%]"
+      />
 
       {/* Bring + evaluation */}
       <Section tone="dark" className="pitch-lines">
