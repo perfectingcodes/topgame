@@ -60,27 +60,57 @@ retina screen. If the club has the original vector (AI/EPS/SVG) or a PNG of
 pnpm brand path/to/higher-res-crest.png
 ```
 
-## Before launch — replace the placeholder content
+## Before publishing
 
-All club content lives in **`src/data/site.ts`**. The values below are invented
-scaffolding so the site renders complete; search the file for `TODO`.
+`pnpm build` **fails** while any `PLACEHOLDER` tag remains in
+[`src/data/site.ts`](src/data/site.ts). Run `pnpm check` on its own to list
+what's outstanding. Replace the value, delete the tag on that line, rebuild.
 
-- [ ] Phone, email, and street address (`club`)
-- [ ] Founding year and production domain (`club.founded`, `club.url`)
-- [ ] Instagram / Facebook URLs (`club.social`)
-- [ ] Real coaching staff — names, roles, licences, bios (`coaches`)
-- [ ] Team birth years and leagues (`teams`)
-- [ ] Training days, times, and field assignments (`teams[].trainingDays`)
-      — training times live on the Teams pages; there is no fixture list
-- [ ] Tryout dates, tryout fee, and season fee (`tryouts`)
-- [ ] College Pathway details — confirm the four components match what the club
-      actually delivers (`pathway`)
-- [ ] Real sponsors and package pricing (`sponsors`, `sponsorTiers`); add logo
-      files to `public/brand/sponsors/` if you want marks instead of wordmarks
-- [ ] Real tournament reports (`articles`)
-- [ ] Confirm the FAQ answers are accurate — especially travel expectations and
-      whether financial assistance is genuinely offered (`faqs`)
-- [ ] Supply a higher-resolution or vector version of the crest (see above)
+That guard exists so invented contact details can't reach a live site by
+accident. `SKIP_CONTENT_CHECK=1 pnpm build` bypasses it for a local preview —
+never for something you're publishing.
+
+### Required (the build blocks on these)
+
+- [ ] Email, phone, and street address
+- [ ] Production domain (`club.url`) — also used for canonical URLs and sitemap
+- [ ] Instagram and Facebook URLs
+- [ ] Team birth years, confirmed against the current seasonal year
+- [ ] Roster sizes for both squads
+- [ ] Season fee, and what it covers (also referenced in the FAQ)
+
+### Optional
+
+- [ ] `club.founded` — the footer hides "Est." until this is set
+- [ ] Real sponsors (`sponsors`) — the page shows a "be our first partner" state
+      while the list is empty
+- [ ] Tournament reports (`articles`) — the page shows a "first reports coming"
+      state while empty
+- [ ] Tryout dates (`tryouts.sessions`) — the page invites families to register
+      interest while empty
+- [ ] Additional coaching staff (`coaches`)
+- [ ] Coaching licences — `coaches[].licenses` currently lists Coach Leo's
+      *playing* credentials. Add real USSF / United Soccer Coaches licences when
+      confirmed, and don't claim any that aren't held.
+- [ ] A higher-resolution or vector crest (see above)
+
+### What was removed rather than left as filler
+
+Earlier drafts contained invented sponsors, match reports, fixtures and
+coaching staff. Publishing those would have misrepresented the club, so they
+were deleted rather than shipped as placeholder text. The pages that displayed
+them now render honest empty states instead.
+
+### Founder content
+
+Coach Leo's record on the About page is real information supplied by the club —
+it is **not** placeholder text, so don't edit the achievements casually. Two
+things are worth confirming before launch:
+
+- The award years. The story has the Gatorade award in his junior year and Mr.
+  Soccer as a senior, while the honours list dates Gatorade to 2019.
+- The high school coach's quote is currently unattributed. An attributed quote
+  carries far more weight — name the coach if you have permission.
 
 ### Naming players
 

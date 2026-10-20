@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 
 import PageHero from "@/components/PageHero";
-import { Badge, Reveal, Section } from "@/components/ui";
+import { Badge, Button, Reveal, Section } from "@/components/ui";
 import { articles, teams } from "@/data/site";
 import { formatDate } from "@/lib/cn";
 
@@ -29,6 +29,21 @@ export default function News() {
       />
 
       <Section tone="darker">
+        {sorted.length === 0 ? (
+          <Reveal>
+            <div className="border border-white/10 bg-navy-900 p-10 text-center">
+              <h2 className="text-3xl">First reports coming soon</h2>
+              <p className="mx-auto mt-3 max-w-md leading-relaxed text-silver-400">
+                We write these up after each tournament. Check back once the
+                squads have played their opening weekends.
+              </p>
+              <Button href="/tryouts" className="mt-7">
+                Try Out
+              </Button>
+            </div>
+          </Reveal>
+        ) : null}
+
         <ul className="flex flex-col gap-4">
           {sorted.map((article, i) => (
             <Reveal key={article.slug} delay={i * 80}>

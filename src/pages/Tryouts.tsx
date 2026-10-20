@@ -16,7 +16,7 @@ export default function Tryouts() {
   return (
     <>
       <PageHero
-        eyebrow={tryouts.window}
+        eyebrow="Tryouts"
         title={
           <>
             Earn your
@@ -26,10 +26,7 @@ export default function Tryouts() {
         }
         lede="Open to U12 and U14 boys from any club, or none."
       >
-        <div className="flex flex-wrap gap-3">
-          <Badge tone="flare">{tryouts.fee}</Badge>
-          <Badge tone="muted">All skill levels evaluated</Badge>
-        </div>
+        <Badge tone="muted">All skill levels evaluated</Badge>
       </PageHero>
 
       {/* Sessions */}
@@ -38,7 +35,11 @@ export default function Tryouts() {
           <SectionHeading
             eyebrow="Dates"
             title="Tryout sessions"
-            lede="Two looks per age group. Attend both if you can."
+            lede={
+              tryouts.sessions.length
+                ? "Two looks per age group. Attend both if you can."
+                : "Dates for the next tryout are being finalised. Register your interest below and we'll email you as soon as they're set."
+            }
           />
         </Reveal>
 
@@ -139,12 +140,6 @@ export default function Tryouts() {
                 lede="Send us your details and we'll confirm your slot."
               />
               <div className="mt-8 flex flex-col gap-3 text-sm text-silver-400">
-                <p>
-                  <span className="font-display uppercase tracking-[0.18em] text-gold-400">
-                    Tryout cost:
-                  </span>{" "}
-                  {tryouts.fee}
-                </p>
                 <p>
                   <span className="font-display uppercase tracking-[0.18em] text-gold-400">
                     Season fee:

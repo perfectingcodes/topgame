@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Instagram, Facebook, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Facebook } from "lucide-react";
 
 import PageHero from "@/components/PageHero";
 import { Button, Reveal, Section, SectionHeading } from "@/components/ui";
-import { club, teams } from "@/data/site";
+import { club } from "@/data/site";
 import { cn } from "@/lib/cn";
 
 const FIELD =
@@ -94,34 +94,6 @@ export default function Contact() {
                       </address>
                     </span>
                   </li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="font-display text-sm font-bold uppercase tracking-[0.24em] text-gold-400">
-                  Find us on the pitch
-                </h3>
-                <ul className="mt-5 flex flex-col gap-3">
-                  {teams.map((team) => (
-                    <li
-                      key={team.slug}
-                      className="flex items-start gap-3 text-sm text-silver-300"
-                    >
-                      <Clock
-                        className="mt-0.5 h-4 w-4 shrink-0 text-silver-500"
-                        aria-hidden
-                      />
-                      <span>
-                        <span className="font-semibold text-white">
-                          {team.name}
-                        </span>{" "}
-                        —{" "}
-                        {team.trainingDays
-                          .map((d) => d.day.slice(0, 3))
-                          .join(", ")}
-                      </span>
-                    </li>
-                  ))}
                 </ul>
               </div>
 

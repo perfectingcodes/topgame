@@ -1,5 +1,5 @@
 import { Link, useRoute } from "wouter";
-import { Clock, MapPin, Users, ArrowLeft } from "lucide-react";
+import { Users, ArrowLeft } from "lucide-react";
 
 import PageHero from "@/components/PageHero";
 import {
@@ -20,15 +20,13 @@ export default function TeamDetail() {
   if (!team) return <NotFound />;
 
   const coach = coaches.find((c) => c.id === team.coachId);
-  const keeperCoach = coaches.find((c) => c.id === "keeper");
-  const director = coaches.find((c) => c.id === "director");
   const isElectric = team.accent === "electric";
   const accentText = isElectric ? "text-electric-400" : "text-gold-400";
 
   return (
     <>
       <PageHero
-        eyebrow={`${team.league}`}
+        eyebrow="Our Teams"
         title={
           <>
             {team.name}
@@ -43,108 +41,61 @@ export default function TeamDetail() {
         </Badge>
       </PageHero>
 
-      {/* Training + staff */}
+      {/* Focus + coach */}
       <Section tone="darker">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-          <div>
-            <Reveal>
-              <SectionHeading eyebrow="Weekly Rhythm" title="Training" />
-            </Reveal>
-
-            <ul className="mt-10 flex flex-col gap-4">
-              {team.trainingDays.map((session, i) => (
-                <Reveal key={session.day} delay={i * 80}>
-                  <li className="flex flex-wrap items-center gap-x-8 gap-y-3 border border-white/10 bg-navy-900 p-6">
-                    <p
-                      className={cn(
-                        "w-28 font-display text-2xl font-extrabold uppercase italic",
-                        accentText,
-                      )}
-                    >
-                      {session.day}
-                    </p>
-                    <p className="flex items-center gap-2 font-semibold text-white">
-                      <Clock className="h-4 w-4 text-silver-500" aria-hidden />
-                      {session.time}
-                    </p>
-                    <p className="flex items-center gap-2 text-sm text-silver-400">
-                      <MapPin
-                        className="h-4 w-4 shrink-0 text-silver-500"
-                        aria-hidden
-                      />
-                      {session.location}
-                    </p>
-                  </li>
-                </Reveal>
+          <Reveal>
+            <SectionHeading
+              eyebrow="Season Focus"
+              title="What we're working on"
+            />
+            <ul className="mt-10 grid gap-3 sm:grid-cols-2">
+              {team.focus.map((f) => (
+                <li
+                  key={f}
+                  className="border-l-2 border-white/15 py-1 pl-4 text-silver-300"
+                >
+                  {f}
+                </li>
               ))}
             </ul>
+          </Reveal>
 
-            <Reveal delay={120}>
-              <div className="mt-10">
-                <h3 className="font-display text-sm font-bold uppercase tracking-[0.24em] text-gold-400">
-                  What we're working on
-                </h3>
-                <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-                  {team.focus.map((f) => (
-                    <li
-                      key={f}
-                      className="flex items-start gap-3 border-l-2 border-white/15 py-1 pl-4 text-silver-300"
-                    >
-                      {f}
-                    </li>
-                  ))}
-                </ul>
+          {coach ? (
+            <Reveal delay={100}>
+              <div className="border border-white/10 bg-navy-850 p-8">
+                <h2 className="font-display text-sm font-bold uppercase tracking-[0.24em] text-electric-400">
+                  Coached by
+                </h2>
+                <div className="mt-6 flex gap-4">
+                  <span
+                    className={cn(
+                      "flex h-14 w-14 shrink-0 items-center justify-center font-display text-lg font-extrabold italic",
+                      isElectric
+                        ? "bg-electric-500 text-navy-950"
+                        : "bg-gold-500 text-navy-950",
+                    )}
+                  >
+                    {coach.initials}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-display text-xl font-bold uppercase italic text-white">
+                      {coach.name}
+                    </p>
+                    <p className="text-xs uppercase tracking-wider text-silver-500">
+                      {coach.role}
+                    </p>
+                  </div>
+                </div>
+                <p className="mt-5 leading-relaxed text-silver-400">
+                  {coach.bio}
+                </p>
+                <Button href="/about" variant="ghost" className="mt-7 w-full">
+                  His Story
+                </Button>
               </div>
             </Reveal>
-          </div>
-
-          {/* Staff */}
-          <Reveal delay={100}>
-            <div className="border border-white/10 bg-navy-850 p-8">
-              <h3 className="font-display text-sm font-bold uppercase tracking-[0.24em] text-electric-400">
-                Team Staff
-              </h3>
-
-              <ul className="mt-6 flex flex-col divide-y divide-white/10">
-                {[coach, keeperCoach, director]
-                  .filter(Boolean)
-                  .map((person) => (
-                    <li
-                      key={person!.id}
-                      className="flex gap-4 py-5 first:pt-0 last:pb-0"
-                    >
-                      <span
-                        className={cn(
-                          "flex h-12 w-12 shrink-0 items-center justify-center font-display text-base font-extrabold italic",
-                          person!.id === team.coachId
-                            ? isElectric
-                              ? "bg-electric-500 text-navy-950"
-                              : "bg-gold-500 text-navy-950"
-                            : "bg-white/10 text-white",
-                        )}
-                      >
-                        {person!.initials}
-                      </span>
-                      <div className="min-w-0">
-                        <p className="font-semibold text-white">
-                          {person!.name}
-                        </p>
-                        <p className="text-xs uppercase tracking-wider text-silver-500">
-                          {person!.role}
-                        </p>
-                        <p className="mt-2 text-sm leading-relaxed text-silver-400">
-                          {person!.bio}
-                        </p>
-                      </div>
-                    </li>
-                  ))}
-              </ul>
-
-              <Button href="/coaches" variant="ghost" className="mt-7 w-full">
-                All Coaches
-              </Button>
-            </div>
-          </Reveal>
+          ) : null}
         </div>
       </Section>
 

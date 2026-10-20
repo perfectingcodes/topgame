@@ -61,8 +61,8 @@ export default function Home() {
             </h1>
 
             <p className="max-w-xl text-lg leading-relaxed text-silver-300 lg:text-xl">
-              A development-first boys soccer club in {club.city}. Two squads,
-              three sessions a week, and coaches who know every player by name.
+              A development-first boys soccer club in {club.city}, founded and
+              coached by Florida's Mr. Soccer.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -76,7 +76,7 @@ export default function Home() {
 
             <p className="flex items-center gap-2 text-sm text-silver-500">
               <CalendarDays className="h-4 w-4 text-electric-500" aria-hidden />
-              Training year-round at the {club.address.line1}
+              Training year-round in {club.city}
             </p>
           </div>
 
@@ -290,8 +290,7 @@ export default function Home() {
             <span className="text-gold-500">We'll bring the level.</span>
           </h2>
           <p className="max-w-xl text-lg leading-relaxed text-silver-300">
-            Open tryouts for U12 and U14 boys. No prior academy experience
-            required.
+            Open to U12 and U14 boys. No prior academy experience required.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button href="/tryouts" size="lg">

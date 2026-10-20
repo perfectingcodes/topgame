@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArrowRight, Clock, MapPin, Users } from "lucide-react";
+import { ArrowRight, Users } from "lucide-react";
 
 import PageHero from "@/components/PageHero";
 import { Badge, Button, Reveal, Section } from "@/components/ui";
@@ -54,9 +54,6 @@ export default function Teams() {
                         <h2 className="text-5xl leading-none lg:text-6xl">
                           {team.name}
                         </h2>
-                        <p className="mt-3 font-display text-sm font-semibold uppercase tracking-[0.18em] text-silver-500">
-                          {team.league}
-                        </p>
                       </div>
 
                       <p className="max-w-xl text-lg leading-relaxed text-silver-300">
@@ -105,43 +102,16 @@ export default function Teams() {
                       </Link>
                     </div>
 
-                    {/* Training card */}
-                    <div className="flex flex-col gap-5 border border-white/10 bg-navy-850 p-6">
-                      <h3 className="font-display text-sm font-bold uppercase tracking-[0.24em] text-electric-400">
-                        Weekly Training
-                      </h3>
-                      <ul className="flex flex-col divide-y divide-white/10">
-                        {team.trainingDays.map((session) => (
-                          <li
-                            key={session.day}
-                            className="flex flex-col gap-1 py-3 first:pt-0"
-                          >
-                            <p className="font-display text-lg font-bold uppercase italic text-white">
-                              {session.day}
-                            </p>
-                            <p className="flex items-center gap-2 text-sm text-silver-300">
-                              <Clock
-                                className="h-3.5 w-3.5 text-electric-500"
-                                aria-hidden
-                              />
-                              {session.time}
-                            </p>
-                            <p className="flex items-center gap-2 text-xs text-silver-500">
-                              <MapPin
-                                className="h-3.5 w-3.5 shrink-0"
-                                aria-hidden
-                              />
-                              {session.location}
-                            </p>
-                          </li>
-                        ))}
-                      </ul>
-
-                      {coach ? (
-                        <div className="mt-auto flex items-center gap-3 border-t border-white/10 pt-5">
+                    {/* Coach card */}
+                    {coach ? (
+                      <div className="flex flex-col justify-center gap-4 border border-white/10 bg-navy-850 p-7">
+                        <h3 className="font-display text-sm font-bold uppercase tracking-[0.24em] text-electric-400">
+                          Coached by
+                        </h3>
+                        <div className="flex items-center gap-4">
                           <span
                             className={cn(
-                              "flex h-11 w-11 shrink-0 items-center justify-center font-display text-sm font-extrabold italic",
+                              "flex h-14 w-14 shrink-0 items-center justify-center font-display text-lg font-extrabold italic",
                               isElectric
                                 ? "bg-electric-500 text-navy-950"
                                 : "bg-gold-500 text-navy-950",
@@ -150,16 +120,19 @@ export default function Teams() {
                             {coach.initials}
                           </span>
                           <div className="min-w-0">
-                            <p className="truncate font-semibold text-white">
+                            <p className="font-display text-xl font-bold uppercase italic text-white">
                               {coach.name}
                             </p>
-                            <p className="truncate text-xs text-silver-500">
+                            <p className="text-xs uppercase tracking-wider text-silver-500">
                               {coach.role}
                             </p>
                           </div>
                         </div>
-                      ) : null}
-                    </div>
+                        <p className="text-sm leading-relaxed text-silver-400">
+                          {coach.bio}
+                        </p>
+                      </div>
+                    ) : null}
                   </div>
                 </article>
               </Reveal>

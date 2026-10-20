@@ -11,12 +11,12 @@ export default function Coaches() {
         eyebrow="Coaching Staff"
         title={
           <>
-            Licensed coaches.
+            Who you'll
             <br />
-            <span className="text-electric-400">Named players.</span>
+            <span className="text-electric-400">work with</span>
           </>
         }
-        lede="Every session is led by a licensed, background-checked coach."
+        lede="Every session is led by a background-checked coach."
       />
 
       <Section tone="darker">

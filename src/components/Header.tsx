@@ -50,9 +50,11 @@ export default function Header() {
           href="/tryouts"
           className="font-display text-xs font-bold uppercase tracking-[0.18em] text-white hover:text-gold-300 sm:text-sm"
         >
-          <span className="sm:hidden">Tryouts open — U12 &amp; U14 boys →</span>
+          <span className="sm:hidden">
+            Now recruiting — U12 &amp; U14 boys →
+          </span>
           <span className="hidden sm:inline">
-            Tryouts are open for U12 &amp; U14 boys — claim your spot →
+            Now recruiting U12 &amp; U14 boys — register your interest →
           </span>
         </Link>
       </div>

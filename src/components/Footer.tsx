@@ -137,7 +137,8 @@ export default function Footer() {
             © {new Date().getFullYear()} {club.name}. All rights reserved.
           </p>
           <p className="font-display uppercase tracking-[0.2em]">
-            {club.city}, {club.state} · Est. {club.founded}
+            {club.city}, {club.state}
+            {club.founded ? ` · Est. ${club.founded}` : ""}
           </p>
         </div>
       </div>

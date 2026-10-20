@@ -1,8 +1,13 @@
 /**
  * Single source of truth for club content.
  *
- * ⚠️ PLACEHOLDERS: every value marked `TODO` below is invented scaffolding so
- * the site renders complete. Replace with the club's real details before launch.
+ * ⚠️ Every line tagged PLACEHOLDER is invented scaffolding, not real club data.
+ * `pnpm build` FAILS while any remain — delete the tag once you've put the real
+ * value in. See `pnpm check` and the launch checklist in the README.
+ *
+ * Anything NOT tagged is real information supplied by the club. Fabricated
+ * sponsors, match reports, staff and fixtures have been removed outright rather
+ * than left in as filler, because publishing them would misrepresent the club.
  */
 
 export const club = {
@@ -11,31 +16,30 @@ export const club = {
   tagline: "Boys soccer development in Cape Coral",
   city: "Cape Coral",
   state: "FL",
-  founded: 2019, // TODO: real founding year
-  url: "https://topgameacademy.com", // TODO: real domain
+  founded: null as number | null, // Optional — the footer hides "Est." until this is set
+  url: "https://topgameacademy.com", // PLACEHOLDER: real domain
 
-  // TODO: replace all contact details
-  email: "info@topgameacademy.com",
-  phone: "(239) 555-0147",
-  phoneHref: "+12395550147",
+  email: "info@topgameacademy.com", // PLACEHOLDER
+  phone: "(239) 555-0147", // PLACEHOLDER
+  phoneHref: "+12395550147", // PLACEHOLDER
   address: {
     line1: "Cape Coral Sports Complex",
-    line2: "1410 SW 6th Pl",
+    line2: "1410 SW 6th Pl", // PLACEHOLDER
     city: "Cape Coral",
     state: "FL",
     zip: "33991",
   },
   social: {
-    instagram: "https://instagram.com/topgameacademy",
-    facebook: "https://facebook.com/topgameacademy",
+    instagram: "https://instagram.com/topgameacademy", // PLACEHOLDER
+    facebook: "https://facebook.com/topgameacademy", // PLACEHOLDER
   },
 } as const;
 
 export const stats = [
   { value: "2", label: "Squads", detail: "U12 & U14 boys" },
-  { value: "3x", label: "Sessions a week", detail: "Year-round" },
-  { value: "1:9", label: "Coach to player", detail: "Small groups" },
-  { value: "100%", label: "Licensed staff", detail: "USSF credentialed" },
+  { value: "D-I", label: "Coaching", detail: "Navy, Division I" },
+  { value: "153", label: "Career goals", detail: "Founder's state record" },
+  { value: "1", label: "Standard", detail: "Outwork everyone" },
 ] as const;
 
 export const pillars = [
@@ -67,12 +71,10 @@ export type Team = {
   name: string;
   ageGroup: string;
   birthYears: string;
-  league: string;
   coachId: string;
   accent: "electric" | "gold";
   blurb: string;
   focus: string[];
-  trainingDays: { day: string; time: string; location: string }[];
   roster: { size: number; note: string };
 };
 
@@ -81,9 +83,8 @@ export const teams: Team[] = [
     slug: "u12-boys",
     name: "U12 Boys",
     ageGroup: "U12",
-    birthYears: "Born 2014–2015", // TODO: confirm against current seasonal year
-    league: "Florida Youth Soccer — Development Division", // TODO
-    coachId: "head-u12",
+    birthYears: "Born 2014–2015", // PLACEHOLDER: confirm against the current seasonal year
+    coachId: "leo",
     accent: "electric",
     blurb:
       "The foundation years, where technique becomes instinct. More minutes on the ball than any other group in the academy.",
@@ -93,20 +94,14 @@ export const teams: Team[] = [
       "Defending the first pass",
       "Playing out from the back",
     ],
-    trainingDays: [
-      { day: "Tuesday", time: "5:30 – 7:00 PM", location: "Field 3" },
-      { day: "Thursday", time: "5:30 – 7:00 PM", location: "Field 3" },
-      { day: "Saturday", time: "9:00 – 10:30 AM", location: "Field 1" },
-    ],
-    roster: { size: 14, note: "9v9 — 14 players" },
+    roster: { size: 14, note: "9v9" }, // PLACEHOLDER: roster size
   },
   {
     slug: "u14-boys",
     name: "U14 Boys",
     ageGroup: "U14",
-    birthYears: "Born 2012–2013", // TODO: confirm against current seasonal year
-    league: "Florida Youth Soccer — Competitive Division", // TODO
-    coachId: "head-u14",
+    birthYears: "Born 2012–2013", // PLACEHOLDER: confirm against the current seasonal year
+    coachId: "leo",
     accent: "gold",
     blurb:
       "The proving years. The full 11v11 game, where positional discipline decides results as much as talent.",
@@ -116,12 +111,7 @@ export const teams: Team[] = [
       "Set pieces, both ends",
       "Physical preparation",
     ],
-    trainingDays: [
-      { day: "Monday", time: "6:00 – 7:45 PM", location: "Field 2" },
-      { day: "Wednesday", time: "6:00 – 7:45 PM", location: "Field 2" },
-      { day: "Saturday", time: "10:45 AM – 12:15 PM", location: "Field 1" },
-    ],
-    roster: { size: 18, note: "11v11 — 18 players" },
+    roster: { size: 18, note: "11v11" }, // PLACEHOLDER: roster size
   },
 ];
 
@@ -134,71 +124,28 @@ export type Coach = {
   initials: string;
 };
 
-// TODO: replace with the club's actual staff, licenses, and bios.
+// TODO: add any additional staff. `licenses` below lists playing credentials,
+// not coaching licences — add real USSF/United Soccer Coaches licences when
+// confirmed, and don't claim any that aren't held.
 export const coaches: Coach[] = [
   {
-    id: "director",
-    name: "Coach Marcus Reyes",
-    role: "Technical Director",
-    licenses: ["USSF B License"],
-    bio: "Sets the curriculum across both age groups. Fifteen years coaching in Southwest Florida.",
-    initials: "MR",
-  },
-  {
-    id: "head-u12",
-    name: "Coach Danny Oliveira",
-    role: "Head Coach — U12 Boys",
-    licenses: ["USSF C License"],
-    bio: "Former collegiate midfielder. Runs sessions where nobody stands in a line.",
-    initials: "DO",
-  },
-  {
-    id: "head-u14",
-    name: "Coach Alex Whitfield",
-    role: "Head Coach — U14 Boys",
-    licenses: ["USSF C License"],
-    bio: "Leads the move to the full-sided game. Focused on game intelligence and set pieces.",
-    initials: "AW",
-  },
-  {
-    id: "keeper",
-    name: "Coach Priya Raman",
-    role: "Goalkeeping Coach",
-    licenses: ["USSF Goalkeeping L2"],
-    bio: "Dedicated keeper sessions for both squads — distribution, shot-stopping, commanding the box.",
-    initials: "PR",
+    id: "leo",
+    name: "Coach Leo Perez",
+    role: "Founder & Head Coach",
+    licenses: ["Division I — U.S. Naval Academy", "Florida Mr. Soccer"],
+    bio: "Southwest Florida's most prolific scorer, now coaching both squads. Built the academy around the standards that got him to Division I.",
+    initials: "LP",
   },
 ];
 
 export const tryouts = {
-  // TODO: confirm dates, pricing, and registration link
-  window: "Open tryouts — Summer 2026",
-  sessions: [
-    {
-      date: "2026-06-08",
-      time: "6:00 – 7:30 PM",
-      group: "U12 Boys",
-      location: "Field 3",
-    },
-    {
-      date: "2026-06-09",
-      time: "6:00 – 7:45 PM",
-      group: "U14 Boys",
-      location: "Field 2",
-    },
-    {
-      date: "2026-06-15",
-      time: "6:00 – 7:30 PM",
-      group: "U12 Boys — second look",
-      location: "Field 3",
-    },
-    {
-      date: "2026-06-16",
-      time: "6:00 – 7:45 PM",
-      group: "U14 Boys — second look",
-      location: "Field 2",
-    },
-  ],
+  /** Empty = dates not announced yet; the page shows a register-interest state. */
+  sessions: [] as {
+    date: string;
+    time: string;
+    group: string;
+    location: string;
+  }[],
   bring: [
     "Cleats, shin guards, a light and a dark shirt",
     "Two full water bottles",
@@ -214,8 +161,7 @@ export const tryouts = {
     { title: "Physical", body: "Movement quality and repeat sprint ability." },
     { title: "Character", body: "Coachability and response to mistakes." },
   ],
-  fee: "$0 to try out", // TODO
-  seasonFee: "$TBD per season", // TODO: real season fee + what it covers
+  seasonFee: "$TBD per season", // PLACEHOLDER: season fee and what it covers
 } as const;
 
 export const faqs = [
@@ -225,11 +171,7 @@ export const faqs = [
   },
   {
     q: "What does the season fee cover?",
-    a: "Coaching, field time, league registration, and referees. Kits are ordered separately. Ask us for the current fee schedule.", // TODO
-  },
-  {
-    q: "Do you offer financial assistance?",
-    a: "Yes — a limited scholarship fund, handled privately. Cost shouldn't decide who plays.", // TODO: confirm this is true
+    a: "Coaching, field time, and competition entry. Kits are ordered separately. Get in touch for the current fee schedule.", // PLACEHOLDER: confirm what the fee actually covers
   },
   {
     q: "What if my son misses tryouts?",
@@ -237,24 +179,93 @@ export const faqs = [
   },
 ] as const;
 
-export const values = [
-  {
-    title: "Development over trophies",
-    body: "A season is measured by how much better every player got.",
+/* -------------------------------------------------------------------------- */
+/*  Founder                                                                    */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Supplied by the club — real person, real record. Unlike the rest of this file
+ * these are NOT placeholders, so don't edit the achievements casually.
+ *
+ * TODO: confirm the award years. The text has the Gatorade award in his junior
+ * year and Mr. Soccer as a senior, while the honours list dates Gatorade to
+ * 2019 — worth checking both seasons line up before publishing.
+ */
+export const founder = {
+  name: "Leo Perez",
+  shortName: "Coach Leo",
+  role: "Founder & Head Coach",
+  initials: "LP",
+  headline:
+    "Florida's Mr. Soccer. Gatorade Player of the Year. Navy Division I.",
+  tagline: "Now he's building the next generation.",
+
+  line: [
+    { value: "153", label: "Goals" },
+    { value: "68", label: "Assists" },
+    { value: "1", label: "Standard" },
+  ],
+  standardLine: "Work harder than everyone else.",
+
+  story: [
+    "Before Leo Perez founded Top Game Academy, he was the most prolific scorer in Southwest Florida soccer history.",
+    "At Mariner High School in Cape Coral, Leo finished his career with a school-record 153 goals and 68 assists. In his junior year he scored 47 goals with 17 assists and 7 hat tricks, leading the Tritons to a 24-2-4 record. That season he became the first player in Mariner history named Gatorade Florida Boys Soccer Player of the Year, while carrying a 3.90 GPA.",
+    "Then he got better. As a senior, Leo exploded for 71 goals and 33 assists and led Mariner to its first-ever state championship match. He was named Florida's Mr. Soccer, the first Lee County athlete to win the award since it began in 1993.",
+  ],
+  storyAfterQuote: [
+    "Leo went on to play Division I soccer at the United States Naval Academy, where discipline, accountability and work ethic aren't just talked about. They're lived every day.",
+    "Now he's built an academy around those same standards.",
+  ],
+
+  // TODO: the club supplied this unattributed. Name the coach if you have
+  // permission — an attributed quote carries far more weight than an anonymous one.
+  quote: {
+    text: "Leo with the ball at his feet is unlike any other player I've coached in 26 years.",
+    source: "His high school coach",
   },
-  {
-    title: "The standard is the standard",
-    body: "Same expectations for U12 and U14 — on time, prepared, engaged.",
+
+  closing: {
+    text: "If you don't work hard, you're not going to get where you want to be.",
+    source: "Coach Leo",
   },
-  {
-    title: "Parents are partners",
-    body: "Honest evaluations and no politics. You'll always know where your son stands.",
-  },
-  {
-    title: "Cape Coral first",
-    body: "A local club, so the best players here don't need a two-hour round trip.",
-  },
-] as const;
+
+  honors: [
+    "2019 Gatorade Florida Boys Soccer Player of the Year",
+    "Florida Mr. Soccer (Florida Dairy Farmers)",
+    "2x All-American",
+    "3x SWFL News-Press Player of the Year",
+    "SWFL News-Press Athlete of the Year",
+    "Florida Class 3A and Class 4A Player of the Year",
+    "Division I Soccer, United States Naval Academy",
+  ],
+
+  records: [
+    { value: "153", label: "Career goals" },
+    { value: "71", label: "Goals in a season" },
+    { value: "6", label: "Goals in a game" },
+    { value: "15", label: "Hat tricks in a season" },
+    { value: "14", label: "Goals in one postseason" },
+  ],
+
+  standard: [
+    {
+      title: "Player development first",
+      body: "Elite technical skill, speed and game IQ, taught by someone who has played at the highest level.",
+    },
+    {
+      title: "A competitive environment",
+      body: "Training together and competing in tournaments across Florida.",
+    },
+    {
+      title: "Character and mindset",
+      body: "Discipline, accountability and confidence, on and off the field.",
+    },
+    {
+      title: "A pathway forward",
+      body: "Preparing players for high school, college and beyond.",
+    },
+  ],
+} as const;
 
 /* -------------------------------------------------------------------------- */
 /*  College Pathway                                                            */
@@ -328,21 +339,13 @@ export type Sponsor = {
   note: string;
 };
 
-// TODO: replace with the club's real sponsors — and add logo files to
-// public/brand/sponsors/ if you want marks instead of wordmarks.
-export const sponsors: Sponsor[] = [
-  { name: "Coastal Auto Group", tier: "headline", note: "Kit sponsor" },
-  { name: "Cape Physical Therapy", tier: "club", note: "Medical partner" },
-  { name: "Gulf Coast Dental", tier: "club", note: "Travel support" },
-  { name: "Pelican Pizza Co.", tier: "community", note: "Match-day partner" },
-  { name: "Riverside Realty", tier: "community", note: "Equipment fund" },
-  { name: "Bayview Landscaping", tier: "community", note: "Field maintenance" },
-];
+/** Empty until real partners sign on — the page shows a "be the first" state. */
+export const sponsors: Sponsor[] = [];
 
 export const sponsorTiers = [
   {
     name: "Headline",
-    price: "From $2,500 / season", // TODO
+    price: "Let's talk",
     items: [
       "Logo on both match kits",
       "Named on every fixture post",
@@ -352,7 +355,7 @@ export const sponsorTiers = [
   },
   {
     name: "Club",
-    price: "From $1,000 / season", // TODO
+    price: "Let's talk",
     items: [
       "Logo on training tops",
       "Quarterly social feature",
@@ -362,7 +365,7 @@ export const sponsorTiers = [
   },
   {
     name: "Community",
-    price: "From $250 / season", // TODO
+    price: "Let's talk",
     items: [
       "Logo on this site",
       "Match-day shout-out",
@@ -386,53 +389,11 @@ export type Article = {
 };
 
 /**
- * TODO: replace with real tournament write-ups.
+ * Empty until the club writes real reports — the page shows a "first reports
+ * coming" state.
  *
- * Note: these placeholders deliberately don't name individual players. Publishing
- * the full names of minors is a real consideration for a youth club — decide on a
- * policy (first names only, or parental consent) before writing real reports.
+ * When you do write them: decide a policy on naming players first. Publishing
+ * the full names of minors is a real consideration for a youth club (first
+ * names only, or written parental consent).
  */
-export const articles: Article[] = [
-  {
-    slug: "gulf-coast-cup-u14-semifinal",
-    title: "U14s reach Gulf Coast Cup semi-final",
-    date: "2026-08-30",
-    team: "u14-boys",
-    tournament: "Gulf Coast Cup",
-    excerpt:
-      "Four matches in two days, one shootout, and a squad that looked nothing like the group that started preseason.",
-    body: [
-      "The U14s went in as the least experienced side in their bracket and came out in the final four. That says more about the group's application than any single scoreline.",
-      "Saturday was about surviving the heat as much as the opposition. The shape held and both games were seen out without conceding late. Sunday's quarter-final went to penalties.",
-      "Three of the goals conceded across the weekend came from our own attacking transitions. Rest defence goes straight into the next training block.",
-    ],
-  },
-  {
-    slug: "sunshine-state-showcase-u12",
-    title: "U12s unbeaten at the Sunshine State Showcase",
-    date: "2026-08-16",
-    team: "u12-boys",
-    tournament: "Sunshine State Showcase",
-    excerpt:
-      "Three matches, no defeats, and the first real sign that playing out from the back is becoming instinct.",
-    body: [
-      "The instruction going in was simple: play out from the back every time, including when it's uncomfortable.",
-      "They did — and it cost a goal in the first match. It also produced the best twenty minutes this group has played, in the third.",
-      "Unbeaten is a nice line for a report. The more useful one is that nobody kicked it long when the game got hard.",
-    ],
-  },
-  {
-    slug: "preseason-friendlies-recap",
-    title: "What we learned from preseason",
-    date: "2026-07-26",
-    team: "club",
-    tournament: "Preseason friendlies",
-    excerpt:
-      "Six friendlies across both squads before a competitive ball was kicked.",
-    body: [
-      "Friendlies exist to find problems while they're still cheap. Three came up repeatedly.",
-      "Both groups defended the first pass well and the second pass poorly — the press triggered, then cover arrived late. U14 set-piece delivery needs dedicated time, not ten minutes tacked onto the end of a session.",
-      "Most encouraging: fitness was not the limiting factor in any of the six. In August, in Florida, that is not nothing.",
-    ],
-  },
-];
+export const articles: Article[] = [];

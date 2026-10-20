@@ -35,7 +35,15 @@ export default function Sponsors() {
       {/* Current sponsors */}
       <Section tone="darker">
         <Reveal>
-          <SectionHeading eyebrow="Thank You" title="Our sponsors" />
+          <SectionHeading
+            eyebrow={sponsors.length ? "Thank You" : "Open"}
+            title={sponsors.length ? "Our sponsors" : "Be our first partner"}
+            lede={
+              sponsors.length
+                ? undefined
+                : "We're a new academy and our sponsor board is empty. The first business on it gets the most visible spot we have."
+            }
+          />
         </Reveal>
 
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

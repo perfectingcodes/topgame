@@ -1,4 +1,4 @@
-import { articles, club, teams } from "./site";
+import { articles, club, founder, teams } from "./site";
 
 export type RouteMeta = {
   path: string;
@@ -13,12 +13,12 @@ export const routes: RouteMeta[] = [
   {
     path: "/",
     title: `${club.name} — Boys Soccer in Cape Coral, FL`,
-    description: `${club.name} develops U12 and U14 boys soccer players in Cape Coral, Florida. Year-round training, licensed coaches, and competitive league play.`,
+    description: `${club.name} develops U12 and U14 boys soccer players in Cape Coral, Florida. Founded and coached by ${founder.name}, Florida's Mr. Soccer.`,
   },
   {
     path: "/about",
-    title: `About the Academy | ${suffix}`,
-    description: `How ${club.name} trains, what we believe, and why we built a development-first boys soccer club in Cape Coral.`,
+    title: `Meet Coach Leo | ${suffix}`,
+    description: `${founder.name} — ${founder.headline} ${founder.tagline} The story behind ${club.name} in Cape Coral, Florida.`,
   },
   {
     path: "/teams",
@@ -53,7 +53,7 @@ export const routes: RouteMeta[] = [
   {
     path: "/coaches",
     title: `Coaching Staff | ${suffix}`,
-    description: `The licensed coaching staff behind ${club.name} in Cape Coral, Florida.`,
+    description: `The coaching staff behind ${club.name} in Cape Coral, Florida.`,
   },
   {
     path: "/tryouts",
