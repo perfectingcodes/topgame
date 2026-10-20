@@ -11,7 +11,6 @@ const COLUMNS = [
       { href: "/about", label: "About Us" },
       { href: "/coaches", label: "Coaching Staff" },
       { href: "/pathway", label: "College Pathway" },
-      { href: "/schedule", label: "Schedule & Fixtures" },
       { href: "/tryouts", label: "Tryouts" },
     ],
   },

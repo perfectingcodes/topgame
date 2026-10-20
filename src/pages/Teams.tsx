@@ -18,7 +18,7 @@ export default function Teams() {
             <span className="text-gold-500">one academy standard</span>
           </>
         }
-        lede="Both teams train three times a week and compete in league play across Lee and Collier counties. Same curriculum, scaled to the age group."
+        lede="Both squads train three times a week. Same curriculum, scaled to the age group."
       />
 
       <Section tone="darker">
@@ -173,9 +173,8 @@ export default function Teams() {
           <h2 className="text-4xl leading-tight sm:text-5xl">
             Think your son belongs on one of these teams?
           </h2>
-          <p className="max-w-xl text-lg text-silver-400">
-            Tryouts are open to every U12 and U14 boy in Southwest Florida,
-            regardless of current club.
+          <p className="max-w-lg text-lg text-silver-400">
+            Open to every U12 and U14 boy in Southwest Florida.
           </p>
           <Button href="/tryouts" size="lg">
             See Tryout Dates

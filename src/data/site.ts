@@ -8,7 +8,7 @@
 export const club = {
   name: "Top Game Academy",
   shortName: "Top Game",
-  tagline: "Cape Coral's home for developmental boys soccer",
+  tagline: "Boys soccer development in Cape Coral",
   city: "Cape Coral",
   state: "FL",
   founded: 2019, // TODO: real founding year
@@ -32,9 +32,9 @@ export const club = {
 } as const;
 
 export const stats = [
-  { value: "2", label: "Competitive squads", detail: "U12 & U14 boys" },
-  { value: "3x", label: "Training sessions", detail: "Every week, year-round" },
-  { value: "1:9", label: "Coach-to-player ratio", detail: "Small-group focus" },
+  { value: "2", label: "Squads", detail: "U12 & U14 boys" },
+  { value: "3x", label: "Sessions a week", detail: "Year-round" },
+  { value: "1:9", label: "Coach to player", detail: "Small groups" },
   { value: "100%", label: "Licensed staff", detail: "USSF credentialed" },
 ] as const;
 
@@ -42,23 +42,23 @@ export const pillars = [
   {
     icon: "brain",
     title: "Decide Faster",
-    body: "Every session is built around scanning, first touch away from pressure, and choosing the next pass before the ball arrives. We coach the moment before the moment.",
+    body: "Scanning, first touch away from pressure, and the next pass chosen before the ball arrives.",
   },
   {
     icon: "zap",
     title: "Compete Harder",
-    body: "Small-sided games with real stakes. Players learn to defend a lead, chase a deficit, and keep their shape when the game gets loud.",
+    body: "Small-sided games with real stakes, so players learn to handle a lead and a deficit.",
   },
   {
     icon: "users",
     title: "Grow Together",
-    body: "Two age groups, one standard. U12 trains alongside U14 so younger players see the level they're climbing toward every single week.",
+    body: "Two age groups, one standard. U12 trains alongside U14 every week.",
   },
   {
     icon: "graduation-cap",
     href: "/pathway",
     title: "Play Beyond",
-    body: "Development that travels — to middle school, high school, and club soccer at the next tier. We build players other programs want.",
+    body: "Development that travels — to high school, college, and the next tier of club soccer.",
   },
 ] as const;
 
@@ -68,7 +68,6 @@ export type Team = {
   ageGroup: string;
   birthYears: string;
   league: string;
-  season: string;
   coachId: string;
   accent: "electric" | "gold";
   blurb: string;
@@ -84,38 +83,22 @@ export const teams: Team[] = [
     ageGroup: "U12",
     birthYears: "Born 2014–2015", // TODO: confirm against current seasonal year
     league: "Florida Youth Soccer — Development Division", // TODO
-    season: "Fall 2026 – Spring 2027", // TODO
     coachId: "head-u12",
     accent: "electric",
     blurb:
-      "The foundation years. U12 is where technique becomes instinct — we spend more minutes on the ball per session than any other group in the academy.",
+      "The foundation years, where technique becomes instinct. More minutes on the ball than any other group in the academy.",
     focus: [
       "Receiving on the half-turn",
-      "1v1 attacking in wide areas",
+      "1v1 in wide areas",
       "Defending the first pass",
-      "Playing out from the back in a 1-3-3-1",
+      "Playing out from the back",
     ],
     trainingDays: [
-      {
-        day: "Tuesday",
-        time: "5:30 – 7:00 PM",
-        location: "Field 3 — Sports Complex",
-      },
-      {
-        day: "Thursday",
-        time: "5:30 – 7:00 PM",
-        location: "Field 3 — Sports Complex",
-      },
-      {
-        day: "Saturday",
-        time: "9:00 – 10:30 AM",
-        location: "Field 1 — Sports Complex",
-      },
+      { day: "Tuesday", time: "5:30 – 7:00 PM", location: "Field 3" },
+      { day: "Thursday", time: "5:30 – 7:00 PM", location: "Field 3" },
+      { day: "Saturday", time: "9:00 – 10:30 AM", location: "Field 1" },
     ],
-    roster: {
-      size: 14,
-      note: "9v9 format — carrying 14 players for the season",
-    },
+    roster: { size: 14, note: "9v9 — 14 players" },
   },
   {
     slug: "u14-boys",
@@ -123,38 +106,22 @@ export const teams: Team[] = [
     ageGroup: "U14",
     birthYears: "Born 2012–2013", // TODO: confirm against current seasonal year
     league: "Florida Youth Soccer — Competitive Division", // TODO
-    season: "Fall 2026 – Spring 2027", // TODO
     coachId: "head-u14",
     accent: "gold",
     blurb:
-      "The proving years. U14 moves to the full 11v11 game, where positional discipline and game management decide results as much as talent does.",
+      "The proving years. The full 11v11 game, where positional discipline decides results as much as talent.",
     focus: [
-      "Full-field 11v11 shape and rotations",
-      "Pressing triggers and rest defense",
-      "Set-piece routines, attacking and defending",
-      "Physical preparation and load management",
+      "11v11 shape and rotations",
+      "Pressing triggers",
+      "Set pieces, both ends",
+      "Physical preparation",
     ],
     trainingDays: [
-      {
-        day: "Monday",
-        time: "6:00 – 7:45 PM",
-        location: "Field 2 — Sports Complex",
-      },
-      {
-        day: "Wednesday",
-        time: "6:00 – 7:45 PM",
-        location: "Field 2 — Sports Complex",
-      },
-      {
-        day: "Saturday",
-        time: "10:45 AM – 12:15 PM",
-        location: "Field 1 — Sports Complex",
-      },
+      { day: "Monday", time: "6:00 – 7:45 PM", location: "Field 2" },
+      { day: "Wednesday", time: "6:00 – 7:45 PM", location: "Field 2" },
+      { day: "Saturday", time: "10:45 AM – 12:15 PM", location: "Field 1" },
     ],
-    roster: {
-      size: 18,
-      note: "11v11 format — carrying 18 players for the season",
-    },
+    roster: { size: 18, note: "11v11 — 18 players" },
   },
 ];
 
@@ -173,119 +140,33 @@ export const coaches: Coach[] = [
     id: "director",
     name: "Coach Marcus Reyes",
     role: "Technical Director",
-    licenses: ["USSF B License", "United Soccer Coaches Advanced National"],
-    bio: "Sets the academy curriculum across both age groups and oversees player evaluation. Fifteen years coaching youth soccer in Southwest Florida.",
+    licenses: ["USSF B License"],
+    bio: "Sets the curriculum across both age groups. Fifteen years coaching in Southwest Florida.",
     initials: "MR",
   },
   {
     id: "head-u12",
     name: "Coach Danny Oliveira",
     role: "Head Coach — U12 Boys",
-    licenses: ["USSF C License", "Grassroots 9v9"],
-    bio: "Former collegiate midfielder who runs the club's technical foundation program. Known for sessions where nobody stands in a line.",
+    licenses: ["USSF C License"],
+    bio: "Former collegiate midfielder. Runs sessions where nobody stands in a line.",
     initials: "DO",
   },
   {
     id: "head-u14",
     name: "Coach Alex Whitfield",
     role: "Head Coach — U14 Boys",
-    licenses: ["USSF C License", "Grassroots 11v11"],
-    bio: "Leads the transition to the full-sided game and manages the U14 competitive schedule. Focused on game intelligence and set pieces.",
+    licenses: ["USSF C License"],
+    bio: "Leads the move to the full-sided game. Focused on game intelligence and set pieces.",
     initials: "AW",
   },
   {
     id: "keeper",
     name: "Coach Priya Raman",
     role: "Goalkeeping Coach",
-    licenses: ["USSF Goalkeeping Level 2"],
-    bio: "Runs dedicated keeper sessions for both squads, covering distribution, shot-stopping, and commanding the box.",
+    licenses: ["USSF Goalkeeping L2"],
+    bio: "Dedicated keeper sessions for both squads — distribution, shot-stopping, commanding the box.",
     initials: "PR",
-  },
-];
-
-export type Fixture = {
-  date: string; // ISO date
-  time: string;
-  team: string; // team slug
-  opponent: string;
-  venue: string;
-  home: boolean;
-  competition: string;
-};
-
-// TODO: replace with the real fixture list, or wire this to the league feed.
-export const fixtures: Fixture[] = [
-  {
-    date: "2026-09-19",
-    time: "9:00 AM",
-    team: "u12-boys",
-    opponent: "Fort Myers United",
-    venue: "Cape Coral Sports Complex",
-    home: true,
-    competition: "League",
-  },
-  {
-    date: "2026-09-19",
-    time: "11:00 AM",
-    team: "u14-boys",
-    opponent: "Fort Myers United",
-    venue: "Cape Coral Sports Complex",
-    home: true,
-    competition: "League",
-  },
-  {
-    date: "2026-09-26",
-    time: "10:00 AM",
-    team: "u14-boys",
-    opponent: "Naples SC",
-    venue: "North Collier Regional Park",
-    home: false,
-    competition: "League",
-  },
-  {
-    date: "2026-10-03",
-    time: "9:00 AM",
-    team: "u12-boys",
-    opponent: "Estero Strikers",
-    venue: "Estero Community Park",
-    home: false,
-    competition: "League",
-  },
-  {
-    date: "2026-10-10",
-    time: "10:30 AM",
-    team: "u12-boys",
-    opponent: "Bonita Springs FC",
-    venue: "Cape Coral Sports Complex",
-    home: true,
-    competition: "League",
-  },
-  {
-    date: "2026-10-10",
-    time: "12:30 PM",
-    team: "u14-boys",
-    opponent: "Bonita Springs FC",
-    venue: "Cape Coral Sports Complex",
-    home: true,
-    competition: "League",
-  },
-  {
-    date: "2026-10-17",
-    time: "8:30 AM",
-    team: "u14-boys",
-    opponent: "Punta Gorda Rovers",
-    venue: "Cape Coral Sports Complex",
-    home: true,
-    competition: "Cup",
-  },
-  {
-    date: "2026-10-24",
-    time: "9:00 AM",
-    team: "u12-boys",
-    opponent: "Lehigh Acres YSC",
-    venue: "Veterans Park",
-    home: false,
-    competition: "League",
   },
 ];
 
@@ -297,50 +178,41 @@ export const tryouts = {
       date: "2026-06-08",
       time: "6:00 – 7:30 PM",
       group: "U12 Boys",
-      location: "Field 3 — Cape Coral Sports Complex",
+      location: "Field 3",
     },
     {
       date: "2026-06-09",
       time: "6:00 – 7:45 PM",
       group: "U14 Boys",
-      location: "Field 2 — Cape Coral Sports Complex",
+      location: "Field 2",
     },
     {
       date: "2026-06-15",
       time: "6:00 – 7:30 PM",
       group: "U12 Boys — second look",
-      location: "Field 3 — Cape Coral Sports Complex",
+      location: "Field 3",
     },
     {
       date: "2026-06-16",
       time: "6:00 – 7:45 PM",
       group: "U14 Boys — second look",
-      location: "Field 2 — Cape Coral Sports Complex",
+      location: "Field 2",
     },
   ],
   bring: [
-    "Cleats, shin guards, and both a light and dark shirt",
-    "Two full water bottles — Florida evenings are no joke",
-    "Completed medical release form (emailed after you register)",
-    "A ball, size 4 for U12 and size 5 for U14",
+    "Cleats, shin guards, a light and a dark shirt",
+    "Two full water bottles",
+    "Medical release form (emailed after you register)",
+    "A ball — size 4 for U12, size 5 for U14",
   ],
   evaluated: [
     {
       title: "Technical",
-      body: "First touch under pressure, passing range, and ability to beat a defender 1v1.",
+      body: "First touch under pressure, passing range, 1v1.",
     },
-    {
-      title: "Tactical",
-      body: "Scanning, positioning off the ball, and decision speed in small-sided games.",
-    },
-    {
-      title: "Physical",
-      body: "Movement quality, repeat sprint ability, and recovery between reps.",
-    },
-    {
-      title: "Character",
-      body: "Coachability, response to mistakes, and how a player treats teammates.",
-    },
+    { title: "Tactical", body: "Scanning, positioning, decision speed." },
+    { title: "Physical", body: "Movement quality and repeat sprint ability." },
+    { title: "Character", body: "Coachability and response to mistakes." },
   ],
   fee: "$0 to try out", // TODO
   seasonFee: "$TBD per season", // TODO: real season fee + what it covers
@@ -349,42 +221,38 @@ export const tryouts = {
 export const faqs = [
   {
     q: "Who can try out?",
-    a: "Any boy in the U12 or U14 age groups, regardless of current club. You do not need prior academy experience — bring your best effort and we'll evaluate from there.",
-  },
-  {
-    q: "How much travel is involved?",
-    a: "Most fixtures are within Lee and Collier counties — Fort Myers, Estero, Bonita Springs, and Naples. Expect a handful of longer trips per season for cup competition.", // TODO: confirm
+    a: "Any boy in the U12 or U14 age group, from any club or none. No prior academy experience needed.",
   },
   {
     q: "What does the season fee cover?",
-    a: "Coaching, field time, league registration, and referee fees. Uniform kits are ordered separately. Contact us for the current fee schedule and available payment plans.", // TODO
+    a: "Coaching, field time, league registration, and referees. Kits are ordered separately. Ask us for the current fee schedule.", // TODO
   },
   {
     q: "Do you offer financial assistance?",
-    a: "Yes. We keep a limited scholarship fund so cost never decides who plays. Reach out privately and we'll handle it discreetly.", // TODO: confirm this is true
+    a: "Yes — a limited scholarship fund, handled privately. Cost shouldn't decide who plays.", // TODO: confirm this is true
   },
   {
     q: "What if my son misses tryouts?",
-    a: "Get in touch anyway. We hold roster spots open where we can and run individual looks during the preseason block.",
+    a: "Get in touch anyway. We run individual looks during preseason.",
   },
 ] as const;
 
 export const values = [
   {
     title: "Development over trophies",
-    body: "We measure a season by how much better every player got, not by what's on the shelf. Minutes are earned, but nobody develops from the bench.",
+    body: "A season is measured by how much better every player got.",
   },
   {
     title: "The standard is the standard",
-    body: "Same expectations for U12 and U14 — on time, prepared, and fully engaged. Habits built at twelve are the ones that show up at eighteen.",
+    body: "Same expectations for U12 and U14 — on time, prepared, engaged.",
   },
   {
     title: "Parents are partners",
-    body: "Open communication, honest evaluations, and no politics. You'll always know where your son stands and what he's working on.",
+    body: "Honest evaluations and no politics. You'll always know where your son stands.",
   },
   {
     title: "Cape Coral first",
-    body: "This is a local club for local families. We want the best players in our city to have somewhere to develop without a two-hour round trip.",
+    body: "A local club, so the best players here don't need a two-hour round trip.",
   },
 ] as const;
 
@@ -394,24 +262,24 @@ export const values = [
 
 export const pathway = {
   blurb:
-    "Most players don't get recruited because nobody ever showed them how it works. The College Pathway is our answer — a structured track that starts at U12 and follows a player through high school.",
+    "Most players don't get recruited because nobody showed them how it works. This is a structured track from U12 through high school.",
   // TODO: confirm these match what the club actually delivers before publishing.
   pillars: [
     {
       title: "Player Profile",
-      body: "Every U14 player gets a maintained profile — position, measurables, academic standing, and a highlight reel cut from real match footage, not training clips.",
+      body: "Position, measurables, academics, and a highlight reel cut from real match footage.",
     },
     {
       title: "Academic Guidance",
-      body: "Eligibility is where most families get caught out. We walk through NCAA and NAIA academic requirements early, while grades can still be moved.",
+      body: "NCAA and NAIA eligibility walked through early, while grades can still move.",
     },
     {
       title: "Exposure",
-      body: "Targeted showcase and ID camp selection. We'd rather send a player to two events that fit than eight that don't.",
+      body: "Targeted showcases. Two events that fit beat eight that don't.",
     },
     {
       title: "Family Education",
-      body: "Honest sessions on divisions, timelines, scholarships, and what college soccer actually costs — so decisions get made on facts.",
+      body: "Divisions, timelines, scholarships, and what college soccer actually costs.",
     },
   ],
   /** Ordered widest-to-narrowest — the page renders these as a funnel. */
@@ -420,25 +288,25 @@ export const pathway = {
       age: "U12",
       label: "Everyone starts here",
       title: "Foundation",
-      body: "Technique and habits. No recruiting talk — just building a player worth recruiting later.",
+      body: "Technique and habits. No recruiting talk yet.",
     },
     {
       age: "U14",
       label: "The ones who do the work",
       title: "Profile",
-      body: "Video capture begins, the player profile is built, and families get their first eligibility walkthrough.",
+      body: "Video starts, the profile is built, eligibility is explained.",
     },
     {
       age: "High school",
       label: "The ones who keep showing up",
       title: "Exposure",
-      body: "Showcase planning and coach outreach, continuing even after a player ages out of the academy.",
+      body: "Showcase planning and coach outreach, continuing after a player ages out.",
     },
     {
       age: "College",
       label: "Where the funnel leads",
       title: "Commitment",
-      body: "A player with film, grades, a target list, and a family who understands the process.",
+      body: "Film, grades, a target list, and a family who understands the process.",
     },
   ],
   /**
@@ -447,7 +315,7 @@ export const pathway = {
    * would be both untrue and the thing every other academy does.
    */
   reality:
-    "A funnel narrows, and this one is no exception. Most players who start at U12 will not play college soccer — that is true here and everywhere else. What we control is that nobody gets to seventeen and discovers the door was closed at fourteen because no one told them how it worked.",
+    "A funnel narrows. Most players who start at U12 won't play college soccer — here or anywhere. What we control is that nobody reaches seventeen and finds out the door closed at fourteen.",
 } as const;
 
 /* -------------------------------------------------------------------------- */
@@ -476,7 +344,7 @@ export const sponsorTiers = [
     name: "Headline",
     price: "From $2,500 / season", // TODO
     items: [
-      "Logo on both squads' match kit",
+      "Logo on both match kits",
       "Named on every fixture post",
       "Banner at home matches",
       "Logo on this site",
@@ -527,17 +395,16 @@ export type Article = {
 export const articles: Article[] = [
   {
     slug: "gulf-coast-cup-u14-semifinal",
-    title: "U14s reach Gulf Coast Cup semi-final in first season",
+    title: "U14s reach Gulf Coast Cup semi-final",
     date: "2026-08-30",
     team: "u14-boys",
     tournament: "Gulf Coast Cup",
     excerpt:
-      "Four matches in two days, one penalty shootout, and a squad that looked nothing like the group that started preseason.",
+      "Four matches in two days, one shootout, and a squad that looked nothing like the group that started preseason.",
     body: [
-      "The U14s went into the Gulf Coast Cup as the least experienced side in their bracket and came out of it in the final four — a result that says more about the group's application than the scoreline in any one match.",
-      "Saturday's opening two fixtures were about surviving the heat as much as the opposition. The shape held, the press stayed disciplined into the second half, and both games were seen out without conceding late.",
-      "Sunday's quarter-final went to penalties after ninety minutes that could have gone either way. The semi-final was a step too far against a side that has been together three years, but the gap was narrower than the result suggested.",
-      "The takeaway for the coaching staff was rest defence — three of the goals conceded across the weekend came from our own attacking transitions. That goes straight into the next training block.",
+      "The U14s went in as the least experienced side in their bracket and came out in the final four. That says more about the group's application than any single scoreline.",
+      "Saturday was about surviving the heat as much as the opposition. The shape held and both games were seen out without conceding late. Sunday's quarter-final went to penalties.",
+      "Three of the goals conceded across the weekend came from our own attacking transitions. Rest defence goes straight into the next training block.",
     ],
   },
   {
@@ -547,12 +414,11 @@ export const articles: Article[] = [
     team: "u12-boys",
     tournament: "Sunshine State Showcase",
     excerpt:
-      "Three matches, no defeats, and the first real evidence that playing out from the back is becoming instinct rather than instruction.",
+      "Three matches, no defeats, and the first real sign that playing out from the back is becoming instinct.",
     body: [
-      "Showcase weekends aren't scored on trophies, which suits a U12 group still building habits. The instruction going in was simple: play out from the back every time, including when it's uncomfortable.",
-      "They did — and it cost them a goal in the first match. It also produced the best twenty minutes of football the group has played, in the third.",
-      "Across three matches the side kept the ball through pressure more often than it gave it away, and the goalkeeper's distribution was a genuine weapon rather than a reset button.",
-      "Unbeaten is a nice line for a report. The more useful line is that nobody kicked it long when the game got hard.",
+      "The instruction going in was simple: play out from the back every time, including when it's uncomfortable.",
+      "They did — and it cost a goal in the first match. It also produced the best twenty minutes this group has played, in the third.",
+      "Unbeaten is a nice line for a report. The more useful one is that nobody kicked it long when the game got hard.",
     ],
   },
   {
@@ -562,12 +428,11 @@ export const articles: Article[] = [
     team: "club",
     tournament: "Preseason friendlies",
     excerpt:
-      "Six friendlies across both squads before a competitive ball was kicked. Here's what the staff took from them.",
+      "Six friendlies across both squads before a competitive ball was kicked.",
     body: [
-      "Preseason friendlies exist to find problems while they're still cheap. Across six matches between the two squads, three came up repeatedly.",
-      "First, both groups defended the first pass well and the second pass poorly — the press triggered correctly, then the cover arrived late. That's now a standing item in the Tuesday session.",
-      "Second, the U14s' set-piece delivery was inconsistent enough to be worth dedicated time rather than the ten minutes tacked onto the end of a session.",
-      "Third, and most encouraging: fitness was not the limiting factor in any of the six. In August, in Florida, that is not nothing.",
+      "Friendlies exist to find problems while they're still cheap. Three came up repeatedly.",
+      "Both groups defended the first pass well and the second pass poorly — the press triggered, then cover arrived late. U14 set-piece delivery needs dedicated time, not ten minutes tacked onto the end of a session.",
+      "Most encouraging: fitness was not the limiting factor in any of the six. In August, in Florida, that is not nothing.",
     ],
   },
 ];

@@ -29,7 +29,7 @@ export default function Sponsors() {
             <span className="text-electric-400">local business</span>
           </>
         }
-        lede={`Every sponsor keeps fees down and the scholarship fund open. These are the businesses making it possible in ${club.city}.`}
+        lede="Every sponsor keeps fees down and the scholarship fund open."
       />
 
       {/* Current sponsors */}
@@ -68,7 +68,7 @@ export default function Sponsors() {
           <SectionHeading
             eyebrow="Get Involved"
             title="Sponsorship packages"
-            lede="Your logo in front of two squads, their families, and every match-day crowd across Lee and Collier counties."
+            lede="Your logo in front of two squads, their families, and every match-day crowd."
           />
         </Reveal>
 
@@ -126,9 +126,8 @@ export default function Sponsors() {
           <h2 className="text-4xl leading-tight sm:text-5xl">
             Sponsor the academy
           </h2>
-          <p className="max-w-xl text-lg text-silver-400">
-            Local business, local kids. Send us a note and we'll put a package
-            together.
+          <p className="max-w-lg text-lg text-silver-400">
+            Local business, local kids. Send us a note.
           </p>
           <Button
             href={`mailto:${club.email}?subject=Sponsorship%20enquiry`}

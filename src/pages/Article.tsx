@@ -82,8 +82,8 @@ export default function Article() {
           </ul>
 
           <div className="mt-10">
-            <Button href="/schedule" variant="ghost">
-              Upcoming Fixtures
+            <Button href="/news" variant="ghost">
+              All Reports
             </Button>
           </div>
         </Section>

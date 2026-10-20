@@ -25,7 +25,7 @@ export default function News() {
             <span className="text-electric-400">tournaments</span>
           </>
         }
-        lede="Honest write-ups from the weekends that matter — what went well, what didn't, and what goes into the next training block."
+        lede="What went well, what didn't, and what goes into the next training block."
       />
 
       <Section tone="darker">

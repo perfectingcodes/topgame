@@ -1,7 +1,7 @@
 import { BadgeCheck } from "lucide-react";
 
 import PageHero from "@/components/PageHero";
-import { Button, Reveal, Section, SectionHeading } from "@/components/ui";
+import { Button, Reveal, Section } from "@/components/ui";
 import { coaches, club } from "@/data/site";
 
 export default function Coaches() {
@@ -16,7 +16,7 @@ export default function Coaches() {
             <span className="text-electric-400">Named players.</span>
           </>
         }
-        lede={`Every session at ${club.name} is led by a licensed, background-checked coach. Nobody runs a drill they haven't been trained to teach.`}
+        lede="Every session is led by a licensed, background-checked coach."
       />
 
       <Section tone="darker">
@@ -66,42 +66,11 @@ export default function Coaches() {
         </div>
       </Section>
 
-      <Section tone="dark" className="pitch-lines">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Standards"
-              title="What a licence actually means here"
-            />
-          </Reveal>
-          <Reveal delay={100}>
-            <div className="flex flex-col gap-5 text-lg leading-relaxed text-silver-300">
-              <p>
-                Every coach on staff holds a current U.S. Soccer Federation
-                licence for the format they coach, plus SafeSport certification
-                and a completed background screening.
-              </p>
-              <p>
-                Beyond the paperwork, staff meet weekly to review session plans
-                against the academy curriculum. Nobody improvises a training
-                night, and nobody repeats last week because it was easier.
-              </p>
-              <p>
-                If you ever want to know why your son is working on something
-                specific, ask his coach. You'll get a real answer.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </Section>
-
       <Section tone="panel">
         <Reveal className="flex flex-col items-center gap-6 text-center">
           <h2 className="text-4xl leading-tight sm:text-5xl">Coach with us</h2>
-          <p className="max-w-xl text-lg text-silver-400">
-            We're always open to licensed coaches who want to work in a
-            development-first environment. Send us your background and let's
-            talk.
+          <p className="max-w-lg text-lg text-silver-400">
+            Always open to licensed coaches. Send us your background.
           </p>
           <Button
             href={`mailto:${club.email}?subject=Coaching%20enquiry`}

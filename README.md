@@ -69,9 +69,9 @@ scaffolding so the site renders complete; search the file for `TODO`.
 - [ ] Founding year and production domain (`club.founded`, `club.url`)
 - [ ] Instagram / Facebook URLs (`club.social`)
 - [ ] Real coaching staff — names, roles, licences, bios (`coaches`)
-- [ ] Team birth years, leagues, and season dates (`teams`)
+- [ ] Team birth years and leagues (`teams`)
 - [ ] Training days, times, and field assignments (`teams[].trainingDays`)
-- [ ] The actual fixture list (`fixtures`)
+      — training times live on the Teams pages; there is no fixture list
 - [ ] Tryout dates, tryout fee, and season fee (`tryouts`)
 - [ ] College Pathway details — confirm the four components match what the club
       actually delivers (`pathway`)

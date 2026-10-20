@@ -24,7 +24,7 @@ export default function Tryouts() {
             <span className="text-gold-500">spot</span>
           </>
         }
-        lede="Open tryouts for U12 and U14 boys. No current club required, no invitation needed — register, show up, and compete."
+        lede="Open to U12 and U14 boys from any club, or none."
       >
         <div className="flex flex-wrap gap-3">
           <Badge tone="flare">{tryouts.fee}</Badge>
@@ -38,7 +38,7 @@ export default function Tryouts() {
           <SectionHeading
             eyebrow="Dates"
             title="Tryout sessions"
-            lede="Two looks per age group. Attend both if you can — the second session is where we make most decisions."
+            lede="Two looks per age group. Attend both if you can."
           />
         </Reveal>
 
@@ -136,7 +136,7 @@ export default function Tryouts() {
               <SectionHeading
                 eyebrow="Register"
                 title="Save a spot"
-                lede="Send us your details and we'll confirm your tryout slot along with the medical release form."
+                lede="Send us your details and we'll confirm your slot."
               />
               <div className="mt-8 flex flex-col gap-3 text-sm text-silver-400">
                 <p>
@@ -362,8 +362,8 @@ function TryoutForm() {
 
       <p aria-live="polite" className="text-sm text-silver-500">
         {sent
-          ? "Your email app should have opened with the details filled in — hit send and we'll confirm your slot within 48 hours."
-          : "We'll confirm your tryout slot by email within 48 hours."}
+          ? "Your email app should have opened — hit send and we'll confirm within 48 hours."
+          : "We'll confirm your slot by email within 48 hours."}
       </p>
     </form>
   );

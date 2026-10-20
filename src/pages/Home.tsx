@@ -18,8 +18,8 @@ import {
   Section,
   SectionHeading,
 } from "@/components/ui";
-import { club, pillars, stats, teams, fixtures, values } from "@/data/site";
-import { formatDate, cn } from "@/lib/cn";
+import { club, pillars, stats, teams } from "@/data/site";
+import { cn } from "@/lib/cn";
 
 const PILLAR_ICONS = {
   brain: Brain,
@@ -29,8 +29,6 @@ const PILLAR_ICONS = {
 } as const;
 
 export default function Home() {
-  const upcoming = fixtures.slice(0, 4);
-
   return (
     <>
       {/* ------------------------------------------------------------------ */}
@@ -63,9 +61,8 @@ export default function Home() {
             </h1>
 
             <p className="max-w-xl text-lg leading-relaxed text-silver-300 lg:text-xl">
-              {club.name} is a development-first boys soccer club in {club.city}
-              . Two squads, three sessions a week, and licensed coaches who know
-              every player's name, position, and next step.
+              A development-first boys soccer club in {club.city}. Two squads,
+              three sessions a week, and coaches who know every player by name.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -131,7 +128,7 @@ export default function Home() {
                 <span className="text-electric-400">every single session</span>
               </>
             }
-            lede="Nobody stands in a line waiting for a turn. Every drill has a defender, a decision, and a consequence — because that's what Saturday looks like."
+            lede="Every drill has a defender, a decision, and a consequence."
           />
         </Reveal>
 
@@ -189,7 +186,7 @@ export default function Home() {
           <SectionHeading
             eyebrow="Our Squads"
             title="Two teams. One standard."
-            lede="U12 and U14 train back-to-back on the same pitch, so the younger group always sees exactly where they're headed."
+            lede="U12 and U14 train back-to-back, so the younger group sees where they're headed."
           />
         </Reveal>
 
@@ -273,105 +270,6 @@ export default function Home() {
       </Section>
 
       {/* ------------------------------------------------------------------ */}
-      {/*  Values                                                             */}
-      {/* ------------------------------------------------------------------ */}
-      <Section tone="darker">
-        <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <Reveal>
-            <div className="lg:sticky lg:top-28">
-              <SectionHeading
-                eyebrow="What We Believe"
-                title={
-                  <>
-                    A club worth
-                    <br />
-                    driving past
-                  </>
-                }
-                lede="There are bigger academies an hour up the interstate. We built this one so families in Cape Coral wouldn't have to make that drive to get a real development environment."
-              />
-              <Button href="/about" variant="secondary" className="mt-8">
-                More About Us
-              </Button>
-            </div>
-          </Reveal>
-
-          <ul className="flex flex-col">
-            {values.map((value, i) => (
-              <Reveal key={value.title} delay={i * 80}>
-                <li className="flex gap-6 border-b border-white/10 py-7 first:pt-0">
-                  <span className="font-display text-2xl font-extrabold italic text-electric-500/60">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <h3 className="text-2xl">{value.title}</h3>
-                    <p className="mt-2 leading-relaxed text-silver-400">
-                      {value.body}
-                    </p>
-                  </div>
-                </li>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </Section>
-
-      {/* ------------------------------------------------------------------ */}
-      {/*  Upcoming fixtures                                                  */}
-      {/* ------------------------------------------------------------------ */}
-      <Section tone="panel">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <Reveal>
-            <SectionHeading eyebrow="Next Up" title="Upcoming fixtures" />
-          </Reveal>
-          <Reveal>
-            <Button href="/schedule" variant="ghost">
-              Full Schedule
-            </Button>
-          </Reveal>
-        </div>
-
-        <ul className="mt-12 flex flex-col gap-3">
-          {upcoming.map((fx, i) => {
-            const team = teams.find((t) => t.slug === fx.team);
-            return (
-              <Reveal key={`${fx.date}-${fx.team}`} delay={i * 70}>
-                <li className="grid items-center gap-4 border border-white/10 bg-navy-900 p-5 transition-colors hover:border-electric-500/40 sm:grid-cols-[auto_1fr_auto] sm:p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="flex w-16 shrink-0 flex-col items-center border-r border-white/10 pr-4">
-                      <span className="font-display text-2xl font-extrabold italic leading-none text-gold-500">
-                        {formatDate(fx.date).split(" ")[2]}
-                      </span>
-                      <span className="font-display text-[0.65rem] font-bold uppercase tracking-[0.18em] text-silver-500">
-                        {formatDate(fx.date).split(" ")[1]}
-                      </span>
-                    </div>
-                    <Badge tone={fx.home ? "electric" : "muted"}>
-                      {fx.home ? "Home" : "Away"}
-                    </Badge>
-                  </div>
-
-                  <div className="min-w-0">
-                    <p className="font-display text-xl font-bold uppercase italic text-white">
-                      {team?.name} <span className="text-silver-500">vs</span>{" "}
-                      {fx.opponent}
-                    </p>
-                    <p className="mt-0.5 truncate text-sm text-silver-500">
-                      {fx.venue} · {fx.competition}
-                    </p>
-                  </div>
-
-                  <p className="font-display text-lg font-bold uppercase tracking-wide text-electric-400 sm:text-right">
-                    {fx.time}
-                  </p>
-                </li>
-              </Reveal>
-            );
-          })}
-        </ul>
-      </Section>
-
-      {/* ------------------------------------------------------------------ */}
       {/*  CTA                                                                */}
       {/* ------------------------------------------------------------------ */}
       <section className="relative overflow-hidden bg-navy-900 px-5 py-24 sm:px-8 lg:py-32">
@@ -393,7 +291,7 @@ export default function Home() {
           </h2>
           <p className="max-w-xl text-lg leading-relaxed text-silver-300">
             Open tryouts for U12 and U14 boys. No prior academy experience
-            required — just show up ready to work and we'll take it from there.
+            required.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button href="/tryouts" size="lg">

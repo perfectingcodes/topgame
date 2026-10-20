@@ -13,7 +13,7 @@ const LABEL =
 
 const TOPICS = [
   "Tryouts & registration",
-  "Team or schedule question",
+  "Team or training question",
   "Fees & financial assistance",
   "Coaching enquiry",
   "Sponsorship",
@@ -32,7 +32,7 @@ export default function Contact() {
             <span className="text-electric-400">soccer</span>
           </>
         }
-        lede={`Questions about tryouts, fees, or whether your son is ready? We answer every message — usually same day.`}
+        lede="Questions about tryouts, fees, or whether your son is ready? We answer every message."
       />
 
       <Section tone="darker">
@@ -159,7 +159,7 @@ export default function Contact() {
           <SectionHeading
             eyebrow="Getting Here"
             title="Home ground"
-            lede={`${club.address.line1} — parking is free, and the academy fields are on the north side of the complex.`}
+            lede={`${club.address.line1}. Parking is free; academy fields are on the north side.`}
           />
         </Reveal>
 
@@ -277,7 +277,7 @@ function ContactForm() {
           name="message"
           rows={6}
           className={cn(FIELD, "resize-y")}
-          placeholder="Tell us about your son, his experience, and what you're looking for…"
+          placeholder="Tell us about your son and what you're looking for…"
         />
       </label>
 
@@ -288,7 +288,7 @@ function ContactForm() {
       <p aria-live="polite" className="text-sm text-silver-500">
         {sent
           ? "Your email app should have opened with your message ready to send."
-          : "We reply to every message, usually within one business day."}
+          : "We reply within one business day."}
       </p>
     </form>
   );

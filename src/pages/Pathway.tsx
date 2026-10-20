@@ -1,7 +1,13 @@
 import { ChevronDown } from "lucide-react";
 
 import PageHero from "@/components/PageHero";
-import { Badge, Button, Reveal, Section, SectionHeading } from "@/components/ui";
+import {
+  Badge,
+  Button,
+  Reveal,
+  Section,
+  SectionHeading,
+} from "@/components/ui";
 import { pathway } from "@/data/site";
 import { cn } from "@/lib/cn";
 
@@ -41,7 +47,7 @@ export default function Pathway() {
           <SectionHeading
             eyebrow="The Funnel"
             title="From first touch to a college roster"
-            lede="Four stages, each one narrower than the last. Here's what happens at every level — and what has to be true to reach the next one."
+            lede="Four stages, each narrower than the last."
             align="center"
           />
         </Reveal>
@@ -103,7 +109,10 @@ export default function Pathway() {
 
                 {/* Stacked view has no taper to imply direction, so make it explicit. */}
                 {!isLast ? (
-                  <div className="flex justify-center py-1 lg:hidden" aria-hidden>
+                  <div
+                    className="flex justify-center py-1 lg:hidden"
+                    aria-hidden
+                  >
                     <ChevronDown className="h-5 w-5 text-electric-500" />
                   </div>
                 ) : null}
@@ -158,9 +167,8 @@ export default function Pathway() {
           <h2 className="text-4xl leading-tight sm:text-5xl">
             Want the full rundown?
           </h2>
-          <p className="max-w-xl text-lg text-silver-400">
-            We'll walk your family through the timeline, the costs, and an honest
-            read on where your son currently sits. No pitch.
+          <p className="max-w-lg text-lg text-silver-400">
+            The timeline, the costs, and an honest read on where your son sits.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button href="/contact" size="lg">

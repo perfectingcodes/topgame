@@ -1,12 +1,5 @@
 import { Link, useRoute } from "wouter";
-import {
-  Clock,
-  MapPin,
-  Trophy,
-  Users,
-  CalendarDays,
-  ArrowLeft,
-} from "lucide-react";
+import { Clock, MapPin, Users, ArrowLeft } from "lucide-react";
 
 import PageHero from "@/components/PageHero";
 import {
@@ -17,8 +10,8 @@ import {
   SectionHeading,
 } from "@/components/ui";
 import NotFound from "./NotFound";
-import { coaches, fixtures, teams } from "@/data/site";
-import { cn, formatDate } from "@/lib/cn";
+import { coaches, teams } from "@/data/site";
+import { cn } from "@/lib/cn";
 
 export default function TeamDetail() {
   const [, params] = useRoute("/teams/:slug");
@@ -29,7 +22,6 @@ export default function TeamDetail() {
   const coach = coaches.find((c) => c.id === team.coachId);
   const keeperCoach = coaches.find((c) => c.id === "keeper");
   const director = coaches.find((c) => c.id === "director");
-  const teamFixtures = fixtures.filter((f) => f.team === team.slug);
   const isElectric = team.accent === "electric";
   const accentText = isElectric ? "text-electric-400" : "text-gold-400";
 
@@ -45,16 +37,10 @@ export default function TeamDetail() {
         }
         lede={team.blurb}
       >
-        <div className="flex flex-wrap gap-3">
-          <Badge tone={isElectric ? "electric" : "gold"}>
-            <Users className="h-3 w-3" aria-hidden />
-            {team.roster.note}
-          </Badge>
-          <Badge tone="muted">
-            <CalendarDays className="h-3 w-3" aria-hidden />
-            {team.season}
-          </Badge>
-        </div>
+        <Badge tone={isElectric ? "electric" : "gold"}>
+          <Users className="h-3 w-3" aria-hidden />
+          {team.roster.note}
+        </Badge>
       </PageHero>
 
       {/* Training + staff */}
@@ -62,10 +48,7 @@ export default function TeamDetail() {
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
             <Reveal>
-              <SectionHeading
-                eyebrow="Weekly Rhythm"
-                title="Training schedule"
-              />
+              <SectionHeading eyebrow="Weekly Rhythm" title="Training" />
             </Reveal>
 
             <ul className="mt-10 flex flex-col gap-4">
@@ -163,58 +146,6 @@ export default function TeamDetail() {
             </div>
           </Reveal>
         </div>
-      </Section>
-
-      {/* Fixtures */}
-      <Section tone="dark" className="pitch-lines">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Fixtures"
-            title={`${team.name} schedule`}
-            lede={`${team.season} · ${team.league}`}
-          />
-        </Reveal>
-
-        {teamFixtures.length > 0 ? (
-          <ul className="mt-12 flex flex-col gap-3">
-            {teamFixtures.map((fx, i) => (
-              <Reveal key={`${fx.date}-${fx.opponent}`} delay={i * 70}>
-                <li className="grid items-center gap-4 border border-white/10 bg-navy-900 p-5 sm:grid-cols-[auto_1fr_auto] sm:p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-24 shrink-0 border-r border-white/10 pr-4">
-                      <p className="font-display text-lg font-bold uppercase italic text-white">
-                        {formatDate(fx.date)}
-                      </p>
-                      <p className="text-xs text-silver-500">{fx.time}</p>
-                    </div>
-                    <Badge tone={fx.home ? "electric" : "muted"}>
-                      {fx.home ? "Home" : "Away"}
-                    </Badge>
-                  </div>
-
-                  <div className="min-w-0">
-                    <p className="font-display text-xl font-bold uppercase italic text-white">
-                      vs {fx.opponent}
-                    </p>
-                    <p className="mt-0.5 truncate text-sm text-silver-500">
-                      {fx.venue}
-                    </p>
-                  </div>
-
-                  <p className="flex items-center gap-2 font-display text-sm font-bold uppercase tracking-[0.16em] text-gold-400 sm:justify-end">
-                    <Trophy className="h-4 w-4" aria-hidden />
-                    {fx.competition}
-                  </p>
-                </li>
-              </Reveal>
-            ))}
-          </ul>
-        ) : (
-          <p className="mt-10 text-silver-400">
-            The fixture list for this squad hasn't been published yet — check
-            back soon.
-          </p>
-        )}
       </Section>
 
       <Section tone="panel">

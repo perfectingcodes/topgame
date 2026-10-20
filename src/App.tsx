@@ -14,7 +14,6 @@ import News from "@/pages/News";
 import Article from "@/pages/Article";
 import Sponsors from "@/pages/Sponsors";
 import TeamDetail from "@/pages/TeamDetail";
-import Schedule from "@/pages/Schedule";
 import Coaches from "@/pages/Coaches";
 import Tryouts from "@/pages/Tryouts";
 import Contact from "@/pages/Contact";
@@ -62,7 +61,6 @@ export default function App() {
           <Route path="/news" component={News} />
           <Route path="/news/:slug" component={Article} />
           <Route path="/sponsors" component={Sponsors} />
-          <Route path="/schedule" component={Schedule} />
           <Route path="/coaches" component={Coaches} />
           <Route path="/tryouts" component={Tryouts} />
           <Route path="/contact" component={Contact} />

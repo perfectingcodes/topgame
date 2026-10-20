@@ -23,7 +23,7 @@ export const routes: RouteMeta[] = [
   {
     path: "/teams",
     title: `Our Teams | ${suffix}`,
-    description: `Meet the ${club.name} U12 and U14 boys squads — training schedules, playing style, and coaching staff.`,
+    description: `Meet the ${club.name} U12 and U14 boys squads — training times, playing style, and coaching staff.`,
   },
   ...teams.map((team) => ({
     path: `/teams/${team.slug}`,
@@ -49,11 +49,6 @@ export const routes: RouteMeta[] = [
     path: "/sponsors",
     title: `Sponsors & Partners | ${suffix}`,
     description: `The local businesses backing ${club.name}, and how your business can support youth soccer in ${club.city}.`,
-  },
-  {
-    path: "/schedule",
-    title: `Schedule & Fixtures | ${suffix}`,
-    description: `Weekly training times and the upcoming fixture list for ${club.name}'s U12 and U14 boys teams.`,
   },
   {
     path: "/coaches",
