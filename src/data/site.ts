@@ -22,7 +22,13 @@ export const club = {
   email: null as string | null, // REQUIRED: the club's real address — forms and every mailto depend on it
   phone: null as string | null,
   phoneHref: null as string | null,
-  address: null as { line1: string; line2: string; city: string; state: string; zip: string } | null,
+  address: null as {
+    line1: string;
+    line2: string;
+    city: string;
+    state: string;
+    zip: string;
+  } | null,
   social: {
     instagram: "https://instagram.com/topgameacademy",
     instagramHandle: "@topgameacademy",
@@ -131,6 +137,27 @@ export const coaches: Coach[] = [
 ];
 
 /* -------------------------------------------------------------------------- */
+/*  Instagram                                                                  */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Post URLs (or bare shortcodes) to embed on the homepage, newest first.
+ *
+ * Instagram's embed endpoint needs no API key or access token for public posts,
+ * so adding one is just pasting its link here:
+ *
+ *   "https://www.instagram.com/p/DAbc123xyz/"
+ *   "https://www.instagram.com/reel/DAbc123xyz/"
+ *
+ * Six or so works best — the grid is three across on desktop.
+ *
+ * While this is empty the section falls back to the club's own match photos
+ * under the same handle, which is honest: they are the club's pictures, just
+ * not presented as Instagram posts.
+ */
+export const instagramPosts: string[] = [];
+
+/* -------------------------------------------------------------------------- */
 /*  Photography                                                                */
 /* -------------------------------------------------------------------------- */
 
@@ -179,7 +206,8 @@ export const photos = {
   },
 } as const satisfies Record<string, Photo>;
 
-export const photoReel: Photo[] = [
+/** Square-cropped set used by the Instagram grid fallback. */
+export const photoGrid: Photo[] = [
   photos.celebrationTeam,
   photos.attack,
   photos.celebrationCoach,

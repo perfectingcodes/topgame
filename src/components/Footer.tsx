@@ -44,7 +44,7 @@ export default function Footer() {
             <a
               href={club.social.instagram}
               aria-label={`${club.name} on Instagram`}
-              className="rounded-md border border-white/15 p-2.5 text-silver-300 transition-colors hover:border-electric-500 hover:text-electric-300"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/15 text-silver-300 transition-colors hover:border-electric-500 hover:text-electric-300"
             >
               <Instagram className="h-4 w-4" />
             </a>
@@ -52,7 +52,7 @@ export default function Footer() {
               <a
                 href={club.social.facebook}
                 aria-label={`${club.name} on Facebook`}
-                className="rounded-md border border-white/15 p-2.5 text-silver-300 transition-colors hover:border-electric-500 hover:text-electric-300"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/15 text-silver-300 transition-colors hover:border-electric-500 hover:text-electric-300"
               >
                 <Facebook className="h-4 w-4" />
               </a>
@@ -69,12 +69,12 @@ export default function Footer() {
             <h3 className="font-display text-sm font-bold uppercase tracking-[0.24em] text-gold-400">
               {col.title}
             </h3>
-            <ul className="flex flex-col gap-2.5">
+            <ul className="flex flex-col sm:gap-2.5">
               {col.links.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-silver-300 transition-colors hover:text-electric-300"
+                    className="inline-flex min-h-11 items-center text-sm text-silver-300 transition-colors hover:text-electric-300 sm:min-h-0"
                   >
                     {link.label}
                   </Link>
@@ -93,7 +93,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`tel:${club.phoneHref}`}
-                  className="flex items-center gap-2.5 hover:text-electric-300"
+                  className="inline-flex min-h-11 items-center gap-2.5 hover:text-electric-300 sm:min-h-0"
                 >
                   <Phone
                     className="h-4 w-4 shrink-0 text-electric-500"
@@ -107,7 +107,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${club.email}`}
-                  className="flex items-center gap-2.5 hover:text-electric-300"
+                  className="inline-flex min-h-11 items-center gap-2.5 hover:text-electric-300 sm:min-h-0"
                 >
                   <Mail
                     className="h-4 w-4 shrink-0 text-electric-500"
@@ -120,7 +120,7 @@ export default function Footer() {
             <li>
               <a
                 href={club.social.instagram}
-                className="flex items-center gap-2.5 hover:text-electric-300"
+                className="inline-flex min-h-11 items-center gap-2.5 hover:text-electric-300 sm:min-h-0"
               >
                 <Instagram
                   className="h-4 w-4 shrink-0 text-electric-500"

@@ -49,10 +49,16 @@ export default function Header() {
           href={club.social.instagram}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-2 font-display text-xs font-bold uppercase tracking-[0.18em] text-white hover:text-navy-950 sm:text-sm"
+          className="inline-flex min-h-11 items-center justify-center gap-2 py-1 font-display text-xs font-bold uppercase tracking-[0.18em] text-white hover:text-navy-950 sm:min-h-0 sm:text-sm"
         >
           <Instagram className="h-3.5 w-3.5" aria-hidden />
-          {season.status} — follow {club.social.instagramHandle} for every match
+          <span className="sm:hidden">
+            {season.status} · {club.social.instagramHandle}
+          </span>
+          <span className="hidden sm:inline">
+            {season.status} — follow {club.social.instagramHandle} for every
+            match
+          </span>
         </a>
       </div>
 
@@ -114,7 +120,7 @@ export default function Header() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="rounded-md p-2 text-white transition-colors hover:bg-white/10 xl:hidden"
+            className="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 xl:hidden"
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>

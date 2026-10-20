@@ -1,6 +1,5 @@
 import { Link } from "wouter";
 import {
-  Instagram,
   Brain,
   Zap,
   Users,
@@ -10,15 +9,15 @@ import {
 } from "lucide-react";
 
 import Photo from "@/components/Photo";
+import InstagramFeed from "@/components/InstagramFeed";
 import {
   Badge,
   Button,
-  Eyebrow,
   Reveal,
   Section,
   SectionHeading,
 } from "@/components/ui";
-import { club, photos, pillars, season, sponsors, teams } from "@/data/site";
+import { club, photos, pillars, sponsors, teams } from "@/data/site";
 import { cn } from "@/lib/cn";
 
 const PILLAR_ICONS = {
@@ -100,7 +99,7 @@ export default function Home() {
             </ul>
             <Link
               href="/sponsors"
-              className="shrink-0 font-display text-xs font-bold uppercase tracking-[0.2em] text-electric-400 hover:text-electric-300"
+              className="inline-flex min-h-11 shrink-0 items-center font-display text-xs font-bold uppercase tracking-[0.2em] text-electric-400 hover:text-electric-300 sm:min-h-0"
             >
               Become a sponsor →
             </Link>
@@ -282,43 +281,9 @@ export default function Home() {
       </Section>
 
       {/* ------------------------------------------------------------------ */}
-      {/*  Follow — the club posts constantly, so this is the live feed       */}
+      {/*  Instagram                                                          */}
       {/* ------------------------------------------------------------------ */}
-      <section className="relative isolate overflow-hidden">
-        <Photo
-          photo={photos.duel}
-          className="absolute inset-0 -z-10 h-full w-full rounded-none"
-          sizes="100vw"
-          imgClassName="object-[50%_45%]"
-        />
-        <div aria-hidden className="absolute inset-0 -z-10 bg-navy-950/88" />
-        <div
-          aria-hidden
-          className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-flare-500 via-electric-500 to-gold-500"
-        />
-
-        <Reveal className="mx-auto flex w-full max-w-3xl flex-col items-center gap-7 px-5 py-24 text-center sm:px-8 lg:py-32">
-          <Eyebrow className="justify-center">{season.status}</Eyebrow>
-
-          <h2 className="text-5xl leading-[0.9] sm:text-6xl">
-            Every match,
-            <br />
-            <span className="text-gold-500">as it happens</span>
-          </h2>
-
-          <p className="max-w-lg text-lg leading-relaxed text-silver-300">
-            Highlights, goals and match days go up on Instagram first. It is the
-            quickest way to see what a season here actually looks like.
-          </p>
-
-          <Button href={club.social.instagram} size="lg">
-            <span className="inline-flex items-center gap-2">
-              <Instagram className="h-5 w-5" aria-hidden />
-              Follow {club.social.instagramHandle}
-            </span>
-          </Button>
-        </Reveal>
-      </section>
+      <InstagramFeed />
     </>
   );
 }
